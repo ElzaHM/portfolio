@@ -1,0 +1,183 @@
+.hero {
+  min-height: auto;
+  padding-block: 32px 0;
+}
+
+.inner {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  padding-inline: 0;
+}
+
+.badge {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(76, 140, 252, 0.45);
+  background: rgba(15, 40, 80, 0.35);
+  color: #7eb3ff;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.mainTitle {
+  margin: 0 0 20px;
+  font-weight: 700;
+  font-size: clamp(2.75rem, 5.5vw, 3.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+.titleLine1:global(.ant-typography),
+.titleLine2:global(.ant-typography) {
+  margin: 0 !important;
+  font-size: clamp(4rem, 8vw, 4.8rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.02em;
+}
+
+.titleLine1:global(.ant-typography) {
+  color: #cbd5e1;
+}
+
+.titleLine2:global(.ant-typography) {
+  margin-bottom: 10px !important;
+  color: #60a5fa;
+}
+
+.lead {
+  max-width: 520px;
+  margin: 0 0 24px;
+  color: #94a3b8;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.ctaRow {
+  margin-bottom: 16px;
+}
+
+.btnPrimary {
+  height: 48px;
+  padding-inline: 28px;
+  border: none;
+  border-radius: 999px;
+  font-weight: 600;
+  background: linear-gradient(180deg, #6ba3ff 0%, #4c8cfc 45%, #3b7ae8 100%);
+  box-shadow: 0 8px 24px rgba(76, 140, 252, 0.25);
+}
+
+.btnPrimary:hover {
+  background: linear-gradient(180deg, #7badff 0%, #5a97fc 45%, #4585f0 100%) !important;
+  color: #fff !important;
+}
+
+.btnSecondary {
+  height: 48px;
+  padding-inline: 24px;
+  border-radius: 999px;
+  font-weight: 600;
+  color: #f8fafc !important;
+  background: #12151f !important;
+  border-color: rgba(148, 163, 184, 0.35) !important;
+}
+
+.btnSecondary:hover {
+  color: #fff !important;
+  border-color: rgba(148, 163, 184, 0.55) !important;
+  background: #1a1f2e !important;
+}
+
+.iconRow {
+  margin-top: 4px;
+}
+
+.iconCircle {
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 50%;
+  color: #94a3b8;
+  background: #0f1419 !important;
+  border: 1px solid rgba(148, 163, 184, 0.22) !important;
+}
+
+.iconCircle:hover {
+  color: #e2e8f0 !important;
+  border-color: rgba(148, 163, 184, 0.4) !important;
+}
+
+.colImage {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.avatarWrap {
+  width: 100%;
+  max-width: 400px;
+}
+
+.avatar {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
+}
+
+.statsDivider {
+  width: 100%;
+  margin-top: 32px;
+  margin-bottom: 0;
+  height: 0;
+  border: none;
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.stats {
+  padding-block: 20px 8px;
+}
+
+.statCol {
+  text-align: center;
+}
+
+.statValue {
+  margin: 0 0 4px;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  line-height: 1.2;
+}
+
+.statLabel {
+  display: block;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 991px) {
+  .hero {
+    padding-top: 24px;
+  }
+
+  .colImage {
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  .avatarWrap {
+    max-width: 360px;
+  }
+}

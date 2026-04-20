@@ -1,0 +1,634 @@
+.contentInner {
+  max-width: 1260px;
+  margin-inline: auto;
+  padding-inline: 24px;
+  padding-block: 0 48px;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding-inline: 24px;
+  background: rgba(10, 12, 20, 0.92);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+  backdrop-filter: blur(10px);
+}
+
+.headerInner {
+  max-width: 1500px;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 64px;
+  position: relative;
+}
+
+.logo {
+  margin: 0;
+  color: #f8fafc;
+  letter-spacing: 0.08em;
+  font-size: 14px;
+}
+
+.navDesktop {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.headerMenu {
+  flex: 1;
+  justify-content: center;
+  border-bottom: none;
+  background: transparent;
+}
+
+.menuIcon {
+  color: #e2e8f0;
+}
+
+.main {
+  background: transparent;
+}
+
+.section {
+  padding-block: 60px;
+}
+
+.sectionTight {
+  padding-block: 40px;
+}
+
+.sectionHeadingRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.sectionTitle {
+  margin: 0;
+  color: #f8fafc;
+}
+
+.sectionIntro {
+  max-width: 640px;
+  margin-bottom: 24px;
+  color: #94a3b8;
+}
+
+.metaTag {
+  letter-spacing: 0.06em;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.twinSection {
+  padding-block: 56px;
+  margin-block: 8px;
+  border-radius: 20px;
+  background: #0a0b1e;
+}
+
+.twinHeading {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.twinTitle {
+  margin: 0 0 8px;
+  color: #f8fafc;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 2.5vw, 1.875rem);
+  letter-spacing: -0.02em;
+}
+
+.twinIntro {
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.twinCard {
+  max-width: 880px;
+  margin-inline: auto;
+  background: #13151b;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+}
+
+.twinCard :global(.ant-card-body) {
+  padding: 40px;
+}
+
+.twinCardToolbar {
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.twinHeaderAvatar {
+  background: #1890ff;
+  flex-shrink: 0;
+}
+
+.twinHeaderMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  text-align: start;
+}
+
+.twinHeaderMeta :global(h5.ant-typography) {
+  margin: 0;
+}
+
+.twinHeaderName {
+  margin-block: 0;
+  margin-inline: 0;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.twinHeaderModel {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #40a9ff;
+}
+
+.twinStatusDot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #64748b;
+}
+
+.twinMessages {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-bottom: 24px;
+}
+
+.twinUserAvatar {
+  flex-shrink: 0;
+  background: #2a2f3a;
+  color: #cbd5e1;
+}
+
+.twinUserBubbleCol {
+  min-width: 0;
+}
+
+.twinBubbleUser {
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: #1a1d26;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.twinAiBubbleCol {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: min(100%, 620px);
+}
+
+.twinBubbleAi {
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: #1a1d26;
+  border: 1px solid #1890ff;
+}
+
+.twinAiAvatar {
+  flex-shrink: 0;
+  background: #1890ff;
+  color: #ffffff;
+}
+
+.chatText {
+  margin: 0;
+  color: #e2e8f0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.twinChips {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.twinChip {
+  height: auto;
+  padding-block: 8px;
+  padding-inline: 16px;
+  border-radius: 999px;
+  color: #cbd5e1;
+  background: #1a1d26;
+  border-color: rgba(148, 163, 184, 0.35);
+}
+
+.twinChip:hover {
+  color: #f1f5f9;
+  border-color: rgba(148, 163, 184, 0.55);
+  background: #22262f;
+}
+
+.twinInputField {
+  width: 100%;
+  border-radius: 999px;
+  background: rgba(10, 11, 30, 0.95);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.twinInputField :global(.ant-input) {
+  background: transparent;
+  color: #e2e8f0;
+}
+
+.twinInputField :global(.ant-input::placeholder) {
+  color: #64748b;
+}
+
+.twinSendIcon {
+  color: #1890ff;
+  font-size: 18px;
+}
+
+.virtualSection {
+  padding-block: 40px;
+  margin-block: 0;
+  border-top: 1px dotted rgba(139, 92, 246, 0.4);
+  border-bottom: 1px dotted rgba(139, 92, 246, 0.4);
+  background: linear-gradient(
+    165deg,
+    #0a0f1c 0%,
+    #080c18 42%,
+    #0c1228 100%
+  );
+}
+
+.virtualMediaWrap {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  max-height: min(420px, 52vh);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #0b0f18;
+  line-height: 0;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+    inset 0 2px 48px rgba(0, 0, 0, 0.55),
+    0 16px 42px rgba(0, 0, 0, 0.4);
+}
+
+.virtualImage {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.82) contrast(1.06) saturate(0.92);
+}
+
+.virtualImageOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(
+    165deg,
+    rgba(6, 10, 22, 0.35) 0%,
+    rgba(4, 8, 18, 0.55) 45%,
+    rgba(3, 6, 14, 0.78) 100%
+  );
+}
+
+.virtualPlay {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(38, 40, 48, 0.55);
+  color: #f8fafc;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.virtualPlay:hover {
+  background: rgba(50, 52, 62, 0.65);
+  color: #ffffff;
+}
+
+.virtualPlayGlyph {
+  font-size: 22px;
+  margin-left: 3px;
+}
+
+.virtualLabels {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.virtualLiveFeed {
+  display: block;
+  margin: 0;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #6b7280;
+}
+
+.virtualAvatarId {
+  display: block;
+  margin: 0;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #f1f5f9;
+}
+
+.virtualAudioBars {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 18px;
+  line-height: 0;
+}
+
+.virtualAudioBars span {
+  width: 3px;
+  border-radius: 1px;
+  background: rgba(59, 130, 246, 0.85);
+}
+
+.virtualAudioBars span:nth-child(1) {
+  height: 7px;
+}
+
+.virtualAudioBars span:nth-child(2) {
+  height: 14px;
+}
+
+.virtualAudioBars span:nth-child(3) {
+  height: 10px;
+}
+
+.virtualMainTitle {
+  margin: 0 0 12px;
+  font-size: clamp(1.35rem, 2.1vw, 1.6rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.virtualTitlePart {
+  color: #f8fafc;
+}
+
+.virtualTitleAccent {
+  color: #93c5f8;
+}
+
+.virtualLead {
+  max-width: 520px;
+  margin: 0 0 16px;
+  color: #5c6478;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.featureStack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.featureCard {
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+}
+
+.featureCard :global(.ant-card-body) {
+  padding: 11px 13px;
+}
+
+.featureInner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.featureIconCircle {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(30, 58, 95, 0.55);
+}
+
+.featureTextCol {
+  flex: 1;
+  min-width: 0;
+}
+
+.featureCardTitle {
+  margin: 0 0 3px;
+  color: #f1f5f9;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.featureTextCol :global(h5.ant-typography) {
+  margin: 0 0 3px;
+}
+
+.featureCardDesc {
+  margin: 0;
+  color: #6b7288;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.featureIcon {
+  color: #5a7fa3;
+  font-size: 17px;
+}
+
+.techCard {
+  height: 100%;
+  background: #12151f;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.techIcon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 12px;
+}
+
+.techAvatar {
+  margin-bottom: 12px;
+}
+
+.techAvatarTs {
+  background-color: #3178c6;
+  color: #fff;
+}
+
+.techAvatarAi {
+  background-color: #10a37f;
+  color: #fff;
+}
+
+.techAvatarNg {
+  background-color: #dd0031;
+  color: #fff;
+}
+
+.perfIconWrap {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 40px;
+  line-height: 1;
+  color: #eab308;
+}
+
+.drawerBody {
+  padding-top: 8px;
+}
+
+.navAnchor {
+  color: inherit;
+}
+
+.navAnchor:hover {
+  color: #f8fafc;
+}
+
+.techDesc {
+  color: #94a3b8;
+  margin-bottom: 12px;
+  min-height: 44px;
+}
+
+.tagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.projectCard {
+  height: 100%;
+  background: #12151f;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.footer {
+  padding-block: 28px;
+  padding-inline: 24px;
+  background: #07080f;
+  border-top: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.footerInner {
+  max-width: 1360px;
+  margin-inline: auto;
+}
+
+.contentInner > section + section {
+  padding-top: 32px;
+}
+
+@media (max-width: 991px) {
+  .section {
+    padding-block: 40px;
+  }
+}
+
+.footerRow {
+  align-items: center;
+}
+
+.footerCopy {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.footerLinks {
+  text-align: center;
+}
+
+.footerLink {
+  color: #94a3b8;
+  letter-spacing: 0.08em;
+  font-size: 12px;
+}
+
+.footerCredit {
+  text-align: right;
+  color: #64748b;
+  font-size: 12px;
+}
+
+@media (max-width: 767px) {
+  .contentInner > section + section {
+    padding-top: 24px;
+  }
+
+  .footerCopy,
+  .footerLinks,
+  .footerCredit {
+    text-align: center;
+  }
+}
