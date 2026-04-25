@@ -28,7 +28,7 @@ export default function HeroSection() {
               interfaces. Bridging the gap between technical precision and
               high-end editorial experiences.
             </Paragraph>
-            <Space direction="vertical" size="middle" className={styles.actions}>
+            <Space orientation="vertical" size="middle" className={styles.actions}>
   <Space size="middle" wrap className={styles.ctaRow}>
     <Button
       type="primary"

@@ -7,7 +7,6 @@ import {
   ConfigProvider,
   Drawer,
   Grid,
-  Input,
   Layout,
   Menu,
   Row,
@@ -21,14 +20,13 @@ import {
   CaretRightOutlined,
   GlobalOutlined,
   MenuOutlined,
-  RobotOutlined,
-  SendOutlined,
   ThunderboltOutlined,
-  UserOutlined,
   VideoCameraOutlined,
 } from '@ant-design/icons'
 import HeroSection from '../../components/HeroSection'
 import MainLayout from '../../layouts/MainLayout'
+import Chat from '../../components/Chat/Chat'
+import { CVViewer } from '../../components/CVViewer/CVViewer'
 import styles from './styles.module.css'
 import virtualAvatar from '../../assets/virtual-avatar.png'
 import reactLogo from '../../assets/react.svg'
@@ -74,6 +72,7 @@ const navItems = [
 
 export default function HomePage() {
   const [drawerOpen, setDrawerOpen] = useState(false)
+  const [twinView, setTwinView] = useState<'chat' | 'cv'>('chat')
   const screens = Grid.useBreakpoint()
   const showDesktopNav = screens.md
 
@@ -169,99 +168,68 @@ export default function HomePage() {
                   technical methodology and architectural vision.
                 </Paragraph>
               </div>
-              <Card className={styles.twinCard} bordered={false}>
-                <div className={styles.twinCardToolbar}>
-                  <Row align="middle" justify="space-between" gutter={[16, 16]}>
-                    <Col flex="auto">
-                      <Space align="start" size={16}>
-                        <Avatar
-                          className={styles.twinHeaderAvatar}
-                          icon={<ApiOutlined />}
-                          size={48}
-                        />
-                        <div className={styles.twinHeaderMeta}>
-                          <Title level={5} className={styles.twinHeaderName}>
-                            AI-Frontend_v1.0
-                          </Title>
-                          <Text className={styles.twinHeaderModel}>
-                            MODEL: FRONTEND_EXPERT_OPT
-                          </Text>
-                        </div>
+              <Card className={styles.twinCard} variant="borderless">
+                <div className={styles.twinInner}>
+                  <Space orientation="vertical" size="large" className={styles.twinStack}>
+                    <div className={styles.twinCardToolbar}>
+                      <Row align="middle" justify="space-between" gutter={[16, 16]}>
+                        <Col flex="auto">
+                          <Space align="start" size={16}>
+                            <Avatar
+                              className={styles.twinHeaderAvatar}
+                              icon={<ApiOutlined />}
+                              size={48}
+                            />
+                            <div className={styles.twinHeaderMeta}>
+                              <Title level={5} className={styles.twinHeaderName}>
+                                AI-Frontend_v1.0
+                              </Title>
+                              <Text className={styles.twinHeaderModel}>
+                                MODEL: FRONTEND_EXPERT_OPT
+                              </Text>
+                            </div>
+                          </Space>
+                        </Col>
+                        <Col flex="none">
+                          <Space size={6}>
+                            <span className={styles.twinStatusDot} aria-hidden />
+                            <span className={styles.twinStatusDot} aria-hidden />
+                          </Space>
+                        </Col>
+                      </Row>
+                    </div>
+
+                    <div className={styles.toggleBar}>
+                      <Space size={10}>
+                        <Button
+                          type={twinView === 'chat' ? 'primary' : 'default'}
+                          className={styles.toggleButton}
+                          onClick={() => setTwinView('chat')}
+                        >
+                          Chat
+                        </Button>
+                        <Button
+                          type={twinView === 'cv' ? 'primary' : 'default'}
+                          className={styles.toggleButton}
+                          onClick={() => setTwinView('cv')}
+                        >
+                          CV
+                        </Button>
                       </Space>
-                    </Col>
-                    <Col flex="none">
-                      <Space size={6}>
-                        <span className={styles.twinStatusDot} aria-hidden />
-                        <span className={styles.twinStatusDot} aria-hidden />
-                      </Space>
-                    </Col>
-                  </Row>
-                </div>
+                    </div>
 
-                <div className={styles.twinMessages}>
-                  <Row gutter={[12, 16]} align="top">
-                    <Col flex="none">
-                      <Avatar
-                        className={styles.twinUserAvatar}
-                        icon={<UserOutlined />}
-                        size={40}
-                      />
-                    </Col>
-                    <Col flex="auto" className={styles.twinUserBubbleCol}>
-                      <div className={styles.twinBubbleUser}>
-                        <Paragraph className={styles.chatText}>
-                          Hello. I&apos;m looking for a developer experienced with
-                          Next.js and complex API integrations. Can you help?
-                        </Paragraph>
-                      </div>
-                    </Col>
-                  </Row>
-
-                  <Row gutter={[12, 16]} justify="end" align="top">
-                    <Col flex="auto" className={styles.twinAiBubbleCol}>
-                      <div className={styles.twinBubbleAi}>
-                        <Paragraph className={styles.chatText}>
-                          Absolutely. I specialize in the React ecosystem—including
-                          Next.js App Router, server components, and robust data
-                          layers for complex API integrations. I can help you
-                          design contracts, error handling, and performance
-                          budgets that scale.
-                        </Paragraph>
-                      </div>
-                    </Col>
-                    <Col flex="none">
-                      <Avatar
-                        className={styles.twinAiAvatar}
-                        icon={<RobotOutlined />}
-                        size={40}
-                      />
-                    </Col>
-                  </Row>
-                </div>
-
-                <Space wrap size="small" className={styles.twinChips}>
-                  <Button className={styles.twinChip} type="default">
-                    What is your tech stack?
-                  </Button>
-                  <Button className={styles.twinChip} type="default">
-                    Tell me about your AI projects
-                  </Button>
-                  <Button className={styles.twinChip} type="default">
-                    Availability for Q4?
-                  </Button>
-                </Space>
-
-                <Input
-                  size="large"
-                  placeholder="Query the Architect..."
-                  className={styles.twinInputField}
-                  suffix={<SendOutlined className={styles.twinSendIcon} />}
-                />
+                    <div
+                      className={`${styles.contentArea} ${twinView === 'cv' ? styles.scrollArea : ''}`}
+                    >
+                      {twinView === 'chat' ? <Chat /> : <CVViewer />}
+                    </div>
+                  </Space>
+                  </div>
               </Card>
             </section>
 
             <section className={styles.virtualSection}>
-              <Row gutter={[20, 28]} align="middle">
+              <Row gutter={[20, 28]} align="middle" className={styles.virtualRow}>
                 <Col xs={24} lg={12}>
                   <div className={styles.virtualMediaWrap}>
                     <img
@@ -281,7 +249,10 @@ export default function HomePage() {
                       <CaretRightOutlined className={styles.virtualPlayGlyph} />
                     </button>
                     <div className={styles.virtualLabels}>
-                      <Text className={styles.virtualLiveFeed}>LIVE FEED</Text>
+                      <div className={styles.virtualLiveRow}>
+                        <span className={styles.virtualLiveDot} aria-hidden />
+                        <Text className={styles.virtualLiveFeed}>LIVE FEED</Text>
+                      </div>
                       <Text className={styles.virtualAvatarId}>
                         DIGITAL_AVATAR_01
                       </Text>
@@ -294,50 +265,55 @@ export default function HomePage() {
                   </div>
                 </Col>
                 <Col xs={24} lg={12}>
-                  <Title level={2} className={styles.virtualMainTitle}>
-                    <span className={styles.virtualTitlePart}>Meet My </span>
-                    <span className={styles.virtualTitleAccent}>
-                      Virtual Self
-                    </span>
-                  </Title>
-                  <Paragraph className={styles.virtualLead}>
-                    AI-driven briefings that explain my workflow, tooling, and
-                    how I approach complex interface problems—before we ever
-                    meet on a call.
-                  </Paragraph>
-                  <div className={styles.featureStack}>
-                    <Card size="small" className={styles.featureCard}>
-                      <div className={styles.featureInner}>
-                        <span className={styles.featureIconCircle}>
-                          <VideoCameraOutlined className={styles.featureIcon} />
-                        </span>
-                        <div className={styles.featureTextCol}>
-                          <Title level={5} className={styles.featureCardTitle}>
-                            AI Video Synthesis
-                          </Title>
-                          <Paragraph className={styles.featureCardDesc}>
-                            Short-form walkthroughs generated from structured
-                            prompts—great for async stakeholder updates.
-                          </Paragraph>
+                  <div className={styles.virtualRightCol}>
+                    <Title level={2} className={styles.virtualMainTitle}>
+                      <span className={styles.virtualTitlePart}>Meet My </span>
+                      <span className={styles.virtualTitleAccent}>
+                        Virtual Self
+                      </span>
+                    </Title>
+                    <Paragraph className={styles.virtualLead}>
+                      AI-driven briefings that explain my workflow, tooling, and
+                      how I approach complex interface problems—before we ever
+                      meet on a call.
+                    </Paragraph>
+                    <div className={styles.featureStack}>
+                      <Card size="small" className={styles.featureCard}>
+                        <div className={styles.featureInner}>
+                          <span className={styles.featureIconCircle}>
+                            <VideoCameraOutlined className={styles.featureIcon} />
+                          </span>
+                          <div className={styles.featureTextCol}>
+                            <Title level={5} className={styles.featureCardTitle}>
+                              AI Video Synthesis
+                            </Title>
+                            <Paragraph className={styles.featureCardDesc}>
+                              Short-form walkthroughs generated from structured
+                              prompts—great for async stakeholder updates.
+                            </Paragraph>
+                          </div>
                         </div>
-                      </div>
-                    </Card>
-                    <Card size="small" className={styles.featureCard}>
-                      <div className={styles.featureInner}>
-                        <span className={styles.featureIconCircle}>
-                          <GlobalOutlined className={styles.featureIcon} />
-                        </span>
-                        <div className={styles.featureTextCol}>
-                          <Title level={5} className={styles.featureCardTitle}>
-                            Multilingual Support
-                          </Title>
-                          <Paragraph className={styles.featureCardDesc}>
-                            Briefings and documentation localized for distributed
-                            teams across regions.
-                          </Paragraph>
+                      </Card>
+                      <Card size="small" className={styles.featureCard}>
+                        <div className={styles.featureInner}>
+                          <span className={styles.featureIconCircle}>
+                            <GlobalOutlined className={styles.featureIcon} />
+                          </span>
+                          <div className={styles.featureTextCol}>
+                            <Title level={5} className={styles.featureCardTitle}>
+                              Multilingual Support
+                            </Title>
+                            <Paragraph className={styles.featureCardDesc}>
+                              Briefings and documentation localized for distributed
+                              teams across regions.
+                            </Paragraph>
+                          </div>
                         </div>
-                      </div>
-                    </Card>
+                      </Card>
+                    </div>
+                    <Button type="primary" href="#digital-twin" className={styles.virtualCta}>
+                      Try AI Chat
+                    </Button>
                   </div>
                 </Col>
               </Row>

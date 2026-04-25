@@ -1,0 +1,156 @@
+.root {
+  width: 100%;
+  position: relative;
+}
+
+.root::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 60% 45% at 50% 22%,
+    rgba(76, 140, 252, 0.14),
+    transparent 70%
+  );
+}
+
+.wrapper {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  margin: 0 !important;
+  color: #f8fafc !important;
+}
+
+.cvCard {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(
+    155deg,
+    rgba(15, 21, 35, 0.96) 0%,
+    rgba(9, 15, 28, 0.98) 100%
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 14px 40px rgba(2, 7, 18, 0.36),
+    0 0 34px rgba(76, 140, 252, 0.08);
+  transition: box-shadow 0.24s ease;
+}
+
+.cvCard:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 18px 44px rgba(2, 7, 18, 0.4),
+    0 0 44px rgba(76, 140, 252, 0.14);
+}
+
+.cvCard :global(.ant-card-body) {
+  padding: 32px;
+}
+
+.markdown {
+  color: #cbd5f5;
+}
+
+.markdown h1 {
+  margin: 0 0 8px;
+  font-size: clamp(2rem, 4vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: #ffffff;
+}
+
+.markdown h2 {
+  margin: 32px 0 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+  font-size: clamp(1.25rem, 2.3vw, 1.375rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: #4c8cfc;
+}
+
+.markdown h3 {
+  margin: 22px 0 10px;
+  font-size: clamp(1rem, 1.8vw, 1.125rem);
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.markdown p {
+  margin: 0 0 12px;
+  color: #cbd5f5;
+  line-height: 1.72;
+}
+
+.markdown ul,
+.markdown ol {
+  margin: 0 0 14px;
+  padding-left: 1.25rem;
+}
+
+.markdown li {
+  margin: 0 0 9px;
+  color: #94a3b8;
+  line-height: 1.7;
+}
+
+.markdown li::marker {
+  color: #4c8cfc;
+}
+
+.markdown hr {
+  margin: 24px 0;
+  border: none;
+  border-top: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+.markdown a {
+  color: #93c5fd;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.markdown strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.markdown p strong {
+  display: inline-block;
+  margin: 4px 6px 4px 0;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(76, 140, 252, 0.2);
+  background: rgba(76, 140, 252, 0.1);
+}
+
+.markdown :is(p, li) {
+  overflow-wrap: anywhere;
+}
+
+.markdown :global(.metric) {
+  color: #4c8cfc;
+}
+
+@media (max-width: 768px) {
+  .cvCard :global(.ant-card-body) {
+    padding: 16px;
+  }
+
+  .markdown h1 {
+    font-size: 1.8rem;
+  }
+
+  .markdown h2 {
+    margin-top: 26px;
+    font-size: 1.2rem;
+  }
+}
