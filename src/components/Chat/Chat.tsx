@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { Avatar, Button, Input, Space, Typography } from 'antd'
 import {
   ApiOutlined,
-  RobotOutlined,
   SafetyOutlined,
   SendOutlined,
 } from '@ant-design/icons'
@@ -60,8 +59,8 @@ const Chat = () => {
               <div className={styles.messageRow}>
                 <Avatar
                   size={36}
-                  icon={<RobotOutlined />}
-                  className={styles.aiAvatar}
+                  icon={<ApiOutlined />}
+                  className={styles.headerAvatar}
                 />
                 <div className={styles.aiBubble}>
                   <ReactMarkdown>{response}</ReactMarkdown>

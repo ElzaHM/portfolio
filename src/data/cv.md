@@ -1,5 +1,5 @@
 # Elza Hovhannisyan
-[Your Phone Number] | [Your Email] | [Your LinkedIn Profile URL] | [Your Portfolio/GitHub URL (Optional)] | [Your City, State]
+https://www.linkedin.com/in/elza-hovhannisyan-25a6b0233/ |https://github.com/ElzaHM | Yerevan Armenia
 
 ---
 
@@ -21,8 +21,7 @@ Highly accomplished Frontend Developer with 5 years of experience, expertly tran
 
 ## Work Experience
 
-**Senior Frontend Developer** | [Company Name], [City, State]
-[Month, Year] – Present
+**Frontend Developer** 
 
 *   Led the development and successful deployment of key features for a high-traffic enterprise-level SaaS platform, improving user engagement by **15%**.
 *   Architected and implemented scalable, performant, and accessible user interfaces using React, Next.js, and TypeScript, adhering to WCAG standards.
@@ -32,7 +31,6 @@ Highly accomplished Frontend Developer with 5 years of experience, expertly tran
 *   Actively contributed to technical roadmap planning, sprint retrospective discussions, and daily stand-ups, ensuring alignment with project goals and timely delivery.
 
 **Founder** | Techahartak.com (Self-Funded Startup) | Remote
-[Month, Year] – [Month, Year] (e.g., May, 2021 – Present or Nov, 2019 – May, 2023)
 
 *   Founded and scaled Techahartak.com, a platform dedicated to providing resources and community for aspiring tech professionals, reaching **10,000+ monthly active users**.
 *   Spearheaded the entire product lifecycle, from initial concept and market research to strategic planning, development, launch, and post-launch maintenance.
@@ -41,24 +39,16 @@ Highly accomplished Frontend Developer with 5 years of experience, expertly tran
 *   Oversaw budgeting, resource allocation, and vendor management, ensuring efficient operation within financial constraints.
 *   Demonstrated strong entrepreneurial skills, adaptability, and resilience in overcoming challenges inherent in a startup environment.
 
-**Frontend Developer** | [Previous Company Name], [City, State]
-[Month, Year] – [Month, Year]
-
-*   Developed responsive and user-friendly web applications using React, JavaScript, HTML, and CSS for diverse client projects.
-*   Integrated RESTful APIs to connect frontend components with backend services, ensuring seamless data flow and functionality.
-*   Participated in daily stand-ups, sprint planning, and code review sessions, contributing to a collaborative Agile development environment.
-*   Fixed bugs and implemented improvements based on user feedback and QA testing, enhancing application stability and user experience.
-
 ---
 
 ## Projects
 
-**[Project Name]** | [GitHub Link (Optional)] | [Live Demo Link (Optional)]
-*   Designed and developed a responsive [Type of Application, e.g., e-commerce platform] using React, Redux, and Styled Components.
+**Techahartak** | https://www.techahartak.com
+*   Designed and developed a responsive using React, Redux, and Styled Components.
 *   Implemented user authentication, product catalog management, and secure payment gateway integration.
 *   Utilized Jest and React Testing Library for comprehensive unit and integration testing, achieving **85% code coverage**.
 
-**[Project Name]** | [GitHub Link (Optional)] | [Live Demo Link (Optional)]
+**Portfolio** | https://github.com/ElzaHM/portfolio | https://portfolio-gamma-bice-qla87hdzu7.vercel.app/
 *   Led a small team (2 developers) in building an internal analytics dashboard for a fictional startup using Next.js and Chart.js.
 *   Defined project scope, managed task distribution, and ensured timely delivery of key milestones.
 *   Integrated with various data sources via GraphQL, providing real-time insights into user behavior.
@@ -67,7 +57,7 @@ Highly accomplished Frontend Developer with 5 years of experience, expertly tran
 
 ## Education
 
-**[Your Degree Name, e.g., Bachelor of Science in Computer Science]**
-[Your University Name], [City, State]
-[Graduation Month, Year]
+**Master's degree Finance and Financial Management Services**
+Armenian State University of Economics
+
 
