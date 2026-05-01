@@ -54,4 +54,10 @@ These rules apply to this codebase. Follow them when adding or changing code.
 - Use Typography components instead of raw HTML text
 - Keep UI minimal and consistent with Ant Design design system
 
+
+## 6. Performanc skill
+- Always estimate performance impact (low, medium, high)
+and explain why each issue affects performance.
+
+
 When in doubt, match the closest existing page or component in this repository.
