@@ -1,117 +1,137 @@
+/* Midnight navy #1A1C2C + amethyst / cyan glows (matches global layout) */
 .hero {
-  min-height: auto;
-  padding-block: 32px 0;
+  position: relative;
+  left: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  /* Extra air below floating nav; vw middle scaled ×0.8 for typographic balance */
+  padding-top: clamp(3.25rem, 11.2vw, 4.75rem);
+  padding-bottom: 2.2222rem;
+  padding-inline: 1.3333rem;
+  box-sizing: border-box;
+  background: transparent;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.heroGlow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 88% 65% at 4% -8%,
+      rgba(139, 92, 246, 0.2) 0%,
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 70% 55% at 100% 0%,
+      rgba(34, 211, 238, 0.11) 0%,
+      transparent 52%
+    ),
+    radial-gradient(
+      ellipse 65% 50% at 100% 100%,
+      rgba(103, 232, 249, 0.12) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 0% 100%,
+      rgba(167, 139, 250, 0.1) 0%,
+      transparent 50%
+    ),
+    var(--portfolio-bg-deep, #1a1c2c);
 }
 
 .inner {
+  position: relative;
+  z-index: 1;
   width: 100%;
-  max-width: none;
-  margin-inline: 0;
+  max-width: 67.3333rem;
+  margin-inline: auto;
   padding-inline: 0;
 }
 
-.badge {
-  display: inline-block;
-  margin-bottom: 20px;
-  padding: 6px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(76, 140, 252, 0.45);
-  background: rgba(15, 40, 80, 0.35);
-  color: #7eb3ff;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+.heroTitle:global(.ant-typography) {
+  margin: 0 0 1.2222rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: clamp(0.5556rem, 1.6vw, 1rem);
+  font-family:
+    'Inter',
+    system-ui,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  font-size: inherit !important;
+  line-height: 1.12 !important;
+  color: #ffffff !important;
+  background: none !important;
 }
 
-.mainTitle {
-  margin: 0 0 20px;
-  font-weight: 700;
-  font-size: clamp(2.75rem, 5.5vw, 3.75rem);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+.heroTitleWhite {
+  display: block;
+  font-size: clamp(2.1rem, 3.2vw, 3.35rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
   color: #ffffff;
 }
 
-.titleLine1:global(.ant-typography),
-.titleLine2:global(.ant-typography) {
-  margin: 0 !important;
-  font-size: clamp(4rem, 8vw, 4.8rem) !important;
-  font-weight: 700 !important;
-  line-height: 1.08 !important;
-  letter-spacing: -0.02em;
+.heroTitleSub {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0;
+  font-size: clamp(1.55rem, 2.68vw, 2.35rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
 }
 
-.titleLine1:global(.ant-typography) {
-  color: #cbd5e1;
+.heroTitleGray {
+  color: #7c8498;
 }
 
-.titleLine2:global(.ant-typography) {
-  margin-bottom: 10px !important;
-  color: #60a5fa;
+.heroTitleGold {
+  color: var(--portfolio-gold, #d4af37);
 }
 
 .lead {
-  max-width: 520px;
-  margin: 0 0 24px;
-  color: #94a3b8;
-  font-size: 16px;
-  line-height: 1.65;
+  max-width: 31.1111rem;
+  margin: 0 0 1.5556rem;
+  color: #ffffff;
+  font-size: 0.8889rem;
+  line-height: 1.72;
 }
 
-.ctaRow {
-  margin-bottom: 16px;
-}
-
-.btnPrimary {
-  height: 48px;
-  padding-inline: 28px;
-  border: none;
+.ctaPortfolio {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.6667rem;
+  padding-inline: 1.5556rem;
   border-radius: 999px;
   font-weight: 600;
-  background: linear-gradient(180deg, #6ba3ff 0%, #4c8cfc 45%, #3b7ae8 100%);
-  box-shadow: 0 8px 24px rgba(76, 140, 252, 0.25);
+  color: #f8fafc;
+  background: transparent;
+  border: 0.0556rem solid rgba(255, 255, 255, 0.35);
+  text-decoration: none;
+  box-sizing: border-box;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
 }
 
-.btnPrimary:hover {
-  background: linear-gradient(180deg, #7badff 0%, #5a97fc 45%, #4585f0 100%) !important;
-  color: #fff !important;
-}
-
-.btnSecondary {
-  height: 48px;
-  padding-inline: 24px;
-  border-radius: 999px;
-  font-weight: 600;
-  color: #f8fafc !important;
-  background: #12151f !important;
-  border-color: rgba(148, 163, 184, 0.35) !important;
-}
-
-.btnSecondary:hover {
-  color: #fff !important;
-  border-color: rgba(148, 163, 184, 0.55) !important;
-  background: #1a1f2e !important;
-}
-
-.iconRow {
-  margin-top: 4px;
-}
-
-.iconCircle {
-  width: 44px;
-  min-width: 44px;
-  height: 44px;
-  padding: 0;
-  border-radius: 50%;
-  color: #94a3b8;
-  background: #0f1419 !important;
-  border: 1px solid rgba(148, 163, 184, 0.22) !important;
-}
-
-.iconCircle:hover {
-  color: #e2e8f0 !important;
-  border-color: rgba(148, 163, 184, 0.4) !important;
+.ctaPortfolio:hover {
+  color: #fff;
+  border-color: var(--portfolio-gold, #d4af37);
+  background: rgba(212, 175, 55, 0.08);
 }
 
 .colImage {
@@ -122,62 +142,291 @@
 
 .avatarWrap {
   width: 100%;
-  max-width: 400px;
+  max-width: min(22.2222rem, 100%);
+  display: flex;
+  justify-content: center;
+}
+
+.avatarRing {
+  padding: 0.1111rem;
+  border-radius: 50%;
+  border: 0.0556rem solid var(--portfolio-gold, #d4af37);
+  background: radial-gradient(
+    circle at 40% 35%,
+    rgba(212, 175, 55, 0.14),
+    transparent 65%
+  );
+  box-shadow:
+    0 1.2222rem 2.7778rem rgba(0, 0, 0, 0.5),
+    0 0 0 0.0556rem rgba(26, 28, 44, 0.75);
 }
 
 .avatar {
   display: block;
   width: 100%;
+  max-width: 21.7778rem;
+  aspect-ratio: 1;
   height: auto;
-  border-radius: 14px;
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
+  object-fit: cover;
+  border-radius: 50%;
 }
 
-.statsDivider {
+/* Feature cards — solid slate panel (#111827) */
+.cardsRow {
+  margin-top: 2.2222rem;
+}
+
+/* Column stretches so every card fills equal row height — matches PM reference proportions */
+.cardCol {
+  display: flex;
+}
+
+/* Whole-card hit target fills the grid cell — interactive hover identical on all hero cards */
+.glassCardAnchor {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  margin-top: 32px;
-  margin-bottom: 0;
-  height: 0;
-  border: none;
-  border-top: 1px solid rgba(148, 163, 184, 0.12);
+  flex: 1;
+  min-height: 100%;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 1.1111rem;
+  outline: none;
+  cursor: pointer;
+  /* Reserve vertical space so translateY(-0.2222rem) lifts without perceptual grid jump */
+  padding-bottom: 0.2222rem;
+  box-sizing: border-box;
 }
 
-.stats {
-  padding-block: 20px 8px;
+.glassCard {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  padding: clamp(1.3333rem, 2.4vw, 1.6667rem);
+  border-radius: 1.1111rem;
+  background: var(--portfolio-surface, #111827);
+  border: 0.0556rem solid var(--portfolio-border, rgba(255, 255, 255, 0.06));
+  box-shadow:
+    inset 0 0.0556rem 0 rgba(255, 255, 255, 0.04),
+    0 1.1111rem 2.2222rem rgba(0, 0, 0, 0.35);
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-.statCol {
-  text-align: center;
+.glassCardInteractive {
+  margin: 0;
 }
 
-.statValue {
-  margin: 0 0 4px;
-  color: #ffffff;
-  font-weight: 700;
-  font-size: clamp(1.75rem, 3vw, 2.25rem);
-  line-height: 1.2;
+.glassCardAnchor:hover .glassCardInteractive,
+.glassCardAnchor:focus-visible .glassCardInteractive {
+  background: #141c2e;
+  transform: translateY(-0.2222rem);
+  border-color: rgba(212, 175, 55, 0.24);
+  box-shadow:
+    inset 0 0.0556rem 0 rgba(255, 255, 255, 0.05),
+    0 1.3333rem 2.6667rem rgba(0, 0, 0, 0.42),
+    0 0 1.7778rem rgba(212, 175, 55, 0.2);
 }
 
-.statLabel {
+.glassCardAnchor:focus-visible .glassCardInteractive {
+  outline: 0.1111rem solid rgba(212, 175, 55, 0.45);
+  outline-offset: 0.1667rem;
+}
+
+.glassCardAnchor:hover .cardLink,
+.glassCardAnchor:focus-visible .cardLink {
+  opacity: 1;
+}
+
+.glassCardAnchor:hover .cardLinkEngineering,
+.glassCardAnchor:focus-visible .cardLinkEngineering {
+  text-shadow:
+    0 0 0.7778rem rgba(167, 139, 250, 0.45),
+    0 0 1.3333rem rgba(124, 58, 237, 0.2);
+}
+
+.glassCardAnchor:hover .cardLinkVenture,
+.glassCardAnchor:focus-visible .cardLinkVenture {
+  text-shadow:
+    0 0 0.7778rem rgba(125, 211, 252, 0.45),
+    0 0 1.2222rem rgba(56, 189, 248, 0.22);
+}
+
+.glassCardAnchor:hover .cardLinkLead,
+.glassCardAnchor:focus-visible .cardLinkLead {
+  text-shadow: 0 0 0.6667rem rgba(212, 175, 55, 0.35);
+  filter: drop-shadow(0 0 0.3333rem rgba(212, 175, 55, 0.22));
+}
+
+.cardIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4444rem;
+  height: 2.4444rem;
+  margin-bottom: 0.8889rem;
+  border-radius: 0.5556rem;
+  font-size: 1.1111rem;
+  color: #fff;
+}
+
+.cardIconImg {
   display: block;
-  color: #64748b;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  width: 1.3333rem;
+  height: 1.3333rem;
+  object-fit: contain;
 }
+
+.cardBadge {
+  position: absolute;
+  top: 1.1111rem;
+  right: 1.1111rem;
+  padding: 0.2778rem 0.6667rem;
+  border-radius: 999px;
+  font-family:
+    'Inter',
+    system-ui,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  font-size: 0.5556rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #7dd3fc;
+  border: 0.0556rem solid rgba(125, 211, 252, 0.35);
+  background: rgba(10, 11, 30, 0.85);
+}
+
+.cardIconEngineering {
+  background: linear-gradient(145deg, #6d28d9 0%, #4c1d95 100%);
+}
+
+.codeIconGlyph {
+  font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', Consolas, monospace;
+  font-size: 0.7222rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.cardIconVenture {
+  background: linear-gradient(145deg, #4a7ab0 0%, #3d5f8a 100%);
+}
+
+.cardIconLead {
+  background: linear-gradient(145deg, #b8891c 0%, #856514 100%);
+}
+
+.cardTitle:global(.ant-typography) {
+  margin: 0 0 0.6667rem !important;
+  padding-right: 0;
+  font-family:
+    'Playfair Display',
+    'Libre Baskerville',
+    Georgia,
+    serif !important;
+  color: #ffffff !important;
+  font-size: clamp(1.12rem, 1.68vw, 1.28rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.01em;
+  line-height: 1.35;
+}
+
+.glassCard:has(.cardBadge) .cardTitle:global(.ant-typography) {
+  padding-right: min(7.7778rem, 42%);
+}
+
+.cardDesc {
+  display: block;
+  flex: 1;
+  margin: 0 0 1.2222rem;
+  font-family:
+    'Inter',
+    system-ui,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  color: var(--portfolio-text-muted, #94a3b8);
+  font-size: 0.7778rem;
+  line-height: 1.65;
+}
+
+.cardLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4444rem;
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family:
+    'Inter',
+    system-ui,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  font-size: 0.6667rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.cardLink:hover {
+  opacity: 0.88;
+}
+
+.glassCardAnchor .cardLink:hover {
+  opacity: 1;
+}
+
+.cardLink:focus-visible {
+  outline: 0.1111rem solid rgba(212, 175, 55, 0.4);
+  outline-offset: 0.1667rem;
+  border-radius: 0.2222rem;
+}
+
+.cardLinkEngineering {
+  color: #a78bfa;
+}
+
+.cardLinkVenture {
+  color: #7dd3fc;
+}
+
+.cardLinkLead {
+  color: #d4af37;
+}
+
+.cardLinkExternalIcon {
+  font-size: 0.6667rem;
+}
+
+
 
 @media (max-width: 991px) {
   .hero {
-    padding-top: 24px;
+    padding-top: clamp(6rem, 14.4vw, 8rem);
   }
 
   .colImage {
     justify-content: center;
-    margin-top: 16px;
+    margin-top: 0.4444rem;
   }
 
   .avatarWrap {
-    max-width: 360px;
+    max-width: 17.7778rem;
   }
 }
+

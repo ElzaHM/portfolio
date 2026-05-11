@@ -1,49 +1,66 @@
 .root {
+  box-sizing: border-box;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  flex: 1 1 auto;
   display: flex;
-  justify-content: center;
-  padding: 8px 0;
+  flex-direction: column;
+  min-height: 0;
+  padding: 0.4444rem 0;
 }
 
 .chatCard {
+  box-sizing: border-box;
   width: 100%;
-  max-width: 800px;
-  padding: 24px;
-  border-radius: 18px;
-  border: 1px solid rgba(120, 153, 219, 0.24);
+  max-width: 53.3333rem;
+  margin-inline: auto;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 1.3333rem;
+  border-radius: 1rem;
+  border: 0.0556rem solid rgba(255, 255, 255, 0.08);
   background:
-    radial-gradient(circle at 84% 50%, rgba(76, 140, 252, 0.2), transparent 58%),
-    linear-gradient(150deg, rgba(13, 21, 38, 0.95) 0%, rgba(9, 15, 27, 0.96) 100%);
+    radial-gradient(circle at 84% 40%, rgba(139, 92, 246, 0.12), transparent 58%),
+    linear-gradient(150deg, rgba(17, 24, 39, 0.97) 0%, rgba(10, 11, 30, 0.98) 100%);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    0 20px 42px rgba(2, 7, 18, 0.34);
+    inset 0 0.0556rem 0 rgba(255, 255, 255, 0.03),
+    0 1.1111rem 2.3333rem rgba(0, 0, 0, 0.45);
 }
 
 .stack {
+  flex: 1 1 auto;
+  min-height: 0;
   width: 100%;
+  display: flex !important;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .header {
+  flex-shrink: 0;
   width: 100%;
 }
 
 .headerMain {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 0.6667rem;
 }
 
 .headerAvatar {
   flex-shrink: 0;
   border: none;
-  background: linear-gradient(135deg, #1677ff, #3b82f6);
-  box-shadow: 0 0 20px rgba(22, 119, 255, 0.5);
+  background: linear-gradient(135deg, #6d28d9, #4c1d95);
+  box-shadow: 0 0 1.1111rem rgba(88, 28, 135, 0.35);
   animation: avatarPulse 3.2s ease-in-out infinite;
 }
 
 .headerAvatar :global(.anticon) {
   color: #ffffff;
-  font-size: 22px;
+  font-size: 1.2222rem;
 }
 
 .title {
@@ -53,42 +70,136 @@
 }
 
 .headerDivider {
-  height: 1px;
+  flex-shrink: 0;
+  height: 0.0556rem;
   width: 100%;
   background: linear-gradient(
     90deg,
-    rgba(150, 177, 235, 0.22) 0%,
-    rgba(150, 177, 235, 0.08) 65%,
-    rgba(150, 177, 235, 0) 100%
+    rgba(212, 175, 55, 0.2) 0%,
+    rgba(139, 92, 246, 0.12) 55%,
+    rgba(255, 255, 255, 0) 100%
   );
 }
 
 .messages {
+  flex: 1 1 auto;
+  min-height: 10rem;
+  max-height: min(36rem, calc(100svh - 20rem));
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 0.8889rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-right: 0.2222rem;
+  scrollbar-gutter: stable;
+}
+
+.messages::-webkit-scrollbar {
+  width: 0.3333rem;
+}
+
+.messages::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.25);
+  border-radius: 999px;
 }
 
 .messageRow {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 0.6667rem;
+  width: 100%;
+  min-width: 0;
+}
+
+.userRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 0.6667rem;
+  width: 100%;
+  min-width: 0;
+}
+
+.userBubble {
+  box-sizing: border-box;
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  max-width: 70%;
+  padding: 0.6667rem 0.8889rem;
+  border-radius: 0.8889rem;
+  border: 0.0556rem solid rgba(212, 175, 55, 0.28);
+  background:
+    linear-gradient(145deg, rgba(212, 175, 55, 0.14) 0%, rgba(17, 24, 39, 0.75) 100%);
+  backdrop-filter: blur(0.5556rem);
+  -webkit-backdrop-filter: blur(0.5556rem);
+  box-shadow: inset 0 0.0556rem 0 rgba(255, 255, 255, 0.06);
+  color: #f1f5f9;
+  line-height: 1.65;
+  text-align: left;
+  word-break: break-word;
+}
+
+.userAvatar {
+  flex-shrink: 0;
+  border: 0.0556rem solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(145deg, rgba(100, 116, 139, 0.45), rgba(30, 41, 59, 0.9)) !important;
+}
+
+.userAvatar :global(.anticon) {
+  color: #e2e8f0;
+  font-size: 0.8889rem;
+}
+
+.scrollAnchor {
+  height: 0.0556rem;
+  flex-shrink: 0;
+}
+
+.typingBubble {
+  min-width: 6.6667rem;
+}
+
+.typingDots {
+  font-size: 0.7778rem;
+  color: #94a3b8;
+  letter-spacing: 0.02em;
+}
+
+.typingDots::after {
+  content: '…';
+  animation: typingPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes typingPulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 .aiAvatar {
   flex-shrink: 0;
-  background: linear-gradient(135deg, #2776ff 0%, #29a7ff 100%);
-  box-shadow: 0 8px 20px rgba(33, 102, 255, 0.38);
+  background: linear-gradient(135deg, #c9a43a 0%, #d4af37 100%);
+  box-shadow: 0 0.4444rem 1.1111rem rgba(0, 0, 0, 0.35);
 }
 
 .aiBubble {
-  max-width: 70%;
-  padding: 12px 16px;
-  border-radius: 16px;
-  border: 1px solid rgba(141, 167, 214, 0.2);
-  background: rgba(20, 29, 48, 0.86);
-  color: #e7edf8;
+  flex: 0 1 auto;
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: min(76%, calc(100% - 4rem));
+  padding: 0.6667rem 0.8889rem;
+  border-radius: 0.8889rem;
+  border: 0.0556rem solid rgba(255, 255, 255, 0.07);
+  background: rgba(17, 24, 39, 0.95);
+  color: #e2e8f0;
   line-height: 1.65;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .aiBubble :global(p) {
@@ -99,22 +210,30 @@
   margin-bottom: 0;
 }
 
+.aiBubble :global(pre),
+.aiBubble :global(code) {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
 .inputSection {
+  flex: 0 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 14px;
+  align-items: stretch;
+  gap: 0.7778rem;
   width: 100%;
-  padding-bottom: 18px;
+  min-width: 0;
+  padding-bottom: 1rem;
 }
 
 .disclaimer {
   width: 100%;
-  max-width: 680px;
-  margin-top: 12px;
+  max-width: 37.7778rem;
+  margin-top: 0.6667rem;
   margin-inline: auto;
-  padding-top: 14px;
-  border-top: 1px solid rgba(148, 163, 184, 0.12);
+  padding-top: 0.7778rem;
+  border-top: 0.0556rem solid rgba(148, 163, 184, 0.12);
   text-align: center;
   color: #94a3b8;
   opacity: 0.6;
@@ -123,34 +242,40 @@
 .disclaimerInner {
   display: inline-flex;
   align-items: flex-start;
-  gap: 6px;
-  max-width: 560px;
+  gap: 0.3333rem;
+  max-width: 31.1111rem;
   text-align: left;
 }
 
 .disclaimerIcon {
   flex-shrink: 0;
-  margin-top: 2px;
-  font-size: 13px;
+  margin-top: 0.1111rem;
+  font-size: 0.7222rem;
   color: #94a3b8;
   opacity: 0.9;
 }
 
 .disclaimerText {
-  font-size: 13px;
+  font-size: 0.7222rem;
   line-height: 1.55;
 }
 
 .textarea {
-  max-width: 680px;
+  box-sizing: border-box;
+  width: 100% !important;
+  max-width: 100% !important;
 }
 
 .textarea :global(textarea.ant-input) {
-  border-radius: 12px;
-  padding: 12px 14px;
+  box-sizing: border-box;
+  width: 100% !important;
+  min-height: 5.5556rem;
+  resize: vertical;
+  border-radius: 0.6667rem;
+  padding: 0.6667rem 0.7778rem;
   color: #e6edf8;
-  background: rgba(15, 23, 39, 0.9);
-  border-color: rgba(140, 167, 214, 0.24);
+  background: rgba(10, 11, 30, 0.85);
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
 .textarea :global(textarea.ant-input::placeholder) {
@@ -159,23 +284,26 @@
 
 .textarea :global(textarea.ant-input:focus),
 .textarea :global(textarea.ant-input-focused) {
-  border-color: rgba(109, 164, 255, 0.7);
-  box-shadow: 0 0 0 3px rgba(76, 140, 252, 0.2);
+  border-color: rgba(212, 175, 55, 0.45);
+  box-shadow: 0 0 0 0.1667rem rgba(212, 175, 55, 0.12);
 }
 
 .sendButton {
-  border-radius: 12px;
-  height: 42px;
-  padding-inline: 18px;
-  background: linear-gradient(135deg, #225dce 0%, #2688ff 100%);
-  border-color: rgba(93, 155, 255, 0.95);
+  align-self: flex-end;
+  border-radius: 0.6667rem;
+  min-height: 2.3333rem;
+  height: auto;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #8f7020 0%, #d4af37 55%, #b8922a 100%);
+  border-color: rgba(212, 175, 55, 0.55);
+  color: #1a1c2c !important;
   font-weight: 600;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .sendButton:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 12px 24px rgba(33, 103, 235, 0.32);
+  transform: translateY(-0.0556rem);
+  box-shadow: 0 0.6667rem 1.3333rem rgba(0, 0, 0, 0.35);
 }
 
 @keyframes avatarPulse {
@@ -190,12 +318,24 @@
   }
 }
 
+
+
 @media (max-width: 768px) {
   .chatCard {
-    padding: 18px;
+    padding: 1rem;
   }
 
-  .aiBubble {
+  .messages {
+    max-height: min(32rem, calc(100svh - 18rem));
+  }
+
+  .sendButton {
+    align-self: stretch;
+  }
+
+  .aiBubble,
+  .userBubble {
     max-width: 100%;
   }
 }
+

@@ -1,0 +1,340 @@
+.contactMain {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background-color: #1a1c2c;
+}
+
+.pageInner {
+  flex: 1;
+  padding-top: clamp(1rem, 2.4vw, 1.75rem);
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.topBar {
+  margin-bottom: clamp(1rem, 1.6vw, 1.5rem);
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: clamp(2.25rem, 4vw, 3rem);
+}
+
+.heroTitle:global(.ant-typography) {
+  margin: 0 0 clamp(0.6667rem, 1.6vw, 1rem) !important;
+  font-family:
+    'Inter',
+    system-ui,
+    'Segoe UI',
+    sans-serif !important;
+  font-weight: 800 !important;
+  font-size: clamp(1.75rem, 3.2vw, 2.5rem) !important;
+  line-height: 1.18 !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
+  color: #ffffff !important;
+}
+
+.heroSubtitle {
+  max-width: 38.8889rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: 0 !important;
+  padding-inline: clamp(0.6667rem, 2.4vw, 1.1111rem);
+  font-family:
+    'Inter',
+    system-ui,
+    sans-serif !important;
+  font-size: 1.1rem !important;
+  line-height: 1.65 !important;
+  color: #94a3b8 !important;
+}
+
+.cardRow {
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.glassCard:global(.ant-card) {
+  height: 100%;
+  padding: clamp(1.2222rem, 2.4vw, 1.5556rem);
+  border-radius: 1rem !important;
+  background: rgba(17, 24, 39, 0.5) !important;
+  backdrop-filter: blur(0.6667rem);
+  -webkit-backdrop-filter: blur(0.6667rem);
+  border: 0.0556rem solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow:
+    inset 0 0.0556rem 0 rgba(255, 255, 255, 0.05),
+    0 1.1111rem 2.3333rem rgba(0, 0, 0, 0.35);
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.glassCard:global(.ant-card):hover {
+  border-color: rgba(212, 175, 55, 0.22);
+  box-shadow:
+    inset 0 0.0556rem 0 rgba(255, 255, 255, 0.06),
+    0 1.3333rem 2.8889rem rgba(0, 0, 0, 0.4),
+    0 0 1.7778rem rgba(212, 175, 55, 0.08);
+}
+
+.glassCard:global(.ant-card-body) {
+  padding: 0 !important;
+}
+
+.cardEyebrow {
+  display: block;
+  margin-bottom: 0.7778rem !important;
+  font-family:
+    'Inter',
+    system-ui,
+    sans-serif !important;
+  font-size: 0.6111rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: #d4af37 !important;
+}
+
+.cardIconGold {
+  display: grid;
+  place-items: center;
+  width: 2.6667rem;
+  height: 2.6667rem;
+  margin-bottom: 0.7778rem;
+  border-radius: 50%;
+  color: #d4af37;
+  font-size: 1.1111rem;
+  border: 0.0556rem solid rgba(212, 175, 55, 0.35);
+  background: radial-gradient(circle at 35% 30%, rgba(212, 175, 55, 0.18), rgba(17, 24, 39, 0.35));
+  box-shadow: inset 0 0.0556rem 0 rgba(255, 255, 255, 0.06);
+}
+
+.cardTitle:global(.ant-typography) {
+  margin: 0 0 0.5556rem !important;
+  font-family:
+    'Inter',
+    system-ui,
+    sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  color: #d4af37 !important;
+  text-transform: none !important;
+}
+
+.profileLegalName {
+  margin: 0 0 0.7778rem;
+  font-family:
+    'Inter',
+    system-ui,
+    sans-serif;
+  font-weight: 800;
+  font-size: clamp(0.8333rem, 2.08vw, 0.9444rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #d4af37;
+  line-height: 1.35;
+}
+
+.contactDetailList {
+  list-style: none;
+  margin: 0 0 1.2222rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8889rem;
+}
+
+.contactDetailItem {
+  margin: 0;
+  padding: 0.7778rem 0.8889rem;
+  border-radius: 0.6667rem;
+  border: 0.0556rem solid rgba(255, 255, 255, 0.09);
+  background: rgba(0, 0, 0, 0.16);
+}
+
+.detailLabel {
+  display: block;
+  margin-bottom: 0.4444rem !important;
+  font-family:
+    'Inter',
+    system-ui,
+    sans-serif !important;
+  font-size: 0.5556rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: rgba(148, 163, 184, 0.95) !important;
+}
+
+.detailBody {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5556rem 0.7778rem;
+}
+
+.detailValue:global(.ant-typography) {
+  margin: 0 !important;
+  flex: 1 1 11.1111rem;
+  min-width: 0;
+  font-family:
+    'Inter',
+    system-ui,
+    sans-serif !important;
+  font-size: clamp(0.8333rem, 1.76vw, 0.8889rem) !important;
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+  color: #f1f5f9 !important;
+  word-break: break-word;
+}
+
+.copyEmailBtn:global(.ant-btn) {
+  flex-shrink: 0;
+  border-radius: 0.5556rem !important;
+  padding-inline: 0.6667rem !important;
+  border: 0.0556rem solid rgba(212, 175, 55, 0.35) !important;
+  background: rgba(212, 175, 55, 0.07) !important;
+  color: rgba(241, 245, 249, 0.94) !important;
+  font-size: 0.6111rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  height: auto !important;
+}
+
+.copyEmailBtn:global(.ant-btn):hover {
+  border-color: rgba(232, 200, 76, 0.55) !important;
+  color: #fde68a !important;
+}
+
+.socialButtonsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6667rem;
+}
+
+.socialBtnGold:global(.ant-btn) {
+  flex: 1 1 auto;
+  min-width: min(7.7778rem, 46%);
+  border: none !important;
+  border-radius: 0.6667rem !important;
+  padding-inline: 1rem !important;
+  height: auto !important;
+  min-height: 2.3333rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  font-size: 0.6111rem !important;
+  background: linear-gradient(
+    136deg,
+    rgba(212, 175, 55, 0.95),
+    rgba(184, 140, 32, 0.98),
+    rgba(231, 200, 80, 0.95)
+  ) !important;
+  color: #0f1118 !important;
+  box-shadow: 0 0.4444rem 1.3333rem rgba(212, 175, 55, 0.16) !important;
+}
+
+.socialBtnGold:global(.ant-btn):hover {
+  color: #0f1118 !important;
+  filter: brightness(1.05);
+}
+
+.socialBtnGhost:global(.ant-btn) {
+  flex: 1 1 auto;
+  min-width: min(7.7778rem, 46%);
+  border-radius: 0.6667rem !important;
+  padding-inline: 1rem !important;
+  height: auto !important;
+  min-height: 2.3333rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  font-size: 0.6111rem !important;
+  border: 0.0556rem solid rgba(212, 175, 55, 0.45) !important;
+  color: rgba(241, 245, 249, 0.92) !important;
+  background: rgba(212, 175, 55, 0.06) !important;
+}
+
+.socialBtnGhost:global(.ant-btn):hover {
+  border-color: rgba(231, 200, 80, 0.75) !important;
+  color: #fde68a !important;
+}
+
+.cardBody {
+  margin-bottom: 1.1111rem !important;
+  font-family:
+    'Inter',
+    system-ui,
+    sans-serif !important;
+  font-size: 0.8333rem !important;
+  line-height: 1.68 !important;
+  color: rgba(226, 232, 240, 0.88) !important;
+}
+
+.techMailBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3333rem;
+  padding: 0.7778rem 0.8889rem;
+  border-radius: 0.6667rem;
+  border: 0.0556rem solid rgba(212, 175, 55, 0.25);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.techMailLabel {
+  font-size: 0.5556rem !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+  font-family:
+    'Inter',
+    system-ui,
+    sans-serif !important;
+  color: rgba(226, 232, 240, 0.7) !important;
+}
+
+.techMailLink:global(.ant-typography) {
+  margin: 0 !important;
+  font-size: clamp(0.8333rem, 1.76vw, 0.9444rem) !important;
+  font-weight: 600 !important;
+  color: #d4af37 !important;
+  word-break: break-all;
+}
+
+.locationNote {
+  max-width: 4rem;
+  margin: 0 auto;
+  padding-inline: clamp(0.6667rem, 2.4vw, 1.1111rem);
+  text-align: center;
+  font-family:
+    'Inter',
+    system-ui,
+    sans-serif;
+  font-size: 0.7222rem;
+  letter-spacing: 0.03em;
+  line-height: 1.65;
+  color: rgba(148, 163, 184, 0.92);
+}
+
+
+
+@media (max-width: 767px) {
+  .topBar {
+    margin-bottom: 0.85rem;
+  }
+
+  .socialButtonsRow {
+    flex-direction: column;
+  }
+
+  .socialBtnGhost:global(.ant-btn),
+  .socialBtnGold:global(.ant-btn) {
+    width: 100%;
+    min-width: 100%;
+  }
+}
+

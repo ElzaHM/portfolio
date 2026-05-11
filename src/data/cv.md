@@ -39,6 +39,22 @@ Highly accomplished Frontend Developer with 5 years of experience, expertly tran
 *   Oversaw budgeting, resource allocation, and vendor management, ensuring efficient operation within financial constraints.
 *   Demonstrated strong entrepreneurial skills, adaptability, and resilience in overcoming challenges inherent in a startup environment.
 
+** Technical Project Management & Leadership **
+
+## Technical Product Lead & Founder | Techahartak.com | 2024 – Present
+
+- **SDLC Orchestration:** Managed the full Software Development Life Cycle (SDLC) for a grassroots aggregator platform, from initial requirement gathering to final deployment in a multilingual environment (ARM, EN, RU).
+
+- **Strategic Delivery Architecture:** Translated complex product visions into scalable technical roadmaps, ensuring alignment between social impact goals and engineering execution.
+
+- **Agile & Scrum Mastery:** Led iterative development cycles using Agile methodologies, managing sprint planning, feature prioritization, and risk mitigation to ensure consistent delivery.
+
+- **Stakeholder & Resource Management:** Acted as the primary bridge between business objectives and technical requirements, overseeing resource allocation, budgeting, and cross-functional collaboration.
+
+- **Product Vision & Inclusion:** Spearheaded a human-centric product strategy focused on accessibility (A11Y) and digital inclusion, scaling the platform to reach thousands of monthly active users.
+
+- **Risk & Quality Assurance:** Implemented proactive risk assessment strategies and established quality gates, balancing rapid feature release with enterprise-grade system stability.
+
 ---
 
 ## Projects
@@ -59,5 +75,11 @@ Highly accomplished Frontend Developer with 5 years of experience, expertly tran
 
 **Master's degree Finance and Financial Management Services**
 Armenian State University of Economics
+
+**Certificate PPM**
+ACA
+
+**Certificate AI in Frontend**
+AGBU
 
 

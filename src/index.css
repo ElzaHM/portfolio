@@ -1,4 +1,16 @@
 :root {
+  /* Scalable UI: 80% density at 100% zoom — physical size = px/18 × 1rem when font-size matches */
+  --ui-scale: 0.8;
+  --layout-rem-base: 14.4px;
+
+  /* Portfolio: midnight navy + gold + amethyst/cyan glows */
+  --portfolio-bg-deep: #1a1c2c;
+  --portfolio-surface: #111827;
+  --portfolio-gold: #d4af37;
+  --portfolio-text-body: #ffffff;
+  --portfolio-text-muted: #94a3b8;
+  --portfolio-border: rgba(255, 255, 255, 0.06);
+
   --text: #6b6375;
   --text-h: #08060d;
   --bg: #fff;
@@ -15,8 +27,11 @@
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
+  /* ~80% of prior 18/16 defaults so 100% browser zoom reads like previous 80% zoom */
+  font-size: 14.4px;
+  line-height: 1.45;
+  font-family: var(--sans);
+  letter-spacing: 0.15px;
   color-scheme: light dark;
   color: var(--text);
   background: var(--bg);
@@ -26,7 +41,7 @@
   -moz-osx-font-smoothing: grayscale;
 
   @media (max-width: 1024px) {
-    font-size: 16px;
+    font-size: 12.8px;
   }
 }
 
@@ -62,6 +77,11 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  background: var(--portfolio-bg-deep);
+}
+
 body {
   margin: 0;
 }
@@ -74,21 +94,21 @@ h2 {
 }
 
 h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
+  font-size: 2.444rem;
+  letter-spacing: -0.073rem;
+  margin: 1.444rem 0;
   @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
+    font-size: 1.611rem;
+    margin: 0.889rem 0;
   }
 }
 h2 {
-  font-size: 24px;
+  font-size: 1.056rem;
   line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
+  letter-spacing: -0.01rem;
+  margin: 0 0 0.333rem;
   @media (max-width: 1024px) {
-    font-size: 20px;
+    font-size: 0.889rem;
   }
 }
 p {
@@ -99,13 +119,25 @@ code,
 .counter {
   font-family: var(--mono);
   display: inline-flex;
-  border-radius: 4px;
+  border-radius: 0.222rem;
   color: var(--text-h);
 }
 
 code {
-  font-size: 15px;
+  font-size: 0.667rem;
   line-height: 135%;
-  padding: 4px 8px;
+  padding: 0.222rem 0.444rem;
   background: var(--code-bg);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
