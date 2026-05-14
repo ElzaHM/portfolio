@@ -144,9 +144,9 @@ export default function ContactPage() {
             </Col>
           </Row>
 
-          <p className={styles.locationNote}>
+          {/* <p className={styles.locationNote}>
             Based in Yerevan, Armenia (GMT+4). Available for global remote engagement.
-          </p>
+          </p> */}
         </div>
       </Content>
 

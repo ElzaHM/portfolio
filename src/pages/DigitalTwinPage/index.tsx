@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState, type KeyboardEvent } from 'react'
+import { useCallback, useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import { Button, Card, Col, Input, Layout, Row, Space, Spin, Typography } from 'antd'
 import {
   CaretRightOutlined,
@@ -12,6 +12,8 @@ import {
   DIGITAL_TWIN_SYSTEM_SUFFIX,
   sendToGemini,
 } from '../../services/gemini.service'
+import { speak } from '../../services/azureSpeech.service'
+import { createTalk, pollTalkUntilTerminal } from '../../services/did.service'
 import styles from './styles.module.css'
 import virtualAvatar from '../../assets/virtual-avatar2.png'
 
@@ -19,10 +21,17 @@ const { Content, Footer } = Layout
 const { Title, Paragraph, Text } = Typography
 const { TextArea } = Input
 
+type DidPhase = 'idle' | 'creating' | 'polling' | 'ready' | 'error'
+
 export default function DigitalTwinPage() {
   const [twinPrompt, setTwinPrompt] = useState('')
   const [twinReply, setTwinReply] = useState<string | null>(null)
   const [twinLoading, setTwinLoading] = useState(false)
+
+  const [didPhase, setDidPhase] = useState<DidPhase>('idle')
+  const [didVideoUrl, setDidVideoUrl] = useState<string | null>(null)
+  const [didError, setDidError] = useState<string | null>(null)
+  const didVideoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
     document.title = 'Digital Twin — EH'
@@ -38,14 +47,64 @@ export default function DigitalTwinPage() {
     setTwinPrompt('')
     setTwinReply(null)
     setTwinLoading(true)
+    setDidVideoUrl(null)
+    setDidError(null)
+    setDidPhase('idle')
 
     const reply = await sendToGemini([{ role: 'user', text }], {
       systemInstructionSuffix: DIGITAL_TWIN_SYSTEM_SUFFIX,
     })
 
-    setTwinReply(reply.trim() || '…')
+    const trimmed = reply.trim() || '…'
+    setTwinReply(trimmed)
     setTwinLoading(false)
+    speak(trimmed)
+
+    if (trimmed.length >= 3) {
+      void (async () => {
+        try {
+          setDidPhase('creating')
+          const id = await createTalk(trimmed)
+          setDidPhase('polling')
+          const url = await pollTalkUntilTerminal(id)
+          setDidVideoUrl(url)
+          setDidPhase('ready')
+        } catch (e) {
+          const message = e instanceof Error ? e.message : String(e)
+          setDidError(message)
+          setDidPhase('error')
+          setDidVideoUrl(null)
+          console.error('[DigitalTwin] D-ID:', message)
+        }
+      })()
+    }
   }, [twinPrompt, twinLoading])
+
+  const handleDidVideoEnded = useCallback(() => {
+    setDidVideoUrl(null)
+    setDidPhase('idle')
+  }, [])
+
+  /** Prefer unmuted playback; if autoplay policy blocks sound, retry muted (browser-compatible). */
+  useEffect(() => {
+    if (!didVideoUrl) return
+    const el = didVideoRef.current
+    if (!el) return
+
+    el.muted = false
+    const attempt = el.play()
+    if (attempt === undefined) return
+    void attempt.catch((err: unknown) => {
+      console.warn(
+        '[DigitalTwin] D-ID video: unmuted autoplay blocked (browser policy). Retrying muted.',
+        err,
+      )
+      el.muted = true
+      void el.play().catch((e2: unknown) => {
+        console.error('[DigitalTwin] D-ID video: playback failed after muted fallback', e2)
+      })
+    })
+  }, [didVideoUrl])
 
   const onTwinKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -74,20 +133,44 @@ export default function DigitalTwinPage() {
             <div className={styles.virtualShowcase}>
               <Row gutter={[20, 28]} align="middle" className={styles.virtualRow}>
                 <Col xs={24} lg={12}>
-                  <div className={styles.virtualMediaWrap}>
-                    <img
-                      src={virtualAvatar}
-                      alt="Digital avatar preview"
-                      className={styles.virtualImage}
-                    />
-                    <div className={styles.virtualImageOverlay} aria-hidden />
-                    <button
-                      type="button"
-                      className={styles.virtualPlay}
-                      aria-label="Play video"
-                    >
-                      <CaretRightOutlined className={styles.virtualPlayGlyph} />
-                    </button>
+                  <div
+                    className={styles.virtualMediaWrap}
+                    data-did-phase={didPhase}
+                    data-did-has-error={didError ? '1' : '0'}
+                  >
+                    {didVideoUrl ? (
+                      <video
+                        key={didVideoUrl}
+                        ref={didVideoRef}
+                        className={styles.virtualVideo}
+                        src={didVideoUrl}
+                        playsInline
+                        autoPlay
+                        onEnded={handleDidVideoEnded}
+                        onError={() => {
+                          const el = didVideoRef.current
+                          const code = el?.error?.code
+                          const message = el?.error?.message
+                          console.error('[DigitalTwin] D-ID video: media error', { code, message })
+                        }}
+                      />
+                    ) : (
+                      <img
+                        src={virtualAvatar}
+                        alt="Digital avatar preview"
+                        className={styles.virtualImage}
+                      />
+                    )}
+                    {!didVideoUrl ? <div className={styles.virtualImageOverlay} aria-hidden /> : null}
+                    {!didVideoUrl ? (
+                      <button
+                        type="button"
+                        className={styles.virtualPlay}
+                        aria-label="Play video"
+                      >
+                        <CaretRightOutlined className={styles.virtualPlayGlyph} />
+                      </button>
+                    ) : null}
                     <div className={styles.virtualLabels}>
                       <div className={styles.virtualLiveRow}>
                         <span className={styles.virtualLiveDot} aria-hidden />
@@ -100,6 +183,11 @@ export default function DigitalTwinPage() {
                       <span />
                       <span />
                     </div>
+                    {(didPhase === 'creating' || didPhase === 'polling') && (
+                      <div className={styles.didMediaLoading} aria-live="polite" aria-busy="true">
+                        <Spin size="small" />
+                      </div>
+                    )}
                   </div>
                 </Col>
                 <Col xs={24} lg={12}>

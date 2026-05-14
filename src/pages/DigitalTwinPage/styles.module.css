@@ -104,6 +104,31 @@
   animation: virtualImageFloat 7s ease-in-out infinite;
 }
 
+/* D-ID playback: same box as .virtualImage; use contain so full frame fits (cover crops tighter on video vs PNG AR). */
+.virtualVideo {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transform: none;
+  z-index: 0;
+  filter: brightness(0.82) contrast(1.06) saturate(0.92);
+}
+
+.didMediaLoading {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  background: rgba(10, 11, 22, 0.25);
+}
+
 .virtualImageOverlay {
   position: absolute;
   inset: 0;

@@ -3,6 +3,7 @@ import { Avatar, Button, Input, Space, Typography } from 'antd'
 import { ApiOutlined, SafetyOutlined, SendOutlined, UserOutlined } from '@ant-design/icons'
 import ReactMarkdown from 'react-markdown'
 import { sendToGemini, type ConversationTurn } from '../../services/gemini.service'
+import { cancelAzureSpeech, speak } from '../../services/azureSpeech.service'
 import styles from './Chat.module.css'
 
 const { TextArea } = Input
@@ -47,6 +48,10 @@ const Chat = () => {
     scrollToBottom()
   }, [messages, isLoading, scrollToBottom])
 
+  useEffect(() => {
+    return () => cancelAzureSpeech()
+  }, [])
+
   const handleSend = async () => {
     const text = prompt.trim()
     if (!text || isLoading) return
@@ -64,6 +69,7 @@ const Chat = () => {
       { id: newId(), role: 'assistant', content: reply || '…' },
     ])
     setIsLoading(false)
+    speak(reply || '')
   }
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
