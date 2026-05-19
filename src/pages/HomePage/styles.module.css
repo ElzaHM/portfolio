@@ -22,7 +22,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 3.1111rem;
+  min-height: 3.3333rem;
   position: relative;
 }
 
@@ -34,8 +34,8 @@
   column-gap: clamp(0.4444rem, 0.96vw, 0.8889rem);
   width: fit-content;
   max-width: calc(100vw - 1.7778rem);
-  min-height: 2.5rem;
-  padding: 0.3333rem 0.7778rem;
+  min-height: 2.8889rem;
+  padding: 0.3889rem 0.8889rem;
   overflow-x: auto;
   overscroll-behavior-x: contain;
   scrollbar-width: none;
@@ -59,7 +59,7 @@
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
-  gap: clamp(0.2222rem, 0.64vw, 0.6667rem);
+  gap: clamp(0.3333rem, 0.72vw, 0.6111rem);
   min-width: 0;
 }
 
@@ -81,8 +81,8 @@
 .navPillLink {
   display: inline-flex;
   align-items: center;
-  gap: 0.3333rem;
-  padding: 0.2222rem 0.1111rem;
+  gap: 0.3889rem;
+  padding: 0.2778rem 0.1667rem;
   color: rgba(237, 241, 251, 0.88);
   text-decoration: none;
   white-space: nowrap;
@@ -92,9 +92,10 @@
     'Segoe UI',
     Roboto,
     sans-serif;
-  font-size: 0.7778rem;
+  font-size: 15px;
   font-weight: 500;
-  letter-spacing: 0.05em;
+  line-height: 1.35;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   transition:
     color 0.22s ease,
@@ -110,8 +111,8 @@
 
 .navLucideIcon {
   flex-shrink: 0;
-  width: 0.7778rem;
-  height: 0.7778rem;
+  width: 14px;
+  height: 14px;
   display: block;
   color: inherit;
   transition: color 0.22s ease;
@@ -135,8 +136,8 @@
 .monogramRing {
   display: grid;
   place-items: center;
-  width: 1.7778rem;
-  height: 1.7778rem;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
   border: 0.0833rem solid #d4af37;
   background: radial-gradient(
@@ -154,12 +155,12 @@
     'Segoe UI',
     sans-serif;
   font-weight: 600;
-  font-size: 0.5556rem;
-  letter-spacing: 0.06em;
+  font-size: 14px;
+  letter-spacing: 0.05em;
   color: #faf9f5;
   text-shadow: 0 0 0.6667rem rgba(212, 175, 55, 0.35);
   line-height: 1;
-  margin-top: 0.0556rem;
+  margin-top: 0;
   text-transform: uppercase;
 }
 
@@ -170,9 +171,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.6667rem;
-  min-height: 2.5rem;
-  padding: 0.3333rem 0.7778rem;
+  gap: 0.6111rem;
+  min-height: 2.8889rem;
+  padding: 0.3889rem 0.8889rem;
   border-radius: 999px;
   background: rgba(25, 28, 44, 0.75);
   backdrop-filter: blur(0.8889rem);
@@ -294,9 +295,10 @@
     'Inter',
     system-ui,
     sans-serif;
-  font-size: 0.6667rem;
+  font-size: 15px;
   font-weight: 500;
-  letter-spacing: 0.05em;
+  line-height: 1.35;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   transition:
     color 0.2s ease,
@@ -312,8 +314,8 @@
 
 .drawerNavIcon {
   flex-shrink: 0;
-  width: 0.7778rem;
-  height: 0.7778rem;
+  width: 14px;
+  height: 14px;
   display: block;
   color: inherit;
 }
@@ -529,18 +531,6 @@
   border: 0.0556rem solid var(--portfolio-border, rgba(255, 255, 255, 0.06));
 }
 
-.footer {
-  padding-block: 1.5556rem;
-  padding-inline: 1.3333rem;
-  background: #14162a;
-  border-top: 0.0556rem solid rgba(255, 255, 255, 0.06);
-}
-
-.footerInner {
-  max-width: 75.5556rem;
-  margin-inline: auto;
-}
-
 .contentInner > section + section {
   padding-top: 1.7778rem;
 }
@@ -551,48 +541,94 @@
   .section {
     padding-block: 2.2222rem;
   }
-
-
-
-
-.footerRow {
-  align-items: center;
 }
-
-.footerCopy {
-  color: #64748b;
-  font-size: 0.7222rem;
-}
-
-.footerLinks {
-  text-align: center;
-}
-
-.footerLink {
-  color: #94a3b8;
-  letter-spacing: 0.08em;
-  font-size: 0.6667rem;
-}
-
-.footerCredit {
-  text-align: right;
-  color: #64748b;
-  font-size: 0.6667rem;
-}
-
-
 
 @media (max-width: 767px) {
   .contentInner > section + section {
     padding-top: 1.3333rem;
   }
-
-  .footerCopy,
-  .footerLinks,
-  .footerCredit {
-    text-align: center;
-  }
 }
 
+/* —— Light: Alabaster Executive (Home pilot) —— */
+:global(html[data-theme='light']) .pillNav,
+:global(html[data-theme='light']) .mobileHeader {
+  background: var(--portfolio-nav-bg);
+  border-color: var(--portfolio-nav-border);
+  box-shadow: var(--portfolio-shadow-md);
+}
+
+:global(html[data-theme='light']) .navPillLink {
+  color: var(--portfolio-text-secondary);
+}
+
+:global(html[data-theme='light']) .navPillLink:hover {
+  color: var(--portfolio-gold);
+  text-shadow: none;
+  filter: none;
+}
+
+:global(html[data-theme='light']) .monogramRing {
+  border-color: var(--portfolio-gold);
+  background: radial-gradient(
+    circle at 35% 28%,
+    var(--portfolio-gold-muted),
+    var(--portfolio-surface-raised) 72%
+  );
+  box-shadow: var(--portfolio-shadow-sm);
+}
+
+:global(html[data-theme='light']) .monogramEh {
+  color: var(--portfolio-text-body);
+  text-shadow: none;
+}
+
+:global(html[data-theme='light']) .menuTrigger {
+  color: var(--portfolio-text-secondary) !important;
+}
+
+:global(html[data-theme='light']) .menuTrigger:hover {
+  color: var(--portfolio-gold) !important;
+  background: var(--portfolio-gold-muted) !important;
+}
+
+:global(html[data-theme='light']) .mobileNavDrawer :global(.ant-drawer-content) {
+  background: var(--portfolio-nav-bg) !important;
+}
+
+:global(html[data-theme='light']) .mobileNavDrawer :global(.ant-drawer-mask) {
+  background: rgba(28, 35, 51, 0.28) !important;
+}
+
+:global(html[data-theme='light']) .mobileDrawerClose {
+  background: var(--portfolio-surface-sunken);
+  color: var(--portfolio-text-secondary);
+}
+
+:global(html[data-theme='light']) .drawerNavLink {
+  color: var(--portfolio-text-body);
+}
+
+:global(html[data-theme='light']) .drawerNavLink:hover {
+  color: var(--portfolio-gold);
+  background: var(--portfolio-gold-muted);
+  border-color: var(--portfolio-gold-muted-border);
+}
+
+:global(html[data-theme='light']) .sectionTitle {
+  color: var(--portfolio-text-body);
+}
+
+:global(html[data-theme='light']) .sectionIntro,
+:global(html[data-theme='light']) .techDesc,
+:global(html[data-theme='light']) .metaTag {
+  color: var(--portfolio-text-muted);
+}
+
+:global(html[data-theme='light']) .twinHeaderName {
+  color: var(--portfolio-text-body);
+}
+
+:global(html[data-theme='light']) .twinCardToolbar {
+  border-bottom-color: var(--portfolio-border);
 }
 

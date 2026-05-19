@@ -2,13 +2,12 @@ import { useEffect, useState } from 'react'
 import { Avatar, Button, Card, Col, Layout, Row, Space, Typography } from 'antd'
 import { ApiOutlined } from '@ant-design/icons'
 import Chat from '../../components/Chat/Chat'
+import SiteFooter from '../../components/SiteFooter'
 import homeStyles from '../HomePage/styles.module.css'
 import styles from './styles.module.css'
 
-const { Content, Footer } = Layout
+const { Content } = Layout
 const { Title, Text, Paragraph } = Typography
-
-const GITHUB_PORTFOLIO = 'https://github.com/ElzaHM/portfolio'
 
 export default function ChatAssistantPage() {
   const [chatSessionKey, setChatSessionKey] = useState(0)
@@ -40,27 +39,27 @@ export default function ChatAssistantPage() {
           </header>
 
           <div className={`${styles.chatShell} ${styles.chatShellStretch}`}>
-            <Card className={homeStyles.twinCard} variant="borderless">
-              <div className={homeStyles.twinInner}>
+            <Card className={`${homeStyles.twinCard} ${styles.chatTwinCard}`} variant="borderless">
+              <div className={`${homeStyles.twinInner} ${styles.chatTwinInner}`}>
                 <Space
                   orientation="vertical"
                   size="large"
                   className={`${homeStyles.twinStack} ${styles.twinStackStretch}`}
                 >
-                  <div className={homeStyles.twinCardToolbar}>
+                  <div className={`${homeStyles.twinCardToolbar} ${styles.chatToolbar}`}>
                     <Row align="middle" justify="space-between" gutter={[16, 16]}>
                       <Col flex="auto">
                         <Space align="start" size={16}>
                           <Avatar
-                            className={homeStyles.twinHeaderAvatar}
+                            className={`${homeStyles.twinHeaderAvatar} ${styles.chatTwinAvatar}`}
                             icon={<ApiOutlined />}
                             size={48}
                           />
-                          <div className={homeStyles.twinHeaderMeta}>
-                            <Title level={5} className={homeStyles.twinHeaderName}>
+                          <div className={`${homeStyles.twinHeaderMeta} ${styles.chatTwinMeta}`}>
+                            <Title level={5} className={`${homeStyles.twinHeaderName} ${styles.chatTwinName}`}>
                               AI-Frontend_v1.0
                             </Title>
-                            <Text className={homeStyles.twinHeaderModel}>
+                            <Text className={`${homeStyles.twinHeaderModel} ${styles.chatTwinModel}`}>
                               MODEL: FRONTEND_EXPERT_OPT
                             </Text>
                           </div>
@@ -96,45 +95,7 @@ export default function ChatAssistantPage() {
         </div>
       </Content>
 
-      <Footer className={homeStyles.footer} id="contact">
-        <div className={homeStyles.footerInner}>
-          <Row gutter={[16, 16]} className={homeStyles.footerRow}>
-            <Col xs={24} md={8}>
-              <Text className={homeStyles.footerCopy}>
-                © {new Date().getFullYear()} EH. All rights reserved.
-              </Text>
-            </Col>
-            <Col xs={24} md={8} className={homeStyles.footerLinks}>
-              <Space size="large" wrap>
-                <Typography.Link
-                  href={GITHUB_PORTFOLIO}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={homeStyles.footerLink}
-                >
-                  GITHUB
-                </Typography.Link>
-                <Typography.Link
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className={homeStyles.footerLink}
-                >
-                  LINKEDIN
-                </Typography.Link>
-                <Typography.Link
-                  href="https://techahartak.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className={homeStyles.footerLink}
-                >
-                  TECHAHARTAK
-                </Typography.Link>
-              </Space>
-            </Col>
-          </Row>
-        </div>
-      </Footer>
+      <SiteFooter />
     </>
   )
 }

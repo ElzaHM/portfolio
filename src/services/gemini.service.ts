@@ -34,6 +34,8 @@ export const DIGITAL_TWIN_SYSTEM_SUFFIX = `Digital Twin interview mode: You answ
 
 export type SendGeminiOptions = {
   systemInstructionSuffix?: string
+  /** When aborted, the request is cancelled and the promise rejects (no fallback error copy). */
+  signal?: AbortSignal
 }
 
 export const sendToGemini = async (
@@ -61,10 +63,14 @@ export const sendToGemini = async (
     const response = await axios.post<GeminiResponse>(url, payload, {
       params: { key: API_KEY },
       headers: { 'Content-Type': 'application/json' },
+      signal: options?.signal,
     })
 
     return response.data?.candidates?.[0]?.content?.parts?.[0]?.text || ''
   } catch (error: unknown) {
+    if (options?.signal?.aborted || axios.isCancel(error)) {
+      throw error
+    }
     const message =
       error && typeof error === 'object' && 'response' in error
         ? (error as { response?: { data?: { error?: { message?: string } } } }).response?.data

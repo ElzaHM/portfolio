@@ -1,0 +1,17 @@
+.toggle:global(.ant-btn) {
+  flex-shrink: 0;
+  width: 2.2222rem;
+  height: 2.2222rem;
+  padding: 0 !important;
+  border-radius: 999px !important;
+  border: 0.0556rem solid var(--portfolio-border) !important;
+  background: var(--portfolio-surface-raised, rgba(255, 255, 255, 0.08)) !important;
+  color: var(--portfolio-text-secondary, #94a3b8) !important;
+  box-shadow: var(--portfolio-shadow-sm, none);
+}
+
+.toggle:global(.ant-btn):hover {
+  color: var(--portfolio-gold) !important;
+  border-color: var(--portfolio-gold-muted-border, rgba(212, 175, 55, 0.35)) !important;
+  background: var(--portfolio-gold-muted, rgba(212, 175, 55, 0.08)) !important;
+}

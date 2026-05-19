@@ -28,10 +28,36 @@ export type PollTalkOptions = {
   intervalMs?: number
   /** Max wall time before throwing timeout. Default 120_000. */
   timeoutMs?: number
+  /** When aborted, polling stops immediately. */
+  signal?: AbortSignal
 }
 
-function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms))
+export type DidRequestOptions = {
+  signal?: AbortSignal
+}
+
+function assertNotAborted(signal?: AbortSignal): void {
+  if (signal?.aborted) {
+    throw new DOMException('Aborted', 'AbortError')
+  }
+}
+
+function abortableSleep(ms: number, signal?: AbortSignal): Promise<void> {
+  assertNotAborted(signal)
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => {
+      signal?.removeEventListener('abort', onAbort)
+      resolve()
+    }, ms)
+
+    const onAbort = () => {
+      clearTimeout(timer)
+      signal?.removeEventListener('abort', onAbort)
+      reject(new DOMException('Aborted', 'AbortError'))
+    }
+
+    signal?.addEventListener('abort', onAbort, { once: true })
+  })
 }
 
 function encodeBasicCredentials(raw: string): string {
@@ -69,20 +95,26 @@ function getDidAxios(): AxiosInstance {
  * POST /talks — create a talk from text script + fixed avatar image.
  * @returns talk `id` for polling.
  */
-export async function createTalk(text: string): Promise<string> {
+export async function createTalk(text: string, options?: DidRequestOptions): Promise<string> {
   const input = text.trim()
   if (input.length < 3) {
     throw new Error('D-ID script input must be at least 3 characters')
   }
 
+  assertNotAborted(options?.signal)
+
   const client = getDidAxios()
-  const { data } = await client.post<CreateTalkResponse>('/talks', {
-    source_url: DID_AVATAR_SOURCE_URL,
-    script: {
-      type: 'text',
-      input,
+  const { data } = await client.post<CreateTalkResponse>(
+    '/talks',
+    {
+      source_url: DID_AVATAR_SOURCE_URL,
+      script: {
+        type: 'text',
+        input,
+      },
     },
-  })
+    { signal: options?.signal },
+  )
 
   if (!data?.id) {
     throw new Error('D-ID createTalk: response missing id')
@@ -91,9 +123,12 @@ export async function createTalk(text: string): Promise<string> {
 }
 
 /** GET /talks/:id — current talk payload (status, result_url, …). */
-export async function getTalk(id: string): Promise<DidTalk> {
+export async function getTalk(id: string, options?: DidRequestOptions): Promise<DidTalk> {
+  assertNotAborted(options?.signal)
   const client = getDidAxios()
-  const { data } = await client.get<DidTalk>(`/talks/${encodeURIComponent(id)}`)
+  const { data } = await client.get<DidTalk>(`/talks/${encodeURIComponent(id)}`, {
+    signal: options?.signal,
+  })
   return data
 }
 
@@ -107,16 +142,19 @@ export async function pollTalkUntilTerminal(
 ): Promise<string> {
   const intervalMs = options?.intervalMs ?? 2000
   const timeoutMs = options?.timeoutMs ?? 120_000
+  const signal = options?.signal
   const started = Date.now()
 
   for (;;) {
+    assertNotAborted(signal)
+
     if (Date.now() - started > timeoutMs) {
       throw new Error(
         `D-ID talk ${id}: timeout after ${timeoutMs}ms (last poll interval ${intervalMs}ms)`,
       )
     }
 
-    const talk = await getTalk(id)
+    const talk = await getTalk(id, { signal })
     const status = talk.status
 
     if (status === 'done') {
@@ -133,6 +171,6 @@ export async function pollTalkUntilTerminal(
       throw new Error(`D-ID talk ${id}: status "${status}" — ${detail}`)
     }
 
-    await sleep(intervalMs)
+    await abortableSleep(intervalMs, signal)
   }
 }

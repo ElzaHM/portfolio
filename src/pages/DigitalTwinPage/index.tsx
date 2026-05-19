@@ -1,12 +1,14 @@
 import { useCallback, useEffect, useRef, useState, type KeyboardEvent } from 'react'
-import { Button, Card, Col, Input, Layout, Row, Space, Spin, Typography } from 'antd'
+import { Button, Card, Col, Input, Layout, Row, Spin, Typography } from 'antd'
 import {
   CaretRightOutlined,
   GlobalOutlined,
   SendOutlined,
+  StopOutlined,
   VideoCameraOutlined,
 } from '@ant-design/icons'
 import ReactMarkdown from 'react-markdown'
+import SiteFooter from '../../components/SiteFooter'
 import homeStyles from '../HomePage/styles.module.css'
 import {
   DIGITAL_TWIN_SYSTEM_SUFFIX,
@@ -14,10 +16,12 @@ import {
 } from '../../services/gemini.service'
 import { speak } from '../../services/azureSpeech.service'
 import { createTalk, pollTalkUntilTerminal } from '../../services/did.service'
+import { useTwinSession, resetTwinVideoElement } from '../../hooks/useTwinSession'
+import { isAbortError } from '../../lib/abortError'
 import styles from './styles.module.css'
 import virtualAvatar from '../../assets/virtual-avatar2.png'
 
-const { Content, Footer } = Layout
+const { Content } = Layout
 const { Title, Paragraph, Text } = Typography
 const { TextArea } = Input
 
@@ -25,6 +29,7 @@ type DidPhase = 'idle' | 'creating' | 'polling' | 'ready' | 'error'
 
 export default function DigitalTwinPage() {
   const [twinPrompt, setTwinPrompt] = useState('')
+  const [twinUserMessage, setTwinUserMessage] = useState<string | null>(null)
   const [twinReply, setTwinReply] = useState<string | null>(null)
   const [twinLoading, setTwinLoading] = useState(false)
 
@@ -32,6 +37,27 @@ export default function DigitalTwinPage() {
   const [didVideoUrl, setDidVideoUrl] = useState<string | null>(null)
   const [didError, setDidError] = useState<string | null>(null)
   const didVideoRef = useRef<HTMLVideoElement>(null)
+  const { beginSession, stopSession, isCurrentSession, clearAbortRefIfCurrent } =
+    useTwinSession()
+
+  const resetDidVideo = useCallback(() => {
+    resetTwinVideoElement(didVideoRef.current)
+    setDidVideoUrl(null)
+  }, [])
+
+  const isTwinSessionActive =
+    twinLoading ||
+    didPhase === 'creating' ||
+    didPhase === 'polling' ||
+    didVideoUrl !== null
+
+  const handleTwinStop = useCallback(() => {
+    stopSession()
+    resetDidVideo()
+    setDidPhase('idle')
+    setDidError(null)
+    setTwinLoading(false)
+  }, [resetDidVideo, stopSession])
 
   useEffect(() => {
     document.title = 'Digital Twin — EH'
@@ -42,43 +68,66 @@ export default function DigitalTwinPage() {
 
   const handleTwinSend = useCallback(async () => {
     const text = twinPrompt.trim()
-    if (!text || twinLoading) return
+    if (!text || isTwinSessionActive) return
+
+    const { generation, signal } = beginSession()
 
     setTwinPrompt('')
+    setTwinUserMessage(text)
     setTwinReply(null)
     setTwinLoading(true)
-    setDidVideoUrl(null)
+    resetDidVideo()
     setDidError(null)
     setDidPhase('idle')
 
-    const reply = await sendToGemini([{ role: 'user', text }], {
-      systemInstructionSuffix: DIGITAL_TWIN_SYSTEM_SUFFIX,
-    })
+    try {
+      const reply = await sendToGemini([{ role: 'user', text }], {
+        systemInstructionSuffix: DIGITAL_TWIN_SYSTEM_SUFFIX,
+        signal,
+      })
 
-    const trimmed = reply.trim() || '…'
-    setTwinReply(trimmed)
-    setTwinLoading(false)
-    speak(trimmed)
+      if (!isCurrentSession(generation)) return
 
-    if (trimmed.length >= 3) {
-      void (async () => {
-        try {
-          setDidPhase('creating')
-          const id = await createTalk(trimmed)
-          setDidPhase('polling')
-          const url = await pollTalkUntilTerminal(id)
-          setDidVideoUrl(url)
-          setDidPhase('ready')
-        } catch (e) {
-          const message = e instanceof Error ? e.message : String(e)
-          setDidError(message)
-          setDidPhase('error')
-          setDidVideoUrl(null)
-          console.error('[DigitalTwin] D-ID:', message)
-        }
-      })()
+      const trimmed = reply.trim() || '…'
+      setTwinReply(trimmed)
+      setTwinLoading(false)
+      speak(trimmed)
+
+      if (trimmed.length >= 3) {
+        setDidPhase('creating')
+        const id = await createTalk(trimmed, { signal })
+        if (!isCurrentSession(generation)) return
+
+        setDidPhase('polling')
+        const url = await pollTalkUntilTerminal(id, { signal })
+        if (!isCurrentSession(generation)) return
+
+        setDidVideoUrl(url)
+        setDidPhase('ready')
+      }
+    } catch (e) {
+      if (isAbortError(e)) return
+      if (!isCurrentSession(generation)) return
+
+      const message = e instanceof Error ? e.message : String(e)
+      setDidError(message)
+      setDidPhase('error')
+      resetDidVideo()
+      console.error('[DigitalTwin] D-ID:', message)
+    } finally {
+      if (isCurrentSession(generation)) {
+        setTwinLoading(false)
+        clearAbortRefIfCurrent(generation)
+      }
     }
-  }, [twinPrompt, twinLoading])
+  }, [
+    beginSession,
+    clearAbortRefIfCurrent,
+    isCurrentSession,
+    isTwinSessionActive,
+    resetDidVideo,
+    twinPrompt,
+  ])
 
   const handleDidVideoEnded = useCallback(() => {
     setDidVideoUrl(null)
@@ -191,7 +240,7 @@ export default function DigitalTwinPage() {
                   </div>
                 </Col>
                 <Col xs={24} lg={12}>
-                  <div className={styles.virtualRightCol}>
+                  <div className={styles.virtualIntroCol}>
                     <Title level={2} className={styles.virtualMainTitle}>
                       <span className={styles.virtualTitlePart}>Meet My </span>
                       <span className={styles.virtualTitleAccent}>Virtual Self</span>
@@ -200,7 +249,11 @@ export default function DigitalTwinPage() {
                       AI-driven briefings that explain my workflow, tooling, and how I approach
                       complex interface problems—before we ever meet on a call.
                     </Paragraph>
-                    <div className={styles.featureStack}>
+                  </div>
+                </Col>
+              </Row>
+
+              <div className={styles.featureCardsRow} aria-label="Digital twin capabilities">
                       <Card size="small" className={styles.featureCard}>
                         <div className={styles.featureInner}>
                           <span className={styles.featureIconCircle}>
@@ -236,6 +289,12 @@ export default function DigitalTwinPage() {
                     </div>
 
                     <div className={styles.dialogueSection}>
+                      {twinUserMessage ? (
+                        <div className={styles.userBubble} role="article" aria-label="Your question">
+                          <span className={styles.transcriptLabel}>You</span>
+                          <p className={styles.transcriptText}>{twinUserMessage}</p>
+                        </div>
+                      ) : null}
                       {(twinLoading || twinReply !== null) && (
                         <div
                           className={styles.twinReplyCard}
@@ -266,7 +325,7 @@ export default function DigitalTwinPage() {
                           onChange={(e) => setTwinPrompt(e.target.value)}
                           onKeyDown={onTwinKeyDown}
                           placeholder="Ask the Digital Twin anything about methodology, stack, or delivery…"
-                          disabled={twinLoading}
+                          disabled={isTwinSessionActive}
                           rows={3}
                           className={styles.dialogueTextarea}
                           aria-label="Question for the Digital Twin"
@@ -275,66 +334,37 @@ export default function DigitalTwinPage() {
                           <Text type="secondary" className={styles.dialogueHint}>
                             Enter to send · Shift+Enter for a new line
                           </Text>
-                          <Button
-                            type="primary"
-                            icon={<SendOutlined />}
-                            className={styles.dialogueSend}
-                            loading={twinLoading}
-                            disabled={twinLoading || !twinPrompt.trim()}
-                            onClick={() => void handleTwinSend()}
-                          >
-                            Send
-                          </Button>
+                          {isTwinSessionActive ? (
+                            <Button
+                              danger
+                              type="primary"
+                              icon={<StopOutlined />}
+                              className={styles.dialogueSend}
+                              onClick={handleTwinStop}
+                            >
+                              Stop
+                            </Button>
+                          ) : (
+                            <Button
+                              type="primary"
+                              icon={<SendOutlined />}
+                              className={styles.dialogueSend}
+                              loading={twinLoading}
+                              disabled={!twinPrompt.trim()}
+                              onClick={() => void handleTwinSend()}
+                            >
+                              Send
+                            </Button>
+                          )}
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </Col>
-              </Row>
+              </div>
             </div>
           </section>
         </div>
       </Content>
 
-      <Footer className={homeStyles.footer} id="contact">
-        <div className={homeStyles.footerInner}>
-          <Row gutter={[16, 16]} className={homeStyles.footerRow}>
-            <Col xs={24} md={8}>
-              <Text className={homeStyles.footerCopy}>
-                © {new Date().getFullYear()} EH. All rights reserved.
-              </Text>
-            </Col>
-            <Col xs={24} md={8} className={homeStyles.footerLinks}>
-              <Space size="large" wrap>
-                <Typography.Link
-                  href="https://github.com/ElzaHM/portfolio"
-                  target="_blank"
-                  rel="noreferrer"
-                  className={homeStyles.footerLink}
-                >
-                  GITHUB
-                </Typography.Link>
-                <Typography.Link
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className={homeStyles.footerLink}
-                >
-                  LINKEDIN
-                </Typography.Link>
-                <Typography.Link
-                  href="https://techahartak.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className={homeStyles.footerLink}
-                >
-                  TECHAHARTAK
-                </Typography.Link>
-              </Space>
-            </Col>
-          </Row>
-        </div>
-      </Footer>
+      <SiteFooter />
     </>
   )
 }

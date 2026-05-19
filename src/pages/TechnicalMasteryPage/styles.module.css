@@ -2,9 +2,8 @@
   padding-top: 0;
 }
 
-/* Unified page: secondary strategic band — tighter heading stack */
 .strategicPrimaryHeadRow {
-  margin-bottom: 4px;
+  margin-bottom: 0.2222rem;
 }
 
 .managementPillarRow {
@@ -25,11 +24,8 @@
 }
 
 .pageTitle:global(.ant-typography) {
-  margin: 55px 0 12px !important;
-  font-family:
-    'Inter',
-    system-ui,
-    sans-serif !important;
+  margin: 3.0556rem 0 0.6667rem !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
   font-weight: 800 !important;
   font-size: clamp(1.75rem, 4vw, 2.35rem) !important;
   letter-spacing: 0.06em !important;
@@ -42,20 +38,18 @@
 }
 
 .pageLead {
-  max-width: 640px;
+  max-width: 44.4444rem;
   color: #94a3b8 !important;
-  font-size: 15px !important;
-  line-height: 1.65 !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
 }
 
 .backLink {
   display: inline-flex;
   align-items: center;
-  font-family:
-    'Inter',
-    system-ui,
-    sans-serif;
-  font-size: 12px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.6667rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -68,36 +62,245 @@
 
 .backLink:hover {
   color: #e8c84c;
-  filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.35));
+  filter: drop-shadow(0 0 0.4444rem rgba(212, 175, 55, 0.35));
 }
 
 .backLink:focus-visible {
-  outline: 2px solid rgba(212, 175, 55, 0.45);
-  outline-offset: 3px;
-  border-radius: 4px;
+  outline: 0.1111rem solid rgba(212, 175, 55, 0.45);
+  outline-offset: 0.1667rem;
+  border-radius: 0.2222rem;
 }
 
-.osIntro {
-  max-width: 720px;
-  margin: 0 0 28px !important;
+.leadershipSection {
+  border-top: 0.0556rem solid rgba(255, 255, 255, 0.06);
+  padding-top: 0.4444rem;
+}
+
+/* —— Section typography —— */
+.sectionHeading:global(.ant-typography) {
+  margin: 0 !important;
+  color: #f8fafc !important;
+}
+
+.cardHeading:global(.ant-typography) {
+  margin: 0 0 0.4444rem !important;
+  color: #f8fafc !important;
+  font-size: 1rem !important;
+}
+
+.cardDesc {
+  color: #94a3b8;
+  margin-bottom: 0.6667rem;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.metaTag:global(.ant-tag) {
+  letter-spacing: 0.02em;
+  font-size: 13px !important;
+  padding-inline: 0.6111rem !important;
+  padding-block: 0.2222rem !important;
+  line-height: 1.35 !important;
+  color: #64748b !important;
+  border-color: var(--portfolio-border, rgba(255, 255, 255, 0.12)) !important;
+  background: transparent !important;
+}
+
+/* —— Category cards (tech grid) —— */
+.categoryCard:global(.ant-card) {
+  height: 100%;
+  background: var(--portfolio-surface, #111827);
+  border: 0.0556rem solid var(--portfolio-border, rgba(255, 255, 255, 0.06)) !important;
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    background 0.28s ease,
+    border-color 0.28s ease;
+}
+
+.categoryCard:global(.ant-card):hover {
+  transform: translateY(-0.1111rem);
+  border-color: rgba(212, 175, 55, 0.2) !important;
+  box-shadow:
+    0 0.8889rem 2rem rgba(0, 0, 0, 0.38),
+    0 0 1.3333rem rgba(212, 175, 55, 0.08);
+}
+
+.categoryCard :global(.ant-card-body) {
+  padding: 1.3333rem !important;
+}
+
+/* —— Tech badges / avatars —— */
+.techBadge:global(.ant-avatar) {
+  margin-bottom: 0.6667rem;
+  font-weight: 700;
+  font-size: 0.7778rem !important;
+}
+
+.techBadgeTs {
+  background-color: #3178c6;
+  color: #fff;
+}
+
+.techBadgeAi {
+  background-color: #10a37f;
+  color: #fff;
+}
+
+.techBadgeNg {
+  background-color: #dd0031;
+  color: #fff;
+}
+
+.techBadgeWebflow {
+  background: linear-gradient(145deg, #4353ff 0%, #146ef5 100%);
+  color: #fff;
+}
+
+.techBadgeVite {
+  background: linear-gradient(145deg, #646cff 0%, #bd34fe 100%);
+  color: #fff;
+}
+
+.perfBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2222rem;
+  height: 2.2222rem;
+  margin-bottom: 0.6667rem;
+  border-radius: 50%;
+  font-size: 1.1111rem;
+  line-height: 1;
+  color: #eab308;
+  background: rgba(234, 179, 8, 0.12);
+  border: 0.0556rem solid rgba(234, 179, 8, 0.28);
+}
+
+/* —— Skill tags —— */
+.tagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4444rem;
+}
+
+.skillTag:global(.ant-tag) {
+  margin: 0 !important;
+  padding-inline: 0.6667rem !important;
+  padding-block: 0.25rem !important;
+  border-radius: 999px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  line-height: 1.35 !important;
+  letter-spacing: 0.02em !important;
+  text-transform: uppercase !important;
+  border: 0.0556rem solid rgba(255, 255, 255, 0.1) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
   color: #94a3b8 !important;
-  font-size: 15px !important;
-  line-height: 1.65 !important;
 }
 
+/* —— Management pillar badges —— */
+.strategicBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2222rem;
+  height: 2.2222rem;
+  margin-bottom: 0.6667rem;
+  border-radius: 50%;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.strategicBadgeDelivery {
+  background: linear-gradient(145deg, #4c6fb5 0%, #374c8c 100%);
+}
+
+.strategicBadgeAgile {
+  background: linear-gradient(145deg, #0d9488 0%, #0f766e 100%);
+}
+
+.strategicBadgeVision {
+  background: linear-gradient(145deg, #7c3aed 0%, #5b21b6 100%);
+}
+
+.strategicBadgeRisk {
+  background: linear-gradient(145deg, #ea580c 0%, #c2410c 100%);
+}
+
+.strategicBadgeStakeholder {
+  background: linear-gradient(145deg, #0891b2 0%, #0e7490 100%);
+}
+
+.strategicBadgeCert {
+  background: linear-gradient(145deg, #b8891c 0%, #856514 100%);
+}
+
+/* Certification card */
+.certCardAnchor {
+  display: block;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+  border-radius: inherit;
+  outline: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    transform 0.28s ease,
+    filter 0.28s ease;
+}
+
+.certCardAnchor:focus-visible {
+  outline: 0.1111rem solid rgba(212, 175, 55, 0.55);
+  outline-offset: 0.1667rem;
+  border-radius: 0.5556rem;
+}
+
+.certCardAnchor:hover {
+  transform: translateY(-0.1111rem);
+}
+
+.certCard:global(.ant-card) {
+  height: 100%;
+  margin: 0 !important;
+  background: var(--portfolio-surface, #111827);
+  border: 0.0556rem solid #d4af37 !important;
+  box-shadow:
+    inset 0 0.0556rem 0 rgba(212, 175, 55, 0.12),
+    0 1.1111rem 2.2222rem rgba(0, 0, 0, 0.35),
+    0 0 1.5556rem rgba(212, 175, 55, 0.22) !important;
+  transition:
+    transform 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease,
+    background 0.28s ease;
+}
+
+.certCardAnchor:hover .certCard:global(.ant-card),
+.certCardAnchor:focus-visible .certCard:global(.ant-card) {
+  border-color: #e8c84c !important;
+  box-shadow:
+    inset 0 0.0556rem 0 rgba(212, 175, 55, 0.18),
+    0 1.3333rem 2.6667rem rgba(0, 0, 0, 0.45),
+    0 0 2.2222rem rgba(212, 175, 55, 0.35) !important;
+}
+
+/* Legacy repo glass (unused on page — kept for shared imports) */
 .repoGlassCard {
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 22px 22px 20px;
-  border-radius: 18px;
+  padding: 1.2222rem 1.2222rem 1.1111rem;
+  border-radius: 1rem;
   background: rgba(17, 24, 39, 0.48);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(0.8889rem);
+  -webkit-backdrop-filter: blur(0.8889rem);
+  border: 0.0556rem solid rgba(255, 255, 255, 0.09);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 16px 42px rgba(0, 0, 0, 0.38);
+    inset 0 0.0556rem 0 rgba(255, 255, 255, 0.06),
+    0 0.8889rem 2.3333rem rgba(0, 0, 0, 0.38);
   transition:
     border-color 0.25s ease,
     box-shadow 0.25s ease,
@@ -107,20 +310,17 @@
 .repoGlassCard:hover {
   border-color: rgba(212, 175, 55, 0.26);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 22px 52px rgba(0, 0, 0, 0.45),
-    0 0 32px rgba(212, 175, 55, 0.09);
-  transform: translateY(-3px);
+    inset 0 0.0556rem 0 rgba(255, 255, 255, 0.08),
+    0 1.2222rem 2.8889rem rgba(0, 0, 0, 0.45),
+    0 0 1.7778rem rgba(212, 175, 55, 0.09);
+  transform: translateY(-0.1667rem);
 }
 
 .repoName:global(.ant-typography) {
-  margin: 0 0 10px !important;
-  font-family:
-    'Inter',
-    system-ui,
-    sans-serif !important;
+  margin: 0 0 0.5556rem !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
   font-weight: 700 !important;
-  font-size: 15px !important;
+  font-size: 0.8333rem !important;
   letter-spacing: 0.08em !important;
   text-transform: uppercase !important;
   color: #f8fafc !important;
@@ -128,22 +328,22 @@
 
 .repoDesc {
   flex: 1;
-  margin: 0 0 14px !important;
+  margin: 0 0 0.7778rem !important;
   color: #94a3b8 !important;
-  font-size: 14px !important;
+  font-size: 0.7778rem !important;
   line-height: 1.6 !important;
 }
 
 .repoLangTag:global(.ant-tag) {
   align-self: flex-start;
-  margin: 0 0 16px !important;
-  padding-inline: 10px !important;
+  margin: 0 0 0.8889rem !important;
+  padding-inline: 0.5556rem !important;
   border-radius: 999px !important;
-  border: 1px solid rgba(212, 175, 55, 0.35) !important;
+  border: 0.0556rem solid rgba(212, 175, 55, 0.35) !important;
   background: rgba(212, 175, 55, 0.08) !important;
   color: #e8d595 !important;
   font-weight: 600 !important;
-  font-size: 11px !important;
+  font-size: 0.6111rem !important;
   letter-spacing: 0.06em !important;
   text-transform: uppercase !important;
 }
@@ -151,13 +351,10 @@
 .repoViewLink:global(.ant-typography) {
   display: inline-flex !important;
   align-items: center;
-  gap: 8px;
+  gap: 0.4444rem;
   margin: 0 !important;
-  font-family:
-    'Inter',
-    system-ui,
-    sans-serif !important;
-  font-size: 11px !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-size: 0.6111rem !important;
   font-weight: 700 !important;
   letter-spacing: 0.1em !important;
   text-transform: uppercase !important;
@@ -169,5 +366,165 @@
 }
 
 .repoLinkIcon {
-  font-size: 13px;
+  font-size: 0.7222rem;
+}
+
+/* —— Light: Alabaster Executive (Tech Stack) —— */
+:global(html[data-theme='light']) .pageTitle:global(.ant-typography) {
+  background: var(--portfolio-hero-title-gradient) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+}
+
+:global(html[data-theme='light']) .pageLead,
+:global(html[data-theme='light']) .cardDesc {
+  color: var(--portfolio-text-secondary) !important;
+}
+
+:global(html[data-theme='light']) .metaTag:global(.ant-tag) {
+  color: var(--portfolio-text-muted) !important;
+  border-color: var(--portfolio-border) !important;
+}
+
+:global(html[data-theme='light']) .sectionHeading:global(.ant-typography),
+:global(html[data-theme='light']) .cardHeading:global(.ant-typography),
+:global(html[data-theme='light']) .managementPillarTitle:global(.ant-typography) {
+  color: var(--portfolio-text-body) !important;
+  -webkit-text-fill-color: var(--portfolio-text-body) !important;
+  background: none !important;
+}
+
+:global(html[data-theme='light']) .leadershipSection {
+  border-top-color: var(--portfolio-border);
+}
+
+:global(html[data-theme='light']) .categoryCard:global(.ant-card) {
+  background: var(--portfolio-surface) !important;
+  border: 0.0556rem solid var(--portfolio-border) !important;
+  box-shadow: none;
+}
+
+:global(html[data-theme='light']) .categoryCard:global(.ant-card):hover {
+  background: var(--portfolio-surface-raised) !important;
+  border-color: var(--portfolio-border) !important;
+  box-shadow: var(--portfolio-shadow-sm);
+  transform: translateY(-0.1111rem);
+}
+
+:global(html[data-theme='light']) .skillTag:global(.ant-tag) {
+  border: 0.0556rem solid var(--portfolio-border) !important;
+  background: var(--portfolio-surface-sunken) !important;
+  color: var(--portfolio-text-secondary) !important;
+}
+
+/* Core engineering — purple wash */
+:global(html[data-theme='light']) .techBadgeTs:global(.ant-avatar),
+:global(html[data-theme='light']) .techBadgeNg:global(.ant-avatar),
+:global(html[data-theme='light']) .techBadgeAi:global(.ant-avatar),
+:global(html[data-theme='light']) .techBadgeWebflow:global(.ant-avatar),
+:global(html[data-theme='light']) .techBadgeVite:global(.ant-avatar) {
+  background: var(--portfolio-purple-muted) !important;
+  color: var(--portfolio-purple) !important;
+  border: 0.0556rem solid rgba(109, 40, 217, 0.18);
+  box-shadow: none;
+}
+
+:global(html[data-theme='light']) .techBadgeNg:global(.ant-avatar) {
+  color: #9f1239 !important;
+  background: rgba(225, 29, 72, 0.1) !important;
+  border-color: rgba(159, 18, 57, 0.16) !important;
+}
+
+:global(html[data-theme='light']) .techBadgeTs:global(.ant-avatar) {
+  color: #1d4ed8 !important;
+  background: rgba(37, 99, 235, 0.1) !important;
+  border-color: rgba(29, 78, 216, 0.16) !important;
+}
+
+:global(html[data-theme='light']) .techBadgeAi:global(.ant-avatar) {
+  color: #047857 !important;
+  background: rgba(5, 150, 105, 0.1) !important;
+  border-color: rgba(4, 120, 87, 0.16) !important;
+}
+
+:global(html[data-theme='light']) .techBadgeWebflow:global(.ant-avatar) {
+  color: #3730a3 !important;
+  background: rgba(67, 83, 255, 0.1) !important;
+  border-color: rgba(55, 48, 163, 0.16) !important;
+}
+
+:global(html[data-theme='light']) .techBadgeVite:global(.ant-avatar) {
+  color: #6d28d9 !important;
+  background: var(--portfolio-purple-muted) !important;
+  border-color: rgba(109, 40, 217, 0.18) !important;
+}
+
+/* Performance — gold wash */
+:global(html[data-theme='light']) .perfBadge {
+  color: var(--portfolio-gold) !important;
+  background: rgba(184, 146, 42, 0.12) !important;
+  border-color: var(--portfolio-gold-muted-border) !important;
+}
+
+/* Management pillar badges — tinted grounds */
+:global(html[data-theme='light']) .strategicBadgeDelivery {
+  background: rgba(59, 99, 181, 0.12) !important;
+  color: #2c4a8c !important;
+  border: 0.0556rem solid rgba(44, 74, 140, 0.16);
+}
+
+:global(html[data-theme='light']) .strategicBadgeAgile {
+  background: rgba(13, 148, 136, 0.12) !important;
+  color: #0f766e !important;
+  border: 0.0556rem solid rgba(15, 118, 110, 0.16);
+}
+
+:global(html[data-theme='light']) .strategicBadgeVision {
+  background: var(--portfolio-purple-muted) !important;
+  color: var(--portfolio-purple) !important;
+  border: 0.0556rem solid rgba(109, 40, 217, 0.16);
+}
+
+:global(html[data-theme='light']) .strategicBadgeRisk {
+  background: rgba(234, 88, 12, 0.1) !important;
+  color: #c2410c !important;
+  border: 0.0556rem solid rgba(194, 65, 12, 0.16);
+}
+
+:global(html[data-theme='light']) .strategicBadgeStakeholder {
+  background: rgba(8, 145, 178, 0.1) !important;
+  color: #0e7490 !important;
+  border: 0.0556rem solid rgba(14, 116, 144, 0.16);
+}
+
+:global(html[data-theme='light']) .strategicBadgeCert {
+  background: rgba(184, 146, 42, 0.12) !important;
+  color: var(--portfolio-gold) !important;
+  border: 0.0556rem solid var(--portfolio-gold-muted-border);
+}
+
+:global(html[data-theme='light']) .certCard:global(.ant-card) {
+  background: var(--portfolio-surface) !important;
+  border: 0.0556rem solid var(--portfolio-gold) !important;
+  box-shadow: var(--portfolio-shadow-sm) !important;
+}
+
+:global(html[data-theme='light']) .certCardAnchor:hover .certCard:global(.ant-card),
+:global(html[data-theme='light']) .certCardAnchor:focus-visible .certCard:global(.ant-card) {
+  background: var(--portfolio-surface-raised) !important;
+  box-shadow: var(--portfolio-shadow-md) !important;
+}
+
+:global(html[data-theme='light']) .repoGlassCard {
+  background: var(--portfolio-surface);
+  border: 0.0556rem solid var(--portfolio-border);
+  box-shadow: var(--portfolio-shadow-sm);
+}
+
+:global(html[data-theme='light']) .repoName:global(.ant-typography) {
+  color: var(--portfolio-text-body) !important;
+}
+
+:global(html[data-theme='light']) .repoDesc {
+  color: var(--portfolio-text-secondary) !important;
 }

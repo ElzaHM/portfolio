@@ -29,7 +29,7 @@
   line-height: 1.22 !important;
   letter-spacing: 0.01em !important;
   text-transform: none !important;
-  background: linear-gradient(92deg, #ffffff 0%, #f5e6c8 45%, #d4af37 100%);
+  background: linear-gradient(92deg, #ffffff 0%, #ddd6fe 32%, #f5e6c8 52%, #d4af37 100%);
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
@@ -76,8 +76,9 @@
 .sectionIntro {
   margin: 0 !important;
   color: #94a3b8 !important;
-  font-size: 0.8333rem !important;
-  line-height: 1.78 !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
 }
 
 .timeline {
@@ -108,12 +109,15 @@
 }
 
 .roleCard {
-  padding: 0.7778rem 0.8889rem;
+  box-sizing: border-box;
+  padding: 0.8889rem 1rem;
   border-radius: 0.7778rem;
   background: rgba(17, 24, 39, 0.5);
   border: 0.0556rem solid rgba(255, 255, 255, 0.07);
   backdrop-filter: blur(0.6667rem);
   -webkit-backdrop-filter: blur(0.6667rem);
+  height: auto;
+  min-height: 0;
 }
 
 .roleTitle:global(.ant-typography) {
@@ -135,14 +139,20 @@
 
 .bulletList {
   margin: 0;
-  padding-left: 1.1rem;
+  padding-left: 1.15rem;
   color: #94a3b8;
-  font-size: 0.7222rem;
+  font-size: 15.5px;
+  font-weight: 400;
   line-height: 1.62;
 }
 
 .bulletList li {
-  margin-bottom: 0.3333rem;
+  margin-bottom: 0.4444rem;
+}
+
+.bulletList :is(.richStrong, .richEmphasis) {
+  font-size: inherit;
+  line-height: inherit;
 }
 
 .bulletList li:last-child {
@@ -233,10 +243,112 @@
 .educationSchool {
   margin: 0 !important;
   color: #94a3b8 !important;
-  font-size: 0.7222rem !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
 }
 
+.richStrong {
+  color: #f8fafc;
+  font-weight: 650;
+}
 
+.richEmphasis {
+  color: #e2e8f0;
+  font-weight: 600;
+}
+
+.roleCard,
+.educationCard {
+  transition:
+    background 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease;
+}
+
+.roleCard:hover,
+.educationCard:hover {
+  border-color: rgba(212, 175, 55, 0.2);
+}
+
+/* —— Light: Alabaster Executive (About) —— */
+:global(html[data-theme='light']) .heroHeadline:global(.ant-typography) {
+  background: var(--portfolio-hero-title-gradient) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
+:global(html[data-theme='dark']) .heroHeadline:global(.ant-typography) {
+  background: linear-gradient(92deg, #ffffff 0%, #ddd6fe 32%, #f5e6c8 52%, #d4af37 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
+:global(html[data-theme='light']) .sectionHeading:global(.ant-typography) {
+  color: var(--portfolio-gold) !important;
+}
+
+:global(html[data-theme='light']) .glassPanel,
+:global(html[data-theme='light']) .roleCard,
+:global(html[data-theme='light']) .educationCard {
+  background: var(--portfolio-surface) !important;
+  border: 0.0556rem solid var(--portfolio-border) !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+:global(html[data-theme='light']) .roleCard:hover,
+:global(html[data-theme='light']) .educationCard:hover {
+  background: var(--portfolio-surface-raised) !important;
+  box-shadow: var(--portfolio-shadow-sm) !important;
+  border-color: var(--portfolio-border) !important;
+}
+
+:global(html[data-theme='light']) .sectionIntro,
+:global(html[data-theme='light']) .bulletList {
+  color: var(--portfolio-text-secondary) !important;
+}
+
+:global(html[data-theme='light']) .richStrong,
+:global(html[data-theme='light']) .richEmphasis,
+:global(html[data-theme='light']) .roleTitle:global(.ant-typography),
+:global(html[data-theme='light']) .educationTitle:global(.ant-typography) {
+  color: var(--portfolio-text-body) !important;
+}
+
+:global(html[data-theme='light']) .roleMeta {
+  color: var(--portfolio-text-secondary) !important;
+}
+
+:global(html[data-theme='light']) .educationSchool {
+  color: var(--portfolio-text-secondary) !important;
+}
+
+:global(html[data-theme='light']) .timelineItem {
+  border-left-color: var(--portfolio-gold-muted-border);
+}
+
+:global(html[data-theme='light']) .timelineItem::before {
+  box-shadow: 0 0 0.4444rem rgba(184, 146, 42, 0.35);
+}
+
+:global(html[data-theme='light']) .cvDownloadLink {
+  color: var(--portfolio-text-body);
+  border-color: var(--portfolio-gold);
+  background: transparent;
+}
+
+:global(html[data-theme='light']) .cvDownloadLink:hover {
+  color: var(--portfolio-text-body);
+  background: var(--portfolio-gold-muted);
+  border-color: var(--portfolio-gold-hover);
+  box-shadow: var(--portfolio-shadow-sm);
+  filter: none;
+}
 
 @media (max-width: 575px) {
   .heroHeadline:global(.ant-typography) {

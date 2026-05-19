@@ -197,3 +197,69 @@
   outline: 0.1111rem solid rgba(212, 175, 55, 0.45);
   outline-offset: 0.1111rem;
 }
+
+/* —— Light: Alabaster Executive (Chat Assistant page) —— */
+:global(html[data-theme='light']) .heroTitle:global(.ant-typography) {
+  background: var(--portfolio-hero-title-gradient) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
+:global(html[data-theme='light']) .heroSubtitle {
+  color: var(--portfolio-text-secondary) !important;
+}
+
+:global(html[data-theme='light']) .chatEmbedSurface {
+  border: 0.0556rem solid var(--portfolio-border);
+  background: rgba(250, 248, 244, 0.85);
+  backdrop-filter: blur(1rem) saturate(1.08);
+  -webkit-backdrop-filter: blur(1rem) saturate(1.08);
+  box-shadow: inset 0 0.0556rem 0 rgba(255, 255, 255, 0.65);
+}
+
+:global(html[data-theme='light']) .chatTwinName:global(.ant-typography) {
+  color: var(--portfolio-text-body) !important;
+}
+
+:global(html[data-theme='light']) .chatTwinModel {
+  color: var(--portfolio-gold) !important;
+}
+
+:global(html[data-theme='light']) .chatToolbar {
+  border-bottom-color: var(--portfolio-border) !important;
+}
+
+:global(html[data-theme='light']) .chatTwinAvatar:global(.ant-avatar) {
+  background: var(--portfolio-purple-muted) !important;
+  border: 0.0556rem solid rgba(109, 40, 217, 0.16);
+}
+
+:global(html[data-theme='light']) .chatTwinAvatar :global(.anticon) {
+  color: var(--portfolio-purple);
+}
+
+:global(html[data-theme='light']) .chatShell [class*='twinInner']::after {
+  opacity: 0.35;
+}
+
+:global(html[data-theme='light']) .chatTwinCard:global(.ant-card) {
+  background: var(--portfolio-surface-raised) !important;
+  border: 0.0556rem solid var(--portfolio-border) !important;
+  box-shadow: var(--portfolio-shadow-md) !important;
+}
+
+:global(html[data-theme='light']) .clearConversationBtn:global(.ant-btn) {
+  border-color: var(--portfolio-border) !important;
+  background: var(--portfolio-surface) !important;
+  color: var(--portfolio-text-secondary) !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+:global(html[data-theme='light']) .clearConversationBtn:global(.ant-btn):hover {
+  border-color: var(--portfolio-gold-muted-border) !important;
+  color: var(--portfolio-gold) !important;
+  background: var(--portfolio-gold-muted) !important;
+}

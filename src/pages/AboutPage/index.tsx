@@ -1,16 +1,13 @@
 import { useEffect } from 'react'
-import { Col, Layout, Row, Space, Typography } from 'antd'
+import { Layout, Typography } from 'antd'
 import { Download } from 'lucide-react'
+import SiteFooter from '../../components/SiteFooter'
 import homeStyles from '../HomePage/styles.module.css'
 import tmStyles from '../TechnicalMasteryPage/styles.module.css'
 import styles from './styles.module.css'
 
-const { Content, Footer } = Layout
-const { Title, Paragraph, Text, Link: TextLink } = Typography
-
-const GITHUB_PORTFOLIO = 'https://github.com/ElzaHM/portfolio'
-const LINKEDIN_PROFILE =
-  'https://www.linkedin.com/in/elza-hovhannisyan-25a6b0233/'
+const { Content } = Layout
+const { Title, Paragraph, Text } = Typography
 
 /** Vite-resolved URL for `src/assets/CV-TPM-Elza.pdf` */
 const CV_PDF_URL = Object.values(
@@ -57,7 +54,7 @@ function CvDownloadLink() {
 }
 
 const BIO =
-  'Five-plus years in **frontend engineering** underpin how I operate today as a **Technical Project Manager**—owning timelines, clarity, and delivery without drifting from reality on the roadmap. I lead cross-functional execution across the **SDLC**, align executives and builders, and weave in **AI-driven** practices where they improve rigor—not replace judgment. As **Founder & Lead Developer** of **Techahartak.com**, I built an accessibility-minded platform for disability inclusion (**social impact**), scaling product, multilingual content, and community reach from zero to traction.'
+  '5+ years in **frontend engineering** underpin how I operate today as a **Technical Project Manager**—owning timelines, clarity, and delivery without drifting from reality on the roadmap. I lead cross-functional execution across the **SDLC**, align executives and builders, and weave in **AI-driven** practices where they improve rigor—not replace judgment. As **Founder & Lead Developer** of **Techahartak.com**, I built an accessibility-minded platform for disability inclusion (**social impact**), scaling product, multilingual content, and community reach from zero to traction.'
 
 const workRoles = [
   {
@@ -76,7 +73,7 @@ const workRoles = [
     title: 'Frontend Engineer',
     meta: 'Enterprise SaaS — engineering foundation',
     bullets: [
-      'Shipped high‑traffic SaaS features in **React** / **Next.js** / **TypeScript**—**WCAG‑minded**, measurable UX lift (**~15%** engagement uplift on key journeys).',
+      'Shipped high‑traffic SaaS features in **Angular** / **Next.js** / **TypeScript**—**WCAG‑minded**, measurable UX lift (**~15%** engagement uplift on key journeys).',
       'Collaborated tightly with PM, design, backend—requirements, slicing, demos, retros.',
       'Performance work—lazy loading & split bundles cut critical path latency (**~200ms** on representative routes).',
       'Mentored peers; raised review bar and reusable UI patterns (**~20%** efficiency gain cited on team tooling).',
@@ -89,7 +86,7 @@ function RichParagraph({ text, className }: { text: string; className?: string }
     <Paragraph className={className}>
       {text.split('**').map((chunk, i) =>
         i % 2 === 1 ? (
-          <strong key={i} style={{ color: '#f8fafc', fontWeight: 650 }}>
+          <strong key={i} className={styles.richStrong}>
             {chunk}
           </strong>
         ) : (
@@ -107,7 +104,7 @@ function RichBullet({ text }: { text: string }) {
       {parts.map((part, i) => {
         if (part.startsWith('**') && part.endsWith('**')) {
           return (
-            <strong key={i} style={{ color: '#e2e8f0', fontWeight: 600 }}>
+            <strong key={i} className={styles.richEmphasis}>
               {part.slice(2, -2)}
             </strong>
           )
@@ -199,48 +196,7 @@ export default function AboutPage() {
         </div>
       </Content>
 
-      <Footer className={homeStyles.footer} id="contact">
-        <div className={homeStyles.footerInner}>
-          <Row gutter={[16, 16]} className={homeStyles.footerRow}>
-            <Col xs={24} md={8}>
-              <Text className={homeStyles.footerCopy}>
-                © {new Date().getFullYear()} EH. All rights reserved.
-              </Text>
-            </Col>
-            <Col xs={24} md={8} className={homeStyles.footerLinks}>
-              <Space size="large" wrap>
-                <TextLink
-                  href={GITHUB_PORTFOLIO}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={homeStyles.footerLink}
-                >
-                  GITHUB
-                </TextLink>
-                <TextLink
-                  href={LINKEDIN_PROFILE}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={homeStyles.footerLink}
-                >
-                  LINKEDIN
-                </TextLink>
-                <TextLink
-                  href="https://techahartak.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className={homeStyles.footerLink}
-                >
-                  TECHAHARTAK
-                </TextLink>
-              </Space>
-            </Col>
-            <Col xs={24} md={8}>
-              <Text className={homeStyles.footerCredit}>MADE WITH REACT AND TYPESCRIPT</Text>
-            </Col>
-          </Row>
-        </div>
-      </Footer>
+      <SiteFooter />
     </>
   )
 }

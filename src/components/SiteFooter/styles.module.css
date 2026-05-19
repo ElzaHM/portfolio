@@ -1,0 +1,148 @@
+.footer {
+  padding-block: 1.5556rem;
+  padding-inline: 1.3333rem;
+  background: #14162a;
+  border-top: 0.0556rem solid rgba(255, 255, 255, 0.06);
+}
+
+.footerInner {
+  max-width: 75.5556rem;
+  margin-inline: auto;
+}
+
+.footerRow {
+  align-items: center;
+}
+
+.footerCopy {
+  color: #64748b;
+  font-size: 0.7222rem;
+}
+
+.footerLinks {
+  text-align: center;
+}
+
+.footerLink {
+  color: #94a3b8;
+  letter-spacing: 0.08em;
+  font-size: 0.6667rem;
+}
+
+.footerSocialCol {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.socialRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.socialIcon {
+  font-size: 1.25rem;
+  line-height: 1;
+  transition: inherit;
+}
+
+.socialFavicon {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  object-fit: contain;
+  transition: inherit;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  color: #cbd5e1;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.socialLink:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+.socialLink.github:hover {
+  color: #e2e8f0;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.socialLink.linkedin:hover {
+  color: #0ea5e9;
+  background: rgba(14, 165, 233, 0.12);
+}
+
+@media (max-width: 767px) {
+  .footerCopy,
+  .footerLinks,
+  .footerSocialCol {
+    text-align: center;
+  }
+
+  .footerSocialCol {
+    justify-content: center;
+  }
+
+  .socialRow {
+    justify-content: center;
+  }
+}
+
+:global(html[data-theme='light']) .footer {
+  background: var(--portfolio-bg-elevated);
+  border-top-color: var(--portfolio-border);
+}
+
+:global(html[data-theme='light']) .footerCopy {
+  color: var(--portfolio-text-subtle);
+}
+
+:global(html[data-theme='light']) .footerLink {
+  color: var(--portfolio-text-muted);
+}
+
+:global(html[data-theme='light']) .socialLink {
+  color: var(--portfolio-text-secondary, #3d4a5c);
+}
+
+:global(html[data-theme='light']) .socialLink.github:hover {
+  color: #1c2333;
+  background: rgba(28, 35, 51, 0.08);
+}
+
+:global(html[data-theme='light']) .socialLink.linkedin:hover {
+  color: #0077b5;
+  background: rgba(0, 119, 181, 0.1);
+}
+
+:global(html[data-theme='light']) .socialLink.techahartak:hover {
+  background: var(--portfolio-gold-muted, rgba(184, 146, 42, 0.14));
+}
+
+/* Dark mode: luminous brand colors on hover */
+:global(html:not([data-theme='light'])) .socialLink.github:hover,
+:global(html[data-theme='dark']) .socialLink.github:hover {
+  color: #f1f5f9;
+  background: rgba(241, 245, 249, 0.08);
+}
+
+:global(html:not([data-theme='light'])) .socialLink.linkedin:hover,
+:global(html[data-theme='dark']) .socialLink.linkedin:hover {
+  color: #0077b5;
+  background: rgba(0, 119, 181, 0.15);
+}
+
+:global(html:not([data-theme='light'])) .socialLink.techahartak:hover,
+:global(html[data-theme='dark']) .socialLink.techahartak:hover {
+  background: rgba(212, 175, 55, 0.14);
+}

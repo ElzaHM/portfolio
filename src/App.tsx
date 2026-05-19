@@ -1,6 +1,6 @@
 import { ConfigProvider } from 'antd'
 import { Route, Routes } from 'react-router-dom'
-import { appThemeConfig } from './appTheme'
+import { getAppThemeConfig } from './appTheme'
 import SiteShell from './layouts/SiteShell'
 import AboutPage from './pages/AboutPage'
 import ChatAssistantPage from './pages/ChatAssistantPage'
@@ -9,10 +9,13 @@ import ProjectStrategyLeadershipPage from './pages/ProjectStrategyLeadershipPage
 import TechnicalMasteryPage from './pages/TechnicalMasteryPage'
 import ContactPage from './pages/ContactPage'
 import DigitalTwinPage from './pages/DigitalTwinPage'
+import { ThemeProvider, useTheme } from './theme'
 
-export default function App() {
+function ThemedApp() {
+  const { theme } = useTheme()
+
   return (
-    <ConfigProvider theme={appThemeConfig}>
+    <ConfigProvider theme={getAppThemeConfig(theme)}>
       <Routes>
         <Route element={<SiteShell />}>
           <Route path="/" element={<HomePage />} />
@@ -25,5 +28,13 @@ export default function App() {
         </Route>
       </Routes>
     </ConfigProvider>
+  )
+}
+
+export default function App() {
+  return (
+    <ThemeProvider>
+      <ThemedApp />
+    </ThemeProvider>
   )
 }

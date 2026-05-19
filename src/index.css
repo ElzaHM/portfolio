@@ -3,38 +3,15 @@
   --ui-scale: 0.8;
   --layout-rem-base: 14.4px;
 
-  /* Portfolio: midnight navy + gold + amethyst/cyan glows */
-  --portfolio-bg-deep: #1a1c2c;
-  --portfolio-surface: #111827;
-  --portfolio-gold: #d4af37;
-  --portfolio-text-body: #ffffff;
-  --portfolio-text-muted: #94a3b8;
-  --portfolio-border: rgba(255, 255, 255, 0.06);
-
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
-  /* ~80% of prior 18/16 defaults so 100% browser zoom reads like previous 80% zoom */
   font-size: 14.4px;
   line-height: 1.45;
   font-family: var(--sans);
   letter-spacing: 0.15px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
+  color-scheme: dark;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -45,24 +22,127 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+/* —— Dark theme (default / Alabaster Executive counterpart) —— */
+:root,
+html[data-theme='dark'] {
+  --portfolio-bg-deep: #1a1c2c;
+  --portfolio-bg-elevated: #16182a;
+  --portfolio-surface: #111827;
+  --portfolio-surface-raised: #1a2035;
+  --portfolio-surface-sunken: #0d1018;
+  --portfolio-gold: #d4af37;
+  --portfolio-gold-hover: #e8c84c;
+  --portfolio-gold-active: #b8922a;
+  --portfolio-gold-muted: rgba(212, 175, 55, 0.14);
+  --portfolio-gold-muted-border: rgba(212, 175, 55, 0.35);
+  --portfolio-purple: #a78bfa;
+  --portfolio-purple-muted: rgba(139, 92, 246, 0.12);
+  --portfolio-cyan: #38bdf8;
+  --portfolio-text-body: #ffffff;
+  --portfolio-text-secondary: #e2e8f0;
+  --portfolio-text-muted: #94a3b8;
+  --portfolio-text-subtle: #64748b;
+  --portfolio-border: rgba(255, 255, 255, 0.06);
+  --portfolio-border-strong: rgba(255, 255, 255, 0.12);
+  --portfolio-shadow-sm: 0 0.0556rem 0.1111rem rgba(0, 0, 0, 0.2);
+  --portfolio-shadow-md: 0 0.4444rem 1.1111rem rgba(0, 0, 0, 0.35);
+  --portfolio-nav-bg: rgba(25, 28, 44, 0.75);
+  --portfolio-nav-border: rgba(255, 255, 255, 0.1);
+  --portfolio-atmosphere:
+    radial-gradient(ellipse 85% 60% at 0% -5%, rgba(139, 92, 246, 0.17) 0%, transparent 58%),
+    radial-gradient(ellipse 75% 55% at 100% 12%, rgba(56, 189, 248, 0.12) 0%, transparent 54%),
+    radial-gradient(ellipse 60% 50% at 92% 88%, rgba(103, 232, 249, 0.1) 0%, transparent 52%),
+    radial-gradient(ellipse 55% 45% at 8% 95%, rgba(167, 139, 250, 0.09) 0%, transparent 48%);
+  --hero-section-glow:
+    radial-gradient(ellipse 88% 65% at 4% -8%, rgba(139, 92, 246, 0.2) 0%, transparent 58%),
+    radial-gradient(ellipse 70% 55% at 100% 0%, rgba(34, 211, 238, 0.11) 0%, transparent 52%),
+    radial-gradient(ellipse 65% 50% at 100% 100%, rgba(103, 232, 249, 0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 0% 100%, rgba(167, 139, 250, 0.1) 0%, transparent 50%),
+    var(--portfolio-bg-deep);
+  --portfolio-hero-title-gradient: none;
+  --portfolio-hero-gold: var(--portfolio-gold);
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+  --text: #9ca3af;
+  --text-h: #f3f4f6;
+  --bg: #16171d;
+  --border: #2e303a;
+  --code-bg: #1f2028;
+  --accent: #c084fc;
+  --accent-bg: rgba(192, 132, 252, 0.15);
+  --accent-border: rgba(192, 132, 252, 0.5);
+  --social-bg: rgba(47, 48, 58, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+
+  color: var(--text);
+  background: var(--bg);
+}
+
+html[data-theme='dark'] #social .button-icon {
+  filter: invert(1) brightness(2);
+}
+
+/* —— Light theme: Alabaster Executive (pilot: Home + Digital Twin) —— */
+html[data-theme='light'] {
+  color-scheme: light;
+
+  --portfolio-bg-deep: #f4f1eb;
+  --portfolio-bg-elevated: #efebe4;
+  --portfolio-surface: #faf8f4;
+  --portfolio-surface-raised: #ffffff;
+  --portfolio-surface-sunken: #e8e4dc;
+  --portfolio-gold: #b8922a;
+  --portfolio-gold-hover: #c9a227;
+  --portfolio-gold-active: #9a7b1a;
+  --portfolio-gold-muted: rgba(184, 146, 42, 0.12);
+  --portfolio-gold-muted-border: rgba(184, 146, 42, 0.28);
+  --portfolio-purple: #6d28d9;
+  --portfolio-purple-muted: #ede9fe;
+  --portfolio-cyan: #0284c7;
+  --portfolio-text-body: #1c2333;
+  --portfolio-text-secondary: #3d4a5c;
+  --portfolio-text-muted: #5c6b7f;
+  --portfolio-text-subtle: #7a8799;
+  --portfolio-border: rgba(26, 32, 48, 0.08);
+  --portfolio-border-strong: rgba(26, 32, 48, 0.14);
+  --portfolio-shadow-sm:
+    0 0.0556rem 0.1111rem rgba(28, 35, 51, 0.04), 0 0.2222rem 0.6667rem rgba(28, 35, 51, 0.06);
+  --portfolio-shadow-md:
+    0 0.2222rem 0.8889rem rgba(28, 35, 51, 0.08), 0 0.6667rem 1.7778rem rgba(28, 35, 51, 0.06);
+  --portfolio-nav-bg: rgba(250, 248, 244, 0.72);
+  --portfolio-nav-border: rgba(26, 32, 48, 0.1);
+  --portfolio-atmosphere:
+    radial-gradient(ellipse 85% 60% at 0% -5%, rgba(139, 92, 246, 0.09) 0%, transparent 58%),
+    radial-gradient(ellipse 75% 55% at 100% 12%, rgba(56, 189, 248, 0.07) 0%, transparent 54%),
+    radial-gradient(ellipse 60% 50% at 92% 88%, rgba(212, 175, 55, 0.06) 0%, transparent 52%);
+  --hero-section-glow:
+    radial-gradient(ellipse 88% 65% at 4% -8%, rgba(139, 92, 246, 0.09) 0%, transparent 58%),
+    radial-gradient(ellipse 70% 55% at 100% 0%, rgba(56, 189, 248, 0.06) 0%, transparent 52%),
+    radial-gradient(ellipse 65% 50% at 100% 100%, rgba(212, 175, 55, 0.05) 0%, transparent 55%),
+    var(--portfolio-bg-deep);
+  --portfolio-hero-title-gradient: linear-gradient(
+    92deg,
+    #1c2333 0%,
+    #5c4a1f 35%,
+    #9a7b1a 70%,
+    #b8922a 100%
+  );
+  --portfolio-hero-gold: #9a7b1a;
+
+  --text: #5c6b7f;
+  --text-h: #1c2333;
+  --bg: #f4f1eb;
+  --border: rgba(26, 32, 48, 0.12);
+  --code-bg: #e8e4dc;
+  --accent: #6d28d9;
+  --accent-bg: rgba(109, 40, 217, 0.1);
+  --accent-border: rgba(109, 40, 217, 0.35);
+  --social-bg: rgba(250, 248, 244, 0.6);
+  --shadow:
+    rgba(28, 35, 51, 0.08) 0 10px 15px -3px, rgba(28, 35, 51, 0.05) 0 4px 6px -2px;
+
+  color: var(--text);
+  background: var(--bg);
 }
 
 #root {

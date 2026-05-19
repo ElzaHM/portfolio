@@ -19,28 +19,7 @@
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background:
-    radial-gradient(
-      ellipse 88% 65% at 4% -8%,
-      rgba(139, 92, 246, 0.2) 0%,
-      transparent 58%
-    ),
-    radial-gradient(
-      ellipse 70% 55% at 100% 0%,
-      rgba(34, 211, 238, 0.11) 0%,
-      transparent 52%
-    ),
-    radial-gradient(
-      ellipse 65% 50% at 100% 100%,
-      rgba(103, 232, 249, 0.12) 0%,
-      transparent 55%
-    ),
-    radial-gradient(
-      ellipse 50% 40% at 0% 100%,
-      rgba(167, 139, 250, 0.1) 0%,
-      transparent 50%
-    ),
-    var(--portfolio-bg-deep, #1a1c2c);
+  background: var(--hero-section-glow);
 }
 
 .inner {
@@ -430,3 +409,70 @@
   }
 }
 
+/* —— Light: Alabaster Executive (Home hero pilot) —— */
+:global(html[data-theme='light']) .heroTitle:global(.ant-typography) {
+  color: var(--portfolio-text-body) !important;
+}
+
+:global(html[data-theme='light']) .heroTitleWhite {
+  color: var(--portfolio-text-body);
+}
+
+:global(html[data-theme='light']) .heroTitleGray {
+  color: var(--portfolio-text-muted);
+}
+
+:global(html[data-theme='light']) .heroTitleGold {
+  background: var(--portfolio-hero-title-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+:global(html[data-theme='light']) .lead {
+  color: var(--portfolio-text-secondary);
+}
+
+:global(html[data-theme='light']) .ctaPortfolio {
+  color: var(--portfolio-text-body);
+  border-color: var(--portfolio-border-strong);
+}
+
+:global(html[data-theme='light']) .ctaPortfolio:hover {
+  color: var(--portfolio-text-body);
+  border-color: var(--portfolio-gold);
+  background: var(--portfolio-gold-muted);
+}
+
+:global(html[data-theme='light']) .avatarRing {
+  box-shadow: var(--portfolio-shadow-md);
+}
+
+:global(html[data-theme='light']) .glassCardAnchor:hover .glassCardInteractive,
+:global(html[data-theme='light']) .glassCardAnchor:focus-visible .glassCardInteractive {
+  background: var(--portfolio-surface-raised);
+  border-color: var(--portfolio-gold-muted-border);
+  box-shadow: var(--portfolio-shadow-md);
+}
+
+:global(html[data-theme='light']) .cardTitle:global(.ant-typography) {
+  color: var(--portfolio-text-body) !important;
+}
+
+:global(html[data-theme='light']) .cardBadge {
+  color: var(--portfolio-cyan);
+  border-color: rgba(2, 132, 199, 0.35);
+  background: var(--portfolio-surface-raised);
+}
+
+:global(html[data-theme='light']) .cardLinkEngineering {
+  color: var(--portfolio-purple);
+}
+
+:global(html[data-theme='light']) .cardLinkVenture {
+  color: var(--portfolio-cyan);
+}
+
+:global(html[data-theme='light']) .cardLinkLead {
+  color: var(--portfolio-gold);
+}

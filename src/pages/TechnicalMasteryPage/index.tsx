@@ -5,7 +5,6 @@ import {
   Col,
   Layout,
   Row,
-  Space,
   Tag,
   Typography,
 } from 'antd'
@@ -13,18 +12,16 @@ import { ThunderboltOutlined } from '@ant-design/icons'
 import { type LucideIcon, Award, Layers, RefreshCw, ShieldCheck, Sparkles, UsersRound } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import certificateSrc from '../../assets/Certificate.png'
+import SiteFooter from '../../components/SiteFooter'
 import homeStyles from '../HomePage/styles.module.css'
-import pillarStyles from '../ProjectStrategyLeadershipPage/styles.module.css'
 import styles from './styles.module.css'
 
-const { Content, Footer } = Layout
-const { Title, Paragraph, Text } = Typography
-
-const GITHUB_PORTFOLIO = 'https://github.com/ElzaHM/portfolio'
+const { Content } = Layout
+const { Title, Paragraph } = Typography
 
 function LastUpdatedBadge() {
   return (
-    <Tag color="default" className={homeStyles.metaTag}>
+    <Tag color="default" className={styles.metaTag}>
       LAST UPDATED: 05 2026
     </Tag>
   )
@@ -58,7 +55,7 @@ const techArsenal: TechCardConfig[] = [
     description:
       'Enterprise modules, RxJS flows, and a11y-minded templates.',
     avatar: 'NG',
-    avatarClass: homeStyles.techAvatarNg,
+    avatarClass: styles.techBadgeNg,
     tags: ['NX', 'RXJS', 'A11Y'],
   },
   {
@@ -68,7 +65,7 @@ const techArsenal: TechCardConfig[] = [
     description:
       'Merging low-code speed with custom code logic and high-end accessibility.',
     avatar: 'WF',
-    avatarClass: homeStyles.techAvatarWebflow,
+    avatarClass: styles.techBadgeWebflow,
     tags: ['CMS', 'CUSTOM', 'A11Y'],
   },
   {
@@ -77,7 +74,7 @@ const techArsenal: TechCardConfig[] = [
     title: 'TypeScript',
     description: 'Strict typing and shared contracts.',
     avatar: 'TS',
-    avatarClass: homeStyles.techAvatarTs,
+    avatarClass: styles.techBadgeTs,
     tags: ['ESLINT', 'CONTRACTS'],
   },
   {
@@ -86,7 +83,7 @@ const techArsenal: TechCardConfig[] = [
     title: 'Model APIs',
     description: 'LLM features, structured outputs.',
     avatar: 'LLM',
-    avatarClass: homeStyles.techAvatarAi,
+    avatarClass: styles.techBadgeAi,
     tags: ['TOOLS', 'STREAMING'],
   },
   {
@@ -102,7 +99,7 @@ const techArsenal: TechCardConfig[] = [
     title: 'Vite & Tooling',
     description: 'Fast dev loops and CI-friendly pipelines.',
     avatar: 'VT',
-    avatarClass: homeStyles.techAvatarVite,
+    avatarClass: styles.techBadgeVite,
     tags: ['VITE', 'CI', 'ESBUILD'],
   },
 ]
@@ -136,7 +133,7 @@ const strategicLeadershipStack: StrategicCard[] = [
     title: 'Delivery Architecture',
     description: 'Translating complex visions into scalable roadmaps.',
     Icon: Layers,
-    badgeClass: pillarStyles.pillarBadgeDelivery,
+    badgeClass: styles.strategicBadgeDelivery,
     tags: ['SDLC', 'STRATEGY'],
   },
   {
@@ -146,7 +143,7 @@ const strategicLeadershipStack: StrategicCard[] = [
     description:
       'Orchestrating cycles using Scrum, Kanban, and Lean principles.',
     Icon: RefreshCw,
-    badgeClass: pillarStyles.pillarBadgeAgile,
+    badgeClass: styles.strategicBadgeAgile,
     tags: ['SCRUM', 'KANBAN'],
   },
   {
@@ -156,7 +153,7 @@ const strategicLeadershipStack: StrategicCard[] = [
     description:
       'Human-centric design and accessibility focus (techahartak.com).',
     Icon: Sparkles,
-    badgeClass: pillarStyles.pillarBadgeVision,
+    badgeClass: styles.strategicBadgeVision,
     tags: ['IMPACT', 'VISION'],
   },
   {
@@ -166,7 +163,7 @@ const strategicLeadershipStack: StrategicCard[] = [
     description:
       'Proactive mitigation and enterprise stability.',
     Icon: ShieldCheck,
-    badgeClass: pillarStyles.pillarBadgeRisk,
+    badgeClass: styles.strategicBadgeRisk,
     tags: ['QA', 'RISK'],
   },
   {
@@ -176,7 +173,7 @@ const strategicLeadershipStack: StrategicCard[] = [
     description:
       'Bridging business goals and engineering execution.',
     Icon: UsersRound,
-    badgeClass: pillarStyles.pillarBadgeStakeholder,
+    badgeClass: styles.strategicBadgeStakeholder,
     tags: ['LEADERSHIP', 'STAKEHOLDER'],
   },
   {
@@ -186,7 +183,7 @@ const strategicLeadershipStack: StrategicCard[] = [
     description:
       'Professional PM Certification: Click to view the official certification in Project Management and Strategic Delivery.',
     Icon: Award,
-    badgeClass: pillarStyles.pillarBadgeCert,
+    badgeClass: styles.strategicBadgeCert,
     tags: ['CREDENTIAL', 'PM'],
   },
 ]
@@ -201,7 +198,7 @@ function StrategicPillarBadge({
   label: string
 }) {
   return (
-    <span className={`${pillarStyles.pillarBadge} ${className}`}>
+    <span className={`${styles.strategicBadge} ${className}`}>
       <Icon size={14} strokeWidth={2} aria-hidden />
       <span className="sr-only">{label}</span>
     </span>
@@ -235,7 +232,7 @@ export default function TechnicalMasteryPage() {
 
           <section className={homeStyles.section} aria-labelledby="engineering-arsenal-title">
             <div className={`${homeStyles.sectionHeadingRow} ${styles.strategicPrimaryHeadRow}`}>
-              <Title level={2} className={homeStyles.sectionTitle} id="engineering-arsenal-title">
+              <Title level={2} className={styles.sectionHeading} id="engineering-arsenal-title">
                 Engineering Arsenal
               </Title>
               <LastUpdatedBadge />
@@ -243,26 +240,28 @@ export default function TechnicalMasteryPage() {
             <Row gutter={[24, 24]}>
               {techArsenal.map((item) => (
                 <Col xs={24} sm={12} lg={8} key={item.key}>
-                  <Card className={homeStyles.techCard}>
+                  <Card className={styles.categoryCard}>
                     {item.variant === 'performance' ? (
-                      <span className={homeStyles.perfIconWrap}>
+                      <span className={styles.perfBadge}>
                         <ThunderboltOutlined />
                       </span>
                     ) : (
                       <Avatar
                         size={40}
-                        className={`${homeStyles.techAvatar} ${item.avatarClass}`}
+                        className={`${styles.techBadge} ${item.avatarClass}`}
                       >
                         {item.avatar}
                       </Avatar>
                     )}
-                    <Title level={4} className={homeStyles.sectionTitle}>
+                    <Title level={4} className={styles.cardHeading}>
                       {item.title}
                     </Title>
-                    <Paragraph className={homeStyles.techDesc}>{item.description}</Paragraph>
-                    <div className={homeStyles.tagRow}>
+                    <Paragraph className={styles.cardDesc}>{item.description}</Paragraph>
+                    <div className={styles.tagRow}>
                       {item.tags.map((tag) => (
-                        <Tag key={tag}>{tag}</Tag>
+                        <Tag key={tag} className={styles.skillTag}>
+                          {tag}
+                        </Tag>
                       ))}
                     </div>
                   </Card>
@@ -272,10 +271,9 @@ export default function TechnicalMasteryPage() {
           </section>
 
           <section
-            className={homeStyles.section}
+            className={`${homeStyles.section} ${styles.leadershipSection}`}
             aria-labelledby="strategic-leadership-stack-heading"
           >
-            
             <div
               className={`${homeStyles.sectionHeadingRow} ${styles.managementPillarRow}`}
             >
@@ -293,22 +291,22 @@ export default function TechnicalMasteryPage() {
                         href={certificateSrc}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={pillarStyles.certCardAnchor}
+                        className={styles.certCardAnchor}
                         aria-label="Open Professional PM certification image in a new tab"
                       >
-                        <Card className={`${homeStyles.techCard} ${pillarStyles.certCard}`}>
+                        <Card className={`${styles.categoryCard} ${styles.certCard}`}>
                           <StrategicPillarBadge
                             Icon={pillar.Icon}
                             className={pillar.badgeClass}
                             label={pillar.title}
                           />
-                          <Title level={4} className={homeStyles.sectionTitle}>
+                          <Title level={4} className={styles.cardHeading}>
                             {pillar.title}
                           </Title>
-                          <Paragraph className={homeStyles.techDesc}>{pillar.description}</Paragraph>
-                          <div className={homeStyles.tagRow}>
-                            <Tag>{pillar.tags[0]}</Tag>
-                            <Tag>{pillar.tags[1]}</Tag>
+                          <Paragraph className={styles.cardDesc}>{pillar.description}</Paragraph>
+                          <div className={styles.tagRow}>
+                            <Tag className={styles.skillTag}>{pillar.tags[0]}</Tag>
+                            <Tag className={styles.skillTag}>{pillar.tags[1]}</Tag>
                           </div>
                         </Card>
                       </a>
@@ -318,19 +316,19 @@ export default function TechnicalMasteryPage() {
 
                 return (
                   <Col xs={24} sm={12} lg={8} key={pillar.key}>
-                    <Card className={homeStyles.techCard}>
+                    <Card className={styles.categoryCard}>
                       <StrategicPillarBadge
                         Icon={pillar.Icon}
                         className={pillar.badgeClass}
                         label={pillar.title}
                       />
-                      <Title level={4} className={homeStyles.sectionTitle}>
+                      <Title level={4} className={styles.cardHeading}>
                         {pillar.title}
                       </Title>
-                      <Paragraph className={homeStyles.techDesc}>{pillar.description}</Paragraph>
-                      <div className={homeStyles.tagRow}>
-                        <Tag>{pillar.tags[0]}</Tag>
-                        <Tag>{pillar.tags[1]}</Tag>
+                      <Paragraph className={styles.cardDesc}>{pillar.description}</Paragraph>
+                      <div className={styles.tagRow}>
+                        <Tag className={styles.skillTag}>{pillar.tags[0]}</Tag>
+                        <Tag className={styles.skillTag}>{pillar.tags[1]}</Tag>
                       </div>
                     </Card>
                   </Col>
@@ -341,45 +339,7 @@ export default function TechnicalMasteryPage() {
         </div>
       </Content>
 
-      <Footer className={homeStyles.footer} id="contact">
-        <div className={homeStyles.footerInner}>
-          <Row gutter={[16, 16]} className={homeStyles.footerRow}>
-            <Col xs={24} md={8}>
-              <Text className={homeStyles.footerCopy}>
-                © {new Date().getFullYear()} EH. All rights reserved.
-              </Text>
-            </Col>
-            <Col xs={24} md={8} className={homeStyles.footerLinks}>
-              <Space size="large" wrap>
-                <Typography.Link
-                  href={GITHUB_PORTFOLIO}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={homeStyles.footerLink}
-                >
-                  GITHUB
-                </Typography.Link>
-                <Typography.Link
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className={homeStyles.footerLink}
-                >
-                  LINKEDIN
-                </Typography.Link>
-                <Typography.Link
-                  href="https://techahartak.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className={homeStyles.footerLink}
-                >
-                  TECHAHARTAK
-                </Typography.Link>
-              </Space>
-            </Col>
-          </Row>
-        </div>
-      </Footer>
+      <SiteFooter />
     </>
   )
 }

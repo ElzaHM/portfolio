@@ -11,6 +11,7 @@ import {
   IconUser,
   IconX,
 } from '../NavThinIcons'
+import ThemeToggle from '../ThemeToggle'
 import styles from '../../pages/HomePage/styles.module.css'
 
 const { Header } = Layout
@@ -69,6 +70,7 @@ export default function SiteHeader() {
                     {label}
                   </Link>
                 ))}
+                <ThemeToggle />
               </div>
             </nav>
           ) : (
@@ -78,6 +80,7 @@ export default function SiteHeader() {
                   <span className={styles.monogramEh}>EH</span>
                 </span>
               </Link>
+              <ThemeToggle />
               <Button
                 type="text"
                 className={styles.menuTrigger}

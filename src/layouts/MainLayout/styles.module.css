@@ -5,26 +5,5 @@
   position: relative;
   isolation: isolate;
   background-color: var(--portfolio-bg-deep, #1a1c2c);
-  /* Soft amethyst → soft cyan atmosphere */
-  background-image:
-    radial-gradient(
-      ellipse 85% 60% at 0% -5%,
-      rgba(139, 92, 246, 0.17) 0%,
-      transparent 58%
-    ),
-    radial-gradient(
-      ellipse 75% 55% at 100% 12%,
-      rgba(56, 189, 248, 0.12) 0%,
-      transparent 54%
-    ),
-    radial-gradient(
-      ellipse 60% 50% at 92% 88%,
-      rgba(103, 232, 249, 0.1) 0%,
-      transparent 52%
-    ),
-    radial-gradient(
-      ellipse 55% 45% at 8% 95%,
-      rgba(167, 139, 250, 0.09) 0%,
-      transparent 48%
-    );
+  background-image: var(--portfolio-atmosphere);
 }

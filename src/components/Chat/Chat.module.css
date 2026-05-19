@@ -210,10 +210,26 @@
   margin-bottom: 0;
 }
 
-.aiBubble :global(pre),
+.aiBubble :global(pre) {
+  margin: 0.5em 0;
+  padding: 0.6111rem 0.7778rem;
+  border-radius: 0.5556rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: rgba(0, 0, 0, 0.35);
+  border: 0.0556rem solid rgba(255, 255, 255, 0.06);
+}
+
 .aiBubble :global(code) {
   white-space: pre-wrap;
   word-break: break-word;
+}
+
+.aiBubble :global(:not(pre) > code) {
+  padding: 0.1111rem 0.3333rem;
+  border-radius: 0.2778rem;
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 0.9em;
 }
 
 .inputSection {
@@ -339,3 +355,122 @@
   }
 }
 
+/* —— Light: Alabaster Executive (Chat) —— */
+:global(html[data-theme='light']) .chatCard {
+  border-color: transparent !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+:global(html[data-theme='light']) .title:global(.ant-typography) {
+  color: var(--portfolio-text-body) !important;
+}
+
+:global(html[data-theme='light']) .headerDivider {
+  background: linear-gradient(
+    90deg,
+    var(--portfolio-gold-muted-border) 0%,
+    var(--portfolio-border) 55%,
+    transparent 100%
+  );
+}
+
+:global(html[data-theme='light']) .messages::-webkit-scrollbar-thumb {
+  background: var(--portfolio-border-strong);
+}
+
+:global(html[data-theme='light']) .userBubble {
+  border: 0.0556rem solid rgba(184, 146, 42, 0.2);
+  background: rgba(184, 146, 42, 0.08);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+  color: var(--portfolio-text-body);
+}
+
+:global(html[data-theme='light']) .aiBubble {
+  border: 0.0556rem solid var(--portfolio-border);
+  background: var(--portfolio-surface-sunken);
+  color: var(--portfolio-text-body);
+  line-height: 1.55;
+}
+
+:global(html[data-theme='light']) .aiBubble :global(pre) {
+  background: var(--portfolio-surface-raised);
+  border: 0.0556rem solid var(--portfolio-border);
+  color: var(--portfolio-text-secondary);
+}
+
+:global(html[data-theme='light']) .aiBubble :global(:not(pre) > code) {
+  background: var(--portfolio-purple-muted);
+  color: var(--portfolio-purple);
+}
+
+:global(html[data-theme='light']) .typingDots {
+  color: var(--portfolio-text-muted);
+}
+
+:global(html[data-theme='light']) .headerAvatar {
+  background: var(--portfolio-purple-muted) !important;
+  border: 0.0556rem solid rgba(109, 40, 217, 0.16);
+  box-shadow: var(--portfolio-shadow-sm);
+}
+
+:global(html[data-theme='light']) .headerAvatar :global(.anticon) {
+  color: var(--portfolio-purple);
+}
+
+:global(html[data-theme='light']) .userAvatar {
+  background: var(--portfolio-surface-sunken) !important;
+  border-color: var(--portfolio-border);
+}
+
+:global(html[data-theme='light']) .userAvatar :global(.anticon) {
+  color: var(--portfolio-text-secondary);
+}
+
+:global(html[data-theme='light']) .textarea :global(textarea.ant-input) {
+  color: var(--portfolio-text-body);
+  background: var(--portfolio-surface-raised);
+  border-color: var(--portfolio-border-strong);
+  box-shadow: var(--portfolio-shadow-sm);
+}
+
+:global(html[data-theme='light']) .textarea :global(textarea.ant-input::placeholder) {
+  color: var(--portfolio-text-subtle);
+}
+
+:global(html[data-theme='light']) .textarea :global(textarea.ant-input:focus),
+:global(html[data-theme='light']) .textarea :global(textarea.ant-input-focused) {
+  border-color: var(--portfolio-border-strong) !important;
+  box-shadow:
+    var(--portfolio-shadow-sm),
+    0 0 0 0.1111rem var(--portfolio-gold-muted) !important;
+}
+
+:global(html[data-theme='light']) .sendButton:global(.ant-btn-primary) {
+  background: linear-gradient(
+    135deg,
+    var(--portfolio-gold-active) 0%,
+    var(--portfolio-gold) 52%,
+    var(--portfolio-gold-hover) 100%
+  ) !important;
+  border-color: var(--portfolio-gold-muted-border) !important;
+  color: var(--portfolio-text-body) !important;
+}
+
+:global(html[data-theme='light']) .sendButton:global(.ant-btn-primary):hover {
+  transform: translateY(-0.0556rem);
+  box-shadow: var(--portfolio-shadow-md);
+  filter: brightness(1.03);
+}
+
+:global(html[data-theme='light']) .disclaimer {
+  border-top-color: var(--portfolio-border);
+  color: var(--portfolio-text-muted);
+  opacity: 1;
+}
+
+:global(html[data-theme='light']) .disclaimerIcon {
+  color: var(--portfolio-text-muted);
+}

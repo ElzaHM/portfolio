@@ -1,9 +1,9 @@
-import { Col, Layout, Row, Space, Typography } from 'antd'
+import { Layout } from 'antd'
 import HeroSection from '../../components/HeroSection'
+import SiteFooter from '../../components/SiteFooter'
 import styles from './styles.module.css'
 
-const { Content, Footer } = Layout
-const { Text } = Typography
+const { Content } = Layout
 
 export default function HomePage() {
   return (
@@ -50,45 +50,7 @@ export default function HomePage() {
           </div>
       </Content>
 
-      <Footer className={styles.footer} id="contact">
-        <div className={styles.footerInner}>
-          <Row gutter={[16, 16]} className={styles.footerRow}>
-            <Col xs={24} md={8}>
-              <Text className={styles.footerCopy}>
-                © {new Date().getFullYear()} EH. All rights reserved.
-              </Text>
-            </Col>
-            <Col xs={24} md={8} className={styles.footerLinks}>
-              <Space size="large" wrap>
-                <Typography.Link
-                  href="https://github.com/ElzaHM/portfolio"
-                  target="_blank"
-                  rel="noreferrer"
-                  className={styles.footerLink}
-                >
-                  GITHUB
-                </Typography.Link>
-                <Typography.Link
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className={styles.footerLink}
-                >
-                  LINKEDIN
-                </Typography.Link>
-                <Typography.Link
-                  href="https://techahartak.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className={styles.footerLink}
-                >
-                  TECHAHARTAK
-                </Typography.Link>
-              </Space>
-            </Col>
-          </Row>
-        </div>
-      </Footer>
+      <SiteFooter />
     </>
   )
 }

@@ -1,16 +1,15 @@
 import { useEffect } from 'react'
-import { Card, Col, Layout, Row, Space, Tag, Typography } from 'antd'
+import { Card, Col, Layout, Row, Tag, Typography } from 'antd'
 import { type LucideIcon, Award, Layers, RefreshCw, ShieldCheck, Sparkles, UsersRound } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import certificateSrc from '../../assets/Certificate.png'
+import SiteFooter from '../../components/SiteFooter'
 import homeStyles from '../HomePage/styles.module.css'
 import tmStyles from '../TechnicalMasteryPage/styles.module.css'
 import styles from './styles.module.css'
 
-const { Content, Footer } = Layout
-const { Title, Paragraph, Text } = Typography
-
-const GITHUB_PORTFOLIO = 'https://github.com/ElzaHM/portfolio'
+const { Content } = Layout
+const { Title, Paragraph } = Typography
 
 type StandardPillar = {
   key: string
@@ -205,45 +204,7 @@ export default function ProjectStrategyLeadershipPage() {
         </div>
       </Content>
 
-      <Footer className={homeStyles.footer} id="contact">
-        <div className={homeStyles.footerInner}>
-          <Row gutter={[16, 16]} className={homeStyles.footerRow}>
-            <Col xs={24} md={8}>
-              <Text className={homeStyles.footerCopy}>
-                © {new Date().getFullYear()} EH. All rights reserved.
-              </Text>
-            </Col>
-            <Col xs={24} md={8} className={homeStyles.footerLinks}>
-              <Space size="large" wrap>
-                <Typography.Link
-                  href={GITHUB_PORTFOLIO}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={homeStyles.footerLink}
-                >
-                  GITHUB
-                </Typography.Link>
-                <Typography.Link
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className={homeStyles.footerLink}
-                >
-                  LINKEDIN
-                </Typography.Link>
-                <Typography.Link
-                  href="https://techahartak.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className={homeStyles.footerLink}
-                >
-                  TECHAHARTAK
-                </Typography.Link>
-              </Space>
-            </Col>
-          </Row>
-        </div>
-      </Footer>
+      <SiteFooter />
     </>
   )
 }

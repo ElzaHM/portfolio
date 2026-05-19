@@ -28,11 +28,14 @@
   margin: 0 auto;
   text-align: center;
   color: #94a3b8;
-  font-size: 0.8333rem;
-  line-height: 1.65;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
 .virtualShowcase {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 2.5vw, 1.75rem);
   width: 100%;
   max-width: 53.3333rem;
   margin-inline: auto;
@@ -82,14 +85,21 @@
   aspect-ratio: 16 / 10;
   max-height: min(23.3333rem, 48svh);
   border-radius: 1.1111rem;
-  border: 0.0556rem solid rgba(255, 255, 255, 0.08);
-  background: #0d1018;
+  border: 0.0556rem solid var(--portfolio-border-strong, rgba(255, 255, 255, 0.08));
+  background: var(--portfolio-surface-sunken, #0d1018);
   line-height: 0;
   box-shadow:
     inset 0 0 0 0.0556rem rgba(255, 255, 255, 0.03),
     inset 0 0.1111rem 2.6667rem rgba(0, 0, 0, 0.55),
     0 0.8889rem 2.3333rem rgba(0, 0, 0, 0.45),
     0 0 2.2222rem rgba(88, 28, 135, 0.12);
+  /* Overlay opacities — light theme overrides ~30% softer */
+  --dt-ov-r-a: rgba(12, 18, 34, 0.15);
+  --dt-ov-r-b: rgba(6, 10, 22, 0.55);
+  --dt-ov-r-c: rgba(2, 5, 14, 0.88);
+  --dt-ov-l-a: rgba(4, 8, 18, 0.65);
+  --dt-ov-l-b: rgba(6, 10, 22, 0.35);
+  --dt-ov-l-c: rgba(3, 6, 14, 0.82);
 }
 
 .virtualImage {
@@ -138,16 +148,11 @@
   background:
     radial-gradient(
       ellipse 75% 65% at 50% 42%,
-      rgba(12, 18, 34, 0.15) 0%,
-      rgba(6, 10, 22, 0.55) 52%,
-      rgba(2, 5, 14, 0.88) 100%
+      var(--dt-ov-r-a) 0%,
+      var(--dt-ov-r-b) 52%,
+      var(--dt-ov-r-c) 100%
     ),
-    linear-gradient(
-      165deg,
-      rgba(4, 8, 18, 0.65) 0%,
-      rgba(6, 10, 22, 0.35) 50%,
-      rgba(3, 6, 14, 0.82) 100%
-    );
+    linear-gradient(165deg, var(--dt-ov-l-a) 0%, var(--dt-ov-l-b) 50%, var(--dt-ov-l-c) 100%);
 }
 
 .virtualPlay {
@@ -273,13 +278,13 @@
   animation-delay: 0.24s;
 }
 
-.virtualRightCol {
+.virtualIntroCol {
   display: flex;
   flex-direction: column;
   gap: 0;
-  max-width: 28.8889rem;
-  margin-inline: auto;
   width: 100%;
+  max-width: none;
+  margin-inline: 0;
 }
 
 .virtualMainTitle {
@@ -299,20 +304,23 @@
 }
 
 .virtualLead {
-  max-width: 28.8889rem;
-  margin: 0 0 1.3333rem;
+  max-width: none;
+  margin: 0;
   color: #94a3b8;
-  font-size: 0.7778rem;
+  font-size: 15px;
   line-height: 1.6;
 }
 
-.featureStack {
-  display: flex;
-  flex-direction: column;
-  gap: 0.7778rem;
+.featureCardsRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  width: 100%;
 }
 
 .featureCard {
+  width: 100%;
+  min-width: 0;
   background: #111827;
   border: 0.0556rem solid rgba(255, 255, 255, 0.08);
   border-radius: 0.8889rem;
@@ -375,8 +383,8 @@
 .featureCardDesc {
   margin: 0;
   color: #94a3b8;
-  font-size: 0.7222rem;
-  line-height: 1.45;
+  font-size: 14px;
+  line-height: 1.55;
 }
 
 .featureIcon {
@@ -385,11 +393,43 @@
 }
 
 .dialogueSection {
-  margin-top: clamp(1rem, 2vw, 1.35rem);
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.7778rem;
+}
+
+/* Chat transcript */
+.userBubble {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.6667rem 0.8333rem;
+  border-radius: 0.7778rem;
+  border: 0.0556rem solid var(--portfolio-gold-muted-border, rgba(212, 175, 55, 0.28));
+  background: linear-gradient(
+    145deg,
+    var(--portfolio-gold-muted, rgba(212, 175, 55, 0.14)) 0%,
+    rgba(212, 175, 55, 0.06) 100%
+  );
+  box-shadow: var(--portfolio-shadow-sm, 0 0.0556rem 0.1111rem rgba(0, 0, 0, 0.2));
+}
+
+.transcriptLabel {
+  display: block;
+  margin-bottom: 0.3333rem;
+  font-size: 0.5556rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--portfolio-gold, #d4af37);
+}
+
+.transcriptText {
+  margin: 0;
+  color: var(--portfolio-text-body, #f8fafc);
+  font-size: 15.5px;
+  font-weight: 400;
+  line-height: 1.6;
 }
 
 .twinReplyCard {
@@ -414,11 +454,11 @@
 
 .twinReplyChip {
   display: inline-block;
-  padding: 0.1667rem 0.4444rem;
-  border-radius: 0.2778rem;
-  font-size: 0.5556rem;
+  padding: 0.25rem 0.5556rem;
+  border-radius: 0.3333rem;
+  font-size: 14px;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: rgba(26, 28, 44, 0.95);
   background: linear-gradient(135deg, #e8c84c 0%, #d4af37 55%, #b8922a 100%);
@@ -427,8 +467,9 @@
 .twinReplyBody {
   min-height: 2.25rem;
   color: #e2e8f0;
-  font-size: 0.7778rem;
-  line-height: 1.62;
+  font-size: 15.5px;
+  font-weight: 400;
+  line-height: 1.6;
 }
 
 .twinReplyLoading {
@@ -439,8 +480,13 @@
 }
 
 .twinReplyLoadingLabel {
-  font-size: 0.7222rem;
+  font-size: 14px;
   letter-spacing: 0.04em;
+}
+
+.twinReplyMarkdown {
+  font-size: inherit;
+  line-height: inherit;
 }
 
 .twinReplyMarkdown :global(p) {
@@ -495,14 +541,14 @@
 
 .dialogueTextarea :global(textarea.ant-input) {
   resize: vertical;
-  min-height: 4.4444rem !important;
-  padding: 0.6111rem 0.7222rem !important;
+  min-height: 4.8889rem !important;
+  padding: 0.6667rem 0.7778rem !important;
   border-radius: 0.6111rem !important;
   border: 0.0556rem solid rgba(255, 255, 255, 0.1) !important;
   background: rgba(10, 11, 22, 0.85) !important;
   color: #f1f5f9 !important;
-  font-size: 0.7778rem !important;
-  line-height: 1.5 !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
 }
 
 .dialogueTextarea :global(textarea.ant-input::placeholder) {
@@ -526,16 +572,18 @@
 
 .dialogueHint {
   margin: 0 !important;
-  font-size: 0.6111rem !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
   letter-spacing: 0.02em;
 }
 
 .dialogueSend:global(.ant-btn) {
   border-radius: 0.5556rem !important;
+  font-size: 14px !important;
   font-weight: 600 !important;
   padding-inline: 1rem !important;
   height: auto !important;
-  min-height: 2rem !important;
+  min-height: 2.2222rem !important;
   background: linear-gradient(135deg, #8f7020 0%, #d4af37 52%, #b8922a 100%) !important;
   border-color: rgba(212, 175, 55, 0.55) !important;
   color: #1a1c2c !important;
@@ -544,6 +592,14 @@
 .dialogueSend:global(.ant-btn):hover {
   color: #1a1c2c !important;
   filter: brightness(1.05);
+}
+
+@media (max-width: 768px) {
+  .featureCardsRow {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
 }
 
 @media (max-width: 991px) {
@@ -556,7 +612,7 @@
     margin-inline: auto;
   }
 
-  .virtualRightCol {
+  .virtualIntroCol {
     align-items: center;
     text-align: center;
   }
@@ -603,4 +659,149 @@
   50% {
     transform: scaleY(1);
   }
+}
+
+/* —— Light: Alabaster Executive (Digital Twin) —— */
+:global(html[data-theme='light']) .twinTitle:global(.ant-typography) {
+  color: var(--portfolio-text-body) !important;
+}
+
+:global(html[data-theme='light']) .twinIntro,
+:global(html[data-theme='light']) .virtualLead,
+:global(html[data-theme='light']) .featureCardDesc,
+:global(html[data-theme='light']) .twinReplyLoading,
+:global(html[data-theme='light']) .twinReplyLoadingLabel,
+:global(html[data-theme='light']) .virtualLiveFeed,
+:global(html[data-theme='light']) .dialogueHint {
+  color: var(--portfolio-text-secondary) !important;
+}
+
+:global(html[data-theme='light']) .virtualSection {
+  border-top-color: var(--portfolio-border);
+  border-bottom-color: var(--portfolio-border);
+  background:
+    radial-gradient(ellipse 95% 70% at 12% -10%, rgba(109, 40, 217, 0.08), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 88% 60%, rgba(184, 146, 42, 0.08), transparent 52%),
+    var(--portfolio-bg-deep);
+}
+
+:global(html[data-theme='light']) .virtualSection::before {
+  opacity: 0.12;
+}
+
+:global(html[data-theme='light']) .virtualMediaWrap {
+  border-color: var(--portfolio-border);
+  background: var(--portfolio-surface-sunken);
+  box-shadow: var(--portfolio-shadow-sm);
+  --dt-ov-r-a: rgba(28, 35, 51, 0.07);
+  --dt-ov-r-b: rgba(28, 35, 51, 0.12);
+  --dt-ov-r-c: rgba(28, 35, 51, 0.2);
+  --dt-ov-l-a: rgba(28, 35, 51, 0.1);
+  --dt-ov-l-b: rgba(28, 35, 51, 0.06);
+  --dt-ov-l-c: rgba(28, 35, 51, 0.16);
+}
+
+:global(html[data-theme='light']) .virtualImage,
+:global(html[data-theme='light']) .virtualVideo {
+  filter: brightness(0.98) contrast(1.02) saturate(1);
+}
+
+:global(html[data-theme='light']) .virtualTitlePart,
+:global(html[data-theme='light']) .virtualAvatarId,
+:global(html[data-theme='light']) .featureCardTitle,
+:global(html[data-theme='light']) .transcriptText,
+:global(html[data-theme='light']) .twinReplyBody {
+  color: var(--portfolio-text-body);
+}
+
+:global(html[data-theme='light']) .virtualMainTitle:global(.ant-typography),
+:global(html[data-theme='light']) .featureTextCol :global(h5.ant-typography) {
+  color: var(--portfolio-text-body) !important;
+}
+
+:global(html[data-theme='light']) .virtualTitleAccent,
+:global(html[data-theme='light']) .transcriptLabel {
+  color: var(--portfolio-gold);
+}
+
+:global(html[data-theme='light']) .featureIcon {
+  color: var(--portfolio-text-secondary);
+}
+
+:global(html[data-theme='light']) .featureCard {
+  background: var(--portfolio-surface-raised);
+  border-color: var(--portfolio-border);
+  box-shadow: var(--portfolio-shadow-sm);
+}
+
+:global(html[data-theme='light']) .featureCard:hover {
+  border-color: var(--portfolio-gold-muted-border);
+  box-shadow: var(--portfolio-shadow-md);
+}
+
+:global(html[data-theme='light']) .virtualPlay {
+  background: rgba(28, 35, 51, 0.12);
+  color: var(--portfolio-text-body);
+  box-shadow: var(--portfolio-shadow-sm);
+}
+
+:global(html[data-theme='light']) .virtualPlay:hover {
+  background: rgba(28, 35, 51, 0.18);
+  color: var(--portfolio-text-body);
+  box-shadow: var(--portfolio-shadow-md);
+}
+
+/* User transcript bubble — soft gold tint */
+:global(html[data-theme='light']) .userBubble {
+  border-color: var(--portfolio-gold-muted-border);
+  background: linear-gradient(
+    145deg,
+    rgba(184, 146, 42, 0.16) 0%,
+    rgba(184, 146, 42, 0.08) 100%
+  );
+  box-shadow: var(--portfolio-shadow-sm);
+}
+
+/* AI / Twin reply bubble — sunken surface */
+:global(html[data-theme='light']) .twinReplyCard {
+  border: 0.0556rem solid rgba(26, 32, 48, 0.08);
+  background: var(--portfolio-surface-sunken);
+  box-shadow: var(--portfolio-shadow-sm);
+}
+
+:global(html[data-theme='light']) .twinReplyMarkdown :global(pre) {
+  background: var(--portfolio-surface-raised);
+  border-color: var(--portfolio-border);
+  color: var(--portfolio-text-secondary);
+}
+
+:global(html[data-theme='light']) .twinReplyMarkdown :global(code) {
+  color: var(--portfolio-text-body);
+}
+
+/* Elevated input / reply panel */
+:global(html[data-theme='light']) .dialoguePanel {
+  border: 0.0556rem solid var(--portfolio-border);
+  background: var(--portfolio-surface-raised);
+  box-shadow: var(--portfolio-shadow-sm);
+}
+
+:global(html[data-theme='light']) .dialogueTextarea :global(textarea.ant-input) {
+  background: var(--portfolio-surface) !important;
+  border-color: var(--portfolio-border) !important;
+  color: var(--portfolio-text-body) !important;
+}
+
+:global(html[data-theme='light']) .dialogueTextarea :global(textarea.ant-input::placeholder) {
+  color: var(--portfolio-text-subtle) !important;
+}
+
+:global(html[data-theme='light']) .dialogueTextarea :global(textarea.ant-input:focus),
+:global(html[data-theme='light']) .dialogueTextarea :global(textarea.ant-input-focused) {
+  border-color: var(--portfolio-gold-muted-border) !important;
+  box-shadow: 0 0 0 0.1111rem var(--portfolio-gold-muted) !important;
+}
+
+:global(html[data-theme='light']) .didMediaLoading {
+  background: rgba(232, 228, 220, 0.65);
 }

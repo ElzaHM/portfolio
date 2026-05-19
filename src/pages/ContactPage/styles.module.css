@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   min-height: 0;
-  background-color: #1a1c2c;
+  background-color: var(--portfolio-bg-deep, #1a1c2c);
 }
 
 .pageInner {
@@ -33,7 +33,11 @@
   line-height: 1.18 !important;
   letter-spacing: 0.2em !important;
   text-transform: uppercase !important;
-  color: #ffffff !important;
+  background: linear-gradient(92deg, #ffffff 0%, #ddd6fe 28%, #f5e6c8 52%, #d4af37 100%);
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
 }
 
 .heroSubtitle {
@@ -46,12 +50,17 @@
     'Inter',
     system-ui,
     sans-serif !important;
-  font-size: 1.1rem !important;
-  line-height: 1.65 !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
   color: #94a3b8 !important;
 }
 
 .cardRow {
+  margin-bottom: clamp(1.25rem, 2.4vw, 1.75rem);
+}
+
+.formRow {
   margin-bottom: clamp(2rem, 4vw, 3rem);
 }
 
@@ -67,8 +76,10 @@
     inset 0 0.0556rem 0 rgba(255, 255, 255, 0.05),
     0 1.1111rem 2.3333rem rgba(0, 0, 0, 0.35);
   transition:
-    border-color 0.25s ease,
-    box-shadow 0.25s ease;
+    background 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease,
+    transform 0.28s ease;
 }
 
 .glassCard:global(.ant-card):hover {
@@ -161,9 +172,9 @@
     'Inter',
     system-ui,
     sans-serif !important;
-  font-size: 0.5556rem !important;
+  font-size: 13px !important;
   font-weight: 700 !important;
-  letter-spacing: 0.14em !important;
+  letter-spacing: 0.1em !important;
   text-transform: uppercase !important;
   color: rgba(148, 163, 184, 0.95) !important;
 }
@@ -184,9 +195,9 @@
     'Inter',
     system-ui,
     sans-serif !important;
-  font-size: clamp(0.8333rem, 1.76vw, 0.8889rem) !important;
+  font-size: 15px !important;
   font-weight: 500 !important;
-  line-height: 1.5 !important;
+  line-height: 1.6 !important;
   color: #f1f5f9 !important;
   word-break: break-word;
 }
@@ -223,11 +234,12 @@
   border-radius: 0.6667rem !important;
   padding-inline: 1rem !important;
   height: auto !important;
-  min-height: 2.3333rem !important;
-  font-weight: 800 !important;
-  letter-spacing: 0.1em !important;
+  min-height: 2.4444rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
   text-transform: uppercase !important;
-  font-size: 0.6111rem !important;
+  font-size: 13px !important;
+  line-height: 1.35 !important;
   background: linear-gradient(
     136deg,
     rgba(212, 175, 55, 0.95),
@@ -249,11 +261,12 @@
   border-radius: 0.6667rem !important;
   padding-inline: 1rem !important;
   height: auto !important;
-  min-height: 2.3333rem !important;
-  font-weight: 800 !important;
-  letter-spacing: 0.1em !important;
+  min-height: 2.4444rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
   text-transform: uppercase !important;
-  font-size: 0.6111rem !important;
+  font-size: 13px !important;
+  line-height: 1.35 !important;
   border: 0.0556rem solid rgba(212, 175, 55, 0.45) !important;
   color: rgba(241, 245, 249, 0.92) !important;
   background: rgba(212, 175, 55, 0.06) !important;
@@ -270,8 +283,9 @@
     'Inter',
     system-ui,
     sans-serif !important;
-  font-size: 0.8333rem !important;
-  line-height: 1.68 !important;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
   color: rgba(226, 232, 240, 0.88) !important;
 }
 
@@ -286,8 +300,8 @@
 }
 
 .techMailLabel {
-  font-size: 0.5556rem !important;
-  letter-spacing: 0.14em !important;
+  font-size: 13px !important;
+  letter-spacing: 0.1em !important;
   text-transform: uppercase !important;
   font-weight: 700 !important;
   font-family:
@@ -299,14 +313,15 @@
 
 .techMailLink:global(.ant-typography) {
   margin: 0 !important;
-  font-size: clamp(0.8333rem, 1.76vw, 0.9444rem) !important;
+  font-size: 15px !important;
   font-weight: 600 !important;
+  line-height: 1.6 !important;
   color: #d4af37 !important;
   word-break: break-all;
 }
 
 .locationNote {
-  max-width: 4rem;
+  max-width: 44rem;
   margin: 0 auto;
   padding-inline: clamp(0.6667rem, 2.4vw, 1.1111rem);
   text-align: center;
@@ -320,7 +335,296 @@
   color: rgba(148, 163, 184, 0.92);
 }
 
+.formIntro {
+  margin: 0 0 1.1111rem !important;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
+  color: rgba(226, 232, 240, 0.88) !important;
+}
 
+.contactForm {
+  width: 100%;
+}
+
+.contactForm :global(.ant-form-item) {
+  margin-bottom: 1rem;
+}
+
+.contactForm :global(.ant-form-item-label > label) {
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  color: rgba(148, 163, 184, 0.95) !important;
+  line-height: 1.4 !important;
+}
+
+.submitWrap {
+  margin-bottom: 0 !important;
+  margin-top: 0.2222rem;
+}
+
+.submitWrap :global(.ant-form-item-control-input-content) {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.formTextarea:global(textarea.ant-input) {
+  min-height: 7.7778rem !important;
+}
+
+.contactFormCard:global(.ant-card) {
+  padding: clamp(1.2222rem, 2.4vw, 1.5556rem);
+  border-radius: 1rem !important;
+  background: var(--portfolio-surface, rgba(17, 24, 39, 0.5)) !important;
+  border: 0.0556rem solid var(--portfolio-border, rgba(255, 255, 255, 0.1)) !important;
+  transition:
+    background 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease;
+}
+
+.contactFormCard:global(.ant-card):hover {
+  border-color: rgba(212, 175, 55, 0.22);
+}
+
+.contactFormCard :global(.ant-card-body) {
+  padding: 0 !important;
+}
+
+.formField :global(.ant-input),
+.formField :global(.ant-input-affix-wrapper),
+.formField :global(textarea.ant-input) {
+  border-radius: 0.6667rem !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  color: var(--portfolio-text-body, #f1f5f9) !important;
+  background: rgba(10, 11, 30, 0.85) !important;
+  border: 0.0556rem solid rgba(255, 255, 255, 0.1) !important;
+  transition:
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    background 0.22s ease;
+}
+
+.formField :global(.ant-input::placeholder),
+.formField :global(textarea.ant-input::placeholder) {
+  color: #64748b !important;
+}
+
+.formField :global(.ant-input:focus),
+.formField :global(.ant-input-focused),
+.formField :global(.ant-input-affix-wrapper-focused),
+.formField :global(textarea.ant-input:focus),
+.formField :global(.ant-input:focus-visible),
+.formField :global(textarea.ant-input:focus-visible) {
+  border-color: rgba(212, 175, 55, 0.45) !important;
+  box-shadow: 0 0 0 0.1111rem rgba(212, 175, 55, 0.12) !important;
+  outline: none !important;
+}
+
+.submitBtn:global(.ant-btn-primary) {
+  border-radius: 0.6667rem !important;
+  min-height: 2.5556rem !important;
+  height: auto !important;
+  padding-inline: 1.3333rem !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  background: linear-gradient(135deg, #8f7020 0%, #d4af37 52%, #b8922a 100%) !important;
+  border-color: rgba(212, 175, 55, 0.55) !important;
+  color: #1a1c2c !important;
+  box-shadow: 0 0.4444rem 1.1111rem rgba(212, 175, 55, 0.16) !important;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    filter 0.22s ease;
+}
+
+.submitBtn:global(.ant-btn-primary):hover {
+  color: #1a1c2c !important;
+  filter: brightness(1.05);
+  transform: translateY(-0.0556rem);
+}
+
+/* —— Light: Alabaster Executive (Contact) —— */
+:global(html[data-theme='light']) .heroTitle:global(.ant-typography) {
+  background: var(--portfolio-hero-title-gradient) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
+:global(html[data-theme='light']) .heroSubtitle {
+  color: var(--portfolio-text-secondary) !important;
+}
+
+:global(html[data-theme='light']) .glassCard:global(.ant-card),
+:global(html[data-theme='light']) .contactFormCard:global(.ant-card) {
+  background: var(--portfolio-surface) !important;
+  border: 0.0556rem solid var(--portfolio-border) !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+:global(html[data-theme='light']) .glassCard:global(.ant-card):hover,
+:global(html[data-theme='light']) .contactFormCard:global(.ant-card):hover {
+  background: var(--portfolio-surface-raised) !important;
+  box-shadow: var(--portfolio-shadow-md) !important;
+  border-color: var(--portfolio-border) !important;
+}
+
+:global(html[data-theme='light']) .cardEyebrow,
+:global(html[data-theme='light']) .cardTitle:global(.ant-typography),
+:global(html[data-theme='light']) .profileLegalName {
+  color: var(--portfolio-gold) !important;
+}
+
+:global(html[data-theme='light']) .cardIconGold {
+  color: var(--portfolio-gold);
+  border-color: var(--portfolio-gold-muted-border);
+  background: rgba(184, 146, 42, 0.1);
+  box-shadow: none;
+}
+
+:global(html[data-theme='light']) .cardBody,
+:global(html[data-theme='light']) .formIntro {
+  color: var(--portfolio-text-secondary) !important;
+}
+
+:global(html[data-theme='light']) .contactForm :global(.ant-form-item-label > label) {
+  color: var(--portfolio-text-muted) !important;
+}
+
+:global(html[data-theme='light']) .contactDetailItem,
+:global(html[data-theme='light']) .techMailBlock {
+  background: var(--portfolio-surface-raised);
+  border: 0.0556rem solid var(--portfolio-border);
+}
+
+:global(html[data-theme='light']) .detailLabel,
+:global(html[data-theme='light']) .techMailLabel {
+  color: var(--portfolio-text-muted) !important;
+}
+
+:global(html[data-theme='light']) .detailValue:global(.ant-typography),
+:global(html[data-theme='light']) .detailValue :global(.ant-typography-copy) {
+  color: var(--portfolio-text-body) !important;
+}
+
+:global(html[data-theme='light']) .techMailLink:global(.ant-typography) {
+  color: var(--portfolio-gold) !important;
+}
+
+:global(html[data-theme='light']) .techMailLink:global(.ant-typography):hover {
+  color: var(--portfolio-gold-hover) !important;
+}
+
+:global(html[data-theme='light']) .socialBtnGold:global(.ant-btn) {
+  background: linear-gradient(
+    135deg,
+    var(--portfolio-gold-active) 0%,
+    var(--portfolio-gold) 52%,
+    var(--portfolio-gold-hover) 100%
+  ) !important;
+  border-color: var(--portfolio-gold-muted-border) !important;
+  color: var(--portfolio-text-body) !important;
+  box-shadow: var(--portfolio-shadow-sm) !important;
+}
+
+:global(html[data-theme='light']) .socialBtnGold:global(.ant-btn):hover {
+  background: linear-gradient(
+    135deg,
+    var(--portfolio-gold-active) 0%,
+    var(--portfolio-gold-hover) 55%,
+    var(--portfolio-gold) 100%
+  ) !important;
+  color: var(--portfolio-text-body) !important;
+  box-shadow: var(--portfolio-shadow-md) !important;
+  filter: none;
+}
+
+:global(html[data-theme='light']) .socialBtnGhost:global(.ant-btn) {
+  border-color: var(--portfolio-border) !important;
+  color: var(--portfolio-text-secondary) !important;
+  background: var(--portfolio-surface-sunken) !important;
+}
+
+:global(html[data-theme='light']) .socialBtnLinkedin:global(.ant-btn) {
+  background: rgba(10, 102, 194, 0.1) !important;
+  border: 0.0556rem solid rgba(10, 102, 194, 0.2) !important;
+  color: #0a66c2 !important;
+}
+
+:global(html[data-theme='light']) .socialBtnLinkedin:global(.ant-btn):hover {
+  border-color: rgba(10, 102, 194, 0.35) !important;
+  color: #0a66c2 !important;
+  background: rgba(10, 102, 194, 0.16) !important;
+  box-shadow: var(--portfolio-shadow-sm) !important;
+}
+
+:global(html[data-theme='light']) .socialBtnGithub:global(.ant-btn):hover {
+  border-color: rgba(36, 41, 47, 0.22) !important;
+  color: #24292f !important;
+  background: rgba(36, 41, 47, 0.08) !important;
+}
+
+:global(html[data-theme='light']) .copyEmailBtn:global(.ant-btn) {
+  border-color: var(--portfolio-gold-muted-border) !important;
+  background: var(--portfolio-gold-muted) !important;
+  color: var(--portfolio-text-body) !important;
+}
+
+:global(html[data-theme='light']) .formField :global(.ant-input),
+:global(html[data-theme='light']) .formField :global(.ant-input-affix-wrapper),
+:global(html[data-theme='light']) .formField :global(textarea.ant-input) {
+  background: var(--portfolio-surface-raised) !important;
+  border: 0.0556rem solid var(--portfolio-border) !important;
+  color: var(--portfolio-text-body) !important;
+  box-shadow: var(--portfolio-shadow-sm);
+}
+
+:global(html[data-theme='light']) .formField :global(.ant-input::placeholder),
+:global(html[data-theme='light']) .formField :global(textarea.ant-input::placeholder) {
+  color: var(--portfolio-text-subtle) !important;
+}
+
+:global(html[data-theme='light']) .formField :global(.ant-input:focus),
+:global(html[data-theme='light']) .formField :global(.ant-input-focused),
+:global(html[data-theme='light']) .formField :global(.ant-input-affix-wrapper-focused),
+:global(html[data-theme='light']) .formField :global(textarea.ant-input:focus) {
+  border-color: var(--portfolio-gold) !important;
+  box-shadow:
+    var(--portfolio-shadow-sm),
+    0 0 0 0.1111rem rgba(184, 146, 42, 0.2) !important;
+}
+
+:global(html[data-theme='light']) .submitBtn:global(.ant-btn-primary) {
+  background: linear-gradient(
+    135deg,
+    var(--portfolio-gold-active) 0%,
+    var(--portfolio-gold) 52%,
+    var(--portfolio-gold-hover) 100%
+  ) !important;
+  border-color: var(--portfolio-gold-muted-border) !important;
+  color: var(--portfolio-text-body) !important;
+}
+
+:global(html[data-theme='light']) .submitBtn:global(.ant-btn-primary):hover {
+  background: var(--portfolio-gold-hover) !important;
+  color: var(--portfolio-text-body) !important;
+  box-shadow: var(--portfolio-shadow-md) !important;
+}
+
+:global(html[data-theme='light']) .locationNote {
+  color: var(--portfolio-text-muted);
+}
 
 @media (max-width: 767px) {
   .topBar {
