@@ -13,4 +13,8 @@ interface ImportMetaEnv {
   readonly VITE_AZURE_SPEECH_VOICE?: string
   /** D-ID API credentials as USER:PASSWORD (local only — prefer server-side proxy in production) */
   readonly VITE_DID_API_KEY?: string
+  /** Telegram Bot API token (Contact form — still exposed in client bundle; keep out of git) */
+  readonly VITE_TELEGRAM_BOT_TOKEN?: string
+  /** Telegram chat id to receive contact form messages */
+  readonly VITE_TELEGRAM_CHAT_ID?: string
 }

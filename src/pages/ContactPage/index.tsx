@@ -11,8 +11,8 @@ const { Content } = Layout
 const { Title, Paragraph, Text } = Typography
 const { TextArea } = Input
 
-const TELEGRAM_BOT_TOKEN = '7936575464:AAHJmBLZiS-VxTbQCEMDJFlTRgzvBjnmCAo'
-const TELEGRAM_CHAT_ID = '5396160118'
+const TELEGRAM_BOT_TOKEN = import.meta.env.VITE_TELEGRAM_BOT_TOKEN
+const TELEGRAM_CHAT_ID = import.meta.env.VITE_TELEGRAM_CHAT_ID
 
 type ContactFormValues = {
   name: string
@@ -52,15 +52,25 @@ function formatTelegramMessage({ name, email, message: body }: ContactFormValues
 }
 
 async function sendContactToTelegram(values: ContactFormValues): Promise<void> {
+  const botToken =
+    typeof TELEGRAM_BOT_TOKEN === 'string' ? TELEGRAM_BOT_TOKEN.trim() : ''
+  const chatId = typeof TELEGRAM_CHAT_ID === 'string' ? TELEGRAM_CHAT_ID.trim() : ''
+
+  if (!botToken || !chatId) {
+    throw new Error(
+      'Telegram is not configured. Set VITE_TELEGRAM_BOT_TOKEN and VITE_TELEGRAM_CHAT_ID in .env',
+    )
+  }
+
   const text = formatTelegramMessage(values)
 
   const response = await fetch(
-    `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+    `https://api.telegram.org/bot${botToken}/sendMessage`,
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        chat_id: TELEGRAM_CHAT_ID,
+        chat_id: chatId,
         text,
         parse_mode: 'HTML',
       }),
