@@ -1,6 +1,6 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { CodeOutlined, GlobalOutlined, LinkedinOutlined, SendOutlined, UserOutlined } from '@ant-design/icons'
-import { Button, Card, Col, Form, Input, Layout, Row, Typography } from 'antd'
+import { Button, Card, Col, Form, Input, Layout, message, Row, Typography } from 'antd'
 import { Link } from 'react-router-dom'
 import SiteFooter from '../../components/SiteFooter'
 import homeStyles from '../HomePage/styles.module.css'
@@ -10,6 +10,9 @@ import styles from './styles.module.css'
 const { Content } = Layout
 const { Title, Paragraph, Text } = Typography
 const { TextArea } = Input
+
+const TELEGRAM_BOT_TOKEN = '7936575464:AAHJmBLZiS-VxTbQCEMDJFlTRgzvBjnmCAo'
+const TELEGRAM_CHAT_ID = '5396160118'
 
 type ContactFormValues = {
   name: string
@@ -29,7 +32,58 @@ function trimEnv(key: keyof ImportMetaEnv): string {
   return typeof v === 'string' ? v.trim() : ''
 }
 
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+}
+
+function formatTelegramMessage({ name, email, message: body }: ContactFormValues): string {
+  return [
+    '📩 New Contact Message',
+    '',
+    `👤 Name: ${escapeHtml(name)}`,
+    `📧 Email: ${escapeHtml(email)}`,
+    '',
+    '💬 Message:',
+    escapeHtml(body),
+  ].join('\n')
+}
+
+async function sendContactToTelegram(values: ContactFormValues): Promise<void> {
+  const text = formatTelegramMessage(values)
+
+  const response = await fetch(
+    `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: TELEGRAM_CHAT_ID,
+        text,
+        parse_mode: 'HTML',
+      }),
+    },
+  )
+
+  let payload: { ok?: boolean; description?: string } = {}
+  try {
+    payload = (await response.json()) as { ok?: boolean; description?: string }
+  } catch {
+    payload = {}
+  }
+
+  if (!response.ok || !payload.ok) {
+    throw new Error(payload.description ?? 'Failed to send message to Telegram.')
+  }
+}
+
 export default function ContactPage() {
+  const [messageApi, contextHolder] = message.useMessage()
+  const [form] = Form.useForm<ContactFormValues>()
+  const [submitting, setSubmitting] = useState(false)
+
   const personalEmail =
     trimEnv('VITE_CONTACT_PRO_EMAIL') || 'elzahovhannisyan7@gmail.com'
   const personalPhone =
@@ -42,8 +96,25 @@ export default function ContactPage() {
     }
   }, [])
 
+  /** Contact form submit — Telegram only (no mailto / window.location redirect). */
+  const handleFormFinish = async (values: ContactFormValues) => {
+    setSubmitting(true)
+    try {
+      await sendContactToTelegram(values)
+      form.resetFields()
+      messageApi.success('Your message was sent successfully. I will get back to you soon.')
+    } catch (error) {
+      const description =
+        error instanceof Error ? error.message : 'Could not send your message. Please try again.'
+      messageApi.error(description)
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
   return (
     <>
+      {contextHolder}
       <Content className={`${homeStyles.main} ${styles.contactMain}`}>
         <div className={`${homeStyles.contentInner} ${styles.pageInner}`}>
           <div className={styles.topBar}>
@@ -163,18 +234,11 @@ export default function ContactPage() {
                   respond within one business day.
                 </Paragraph>
                 <Form<ContactFormValues>
+                  form={form}
                   layout="vertical"
                   className={styles.contactForm}
                   requiredMark={false}
-                  onFinish={(values) => {
-                    const subject = encodeURIComponent(
-                      `Portfolio inquiry from ${values.name}`,
-                    )
-                    const body = encodeURIComponent(
-                      `Name: ${values.name}\nEmail: ${values.email}\n\n${values.message}`,
-                    )
-                    window.location.href = `mailto:${personalEmail}?subject=${subject}&body=${body}`
-                  }}
+                  onFinish={handleFormFinish}
                 >
                   <Row gutter={16}>
                     <Col xs={24} md={12}>
@@ -221,6 +285,7 @@ export default function ContactPage() {
                       htmlType="submit"
                       icon={<SendOutlined />}
                       className={styles.submitBtn}
+                      loading={submitting}
                     >
                       Send message
                     </Button>
