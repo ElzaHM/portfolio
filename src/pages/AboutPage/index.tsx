@@ -54,29 +54,41 @@ function CvDownloadLink() {
 }
 
 const BIO =
-  '5+ years in **frontend engineering** underpin how I operate today as a **Technical Project Manager**—owning timelines, clarity, and delivery without drifting from reality on the roadmap. I lead cross-functional execution across the **SDLC**, align executives and builders, and weave in **AI-driven** practices where they improve rigor—not replace judgment. As **Founder & Lead Developer** of **Techahartak.com**, I built an accessibility-minded platform for disability inclusion (**social impact**), scaling product, multilingual content, and community reach from zero to traction.'
+  '**Frontend Engineer** and **Technical Project Manager** with **5+ years** of frontend experience building **scalable web applications** and leading cross-functional delivery. Hands-on in **Angular**, **TypeScript**, and **React**, with a focus on **UI architecture**, reusable component systems, and performance-minded interfaces. I combine deep frontend engineering with **Agile delivery**, **SDLC management**, and **technical project management**—mentoring engineers, coordinating sprints, and aligning technical execution with business goals across **SaaS**, **ERP/CRM**, and platform environments.'
 
 const workRoles = [
   {
-    key: 'founder',
-    title: 'Founder & Delivery Lead',
-    meta: 'Techahartak.com · Social impact · Remote',
+    key: 'mobius',
+    title: 'Frontend Engineer & Technical Project Manager',
+    meta: 'Mobius Charitable Foundation · Dec 2024 – Mar 2026',
     bullets: [
-      'Owned **strategy → SDLC → launch** for an inclusion-focused platform (**10K+ MAU** at peak).',
-      'Full‑stack accountability: Next.js/React, backend integrations, multilingual UX (**ARM**, **EN**, **RU**).',
-      'Bridged NGOs, advisors, and users—prioritizing **accessibility**, trust, and sustainable delivery.',
-      'Ran lean budgeting, tooling, and growth without losing engineering quality.',
+      'Delivered **mobius.am** from planning to release, owning frontend delivery and project coordination across the **SDLC**.',
+      'Developed **Angular/TypeScript** frontend solutions with responsive UI, scalable component structure, and maintainable architecture.',
+      'Managed **SDLC**, sprint planning, and delivery coordination from development through deployment.',
+      'Worked with **QA**, designers, and stakeholders to translate requirements into actionable plans and progress updates.',
     ],
   },
   {
-    key: 'fe',
-    title: 'Frontend Engineer',
-    meta: 'Enterprise SaaS — engineering foundation',
+    key: 'ovak',
+    title: 'Frontend Team Lead & Technical Project Coordinator',
+    meta: 'Ovak Technologies LLC · Apr 2021 – Jan 2026',
     bullets: [
-      'Shipped high‑traffic SaaS features in **Angular** / **Next.js** / **TypeScript**—**WCAG‑minded**, measurable UX lift (**~15%** engagement uplift on key journeys).',
-      'Collaborated tightly with PM, design, backend—requirements, slicing, demos, retros.',
-      'Performance work—lazy loading & split bundles cut critical path latency (**~200ms** on representative routes).',
-      'Mentored peers; raised review bar and reusable UI patterns (**~20%** efficiency gain cited on team tooling).',
+      'Led **Angular/TypeScript** frontend development for enterprise **ERP/CRM** and **SaaS** solutions.',
+      'Mentored **3–5 engineers**, conducting code reviews and establishing reusable patterns that improved team consistency.',
+      'Built **reusable UI components** and shared frontend standards to support scalable product development.',
+      'Partnered with product, design, and backend teams to refine requirements and ship production-ready features.',
+      'Coordinated **Agile workflows**—sprint planning, task prioritization, and release coordination.',
+    ],
+  },
+  {
+    key: 'founder',
+    title: 'Founder & Lead Developer',
+    meta: 'Techahartak.com · Social Impact Platform · Remote',
+    bullets: [
+      'Founded and developed a social impact platform focused on creating **accessible digital experiences** and meaningful community solutions.',
+      'Owned the **product vision**, **technical direction**, and full-cycle development process from idea validation to implementation.',
+      'Designed and built **multilingual** user experiences (**ARM**, **EN**, **RU**), developed scalable frontend solutions, and transformed product ideas into functional digital solutions.',
+      'Focused on **inclusive design**, user-centered thinking, and building a strong technical foundation for future growth.',
     ],
   },
 ] as const
@@ -130,7 +142,7 @@ export default function AboutPage() {
           <main className={styles.aboutMain}>
             <header className={styles.aboutMasthead}>
               <Title level={1} className={styles.heroHeadline}>
-                Technical Project Manager &amp; Delivery Architect with a Frontend Engineering Soul.
+                Frontend Engineer &amp; Technical Project Manager.
               </Title>
               <div className={`${styles.glassPanel} ${styles.introPanel}`}>
                 <RichParagraph text={BIO} className={styles.sectionIntro} />

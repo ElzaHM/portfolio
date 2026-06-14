@@ -1,22 +1,13 @@
+/* —— Shared layout tokens (used by About / PM Strategy pages) —— */
 .pageInner {
   padding-top: 0;
 }
 
-.strategicPrimaryHeadRow {
-  margin-bottom: 0.2222rem;
-}
-
-.managementPillarRow {
-  align-items: baseline;
-}
-
-.managementPillarTitle:global(.ant-typography) {
-  margin: 0 !important;
-  font-size: clamp(1.05rem, 2.1vw, 1.22rem) !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.1em !important;
-  text-transform: uppercase !important;
-  color: rgba(248, 250, 252, 0.92) !important;
+.stackPageInner {
+  position: relative;
+  z-index: 1;
+  padding-top: clamp(0.5rem, 2vw, 1rem);
+  padding-bottom: 3rem;
 }
 
 .masthead {
@@ -71,118 +62,422 @@
   border-radius: 0.2222rem;
 }
 
-.leadershipSection {
-  border-top: 0.0556rem solid rgba(255, 255, 255, 0.06);
-  padding-top: 0.4444rem;
+/* Legacy badge tokens (referenced by data in index.tsx) */
+.techBadgeNg,
+.techBadgeWebflow,
+.techBadgeTs,
+.techBadgeAi,
+.techBadgeVite {
+  /* retained for data object compatibility */
 }
 
-/* —— Section typography —— */
+.strategicBadgeDelivery,
+.strategicBadgeAgile,
+.strategicBadgeVision,
+.strategicBadgeRisk,
+.strategicBadgeStakeholder,
+.strategicBadgeCert {
+  /* retained for data object compatibility */
+}
+
+/* —— Tech Stack page shell —— */
+.page {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.pageGlow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 55% at 8% -5%, rgba(139, 92, 246, 0.18) 0%, transparent 58%),
+    radial-gradient(ellipse 70% 50% at 100% 8%, rgba(56, 189, 248, 0.1) 0%, transparent 54%),
+    radial-gradient(ellipse 55% 45% at 50% 100%, rgba(109, 40, 217, 0.08) 0%, transparent 52%);
+}
+
+/* —— Hero —— */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(10rem, 0.85fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+  padding-top: clamp(1.5rem, 4vw, 2.75rem);
+}
+
+.heroCopy {
+  min-width: 0;
+}
+
+.heroEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5556rem;
+  margin-bottom: 0.8889rem;
+  font-size: 0.6667rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  color: #a78bfa !important;
+}
+
+.heroEyebrow::before {
+  content: '';
+  width: 0.4444rem;
+  height: 0.4444rem;
+  border-radius: 50%;
+  background: #8b5cf6;
+  box-shadow: 0 0 0.6667rem rgba(139, 92, 246, 0.65);
+}
+
+.heroTitle:global(.ant-typography) {
+  margin: 0 0 1rem !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-weight: 800 !important;
+  font-size: clamp(2rem, 4.8vw, 3.1rem) !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  line-height: 1.08 !important;
+}
+
+.heroTitlePrimary {
+  display: block;
+  color: #ffffff;
+}
+
+.heroTitleAccent {
+  display: block;
+  background: linear-gradient(92deg, #c4b5fd 0%, #818cf8 45%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.heroLead {
+  max-width: 40rem;
+  margin: 0 !important;
+  color: #94a3b8 !important;
+  font-size: 1rem !important;
+  line-height: 1.65 !important;
+}
+
+.heroOrbital {
+  position: relative;
+  width: min(100%, 18rem);
+  aspect-ratio: 1;
+  margin-inline: auto;
+  justify-self: end;
+}
+
+.orbitalRing {
+  position: absolute;
+  inset: 8%;
+  border: 0.0556rem solid rgba(167, 139, 250, 0.28);
+  border-radius: 50%;
+  transform: rotate(-18deg);
+  box-shadow: 0 0 1.7778rem rgba(139, 92, 246, 0.12);
+}
+
+.orbitalRingMid {
+  inset: 22%;
+  border-color: rgba(129, 140, 248, 0.35);
+  transform: rotate(12deg);
+}
+
+.orbitalRingInner {
+  inset: 36%;
+  border-color: rgba(56, 189, 248, 0.28);
+  transform: rotate(-8deg);
+}
+
+.orbitalStar {
+  position: absolute;
+  width: 0.4444rem;
+  height: 0.4444rem;
+  border-radius: 50%;
+  background: #e0e7ff;
+  box-shadow: 0 0 0.8889rem rgba(224, 231, 255, 0.85);
+}
+
+.orbitalStarOne {
+  top: 18%;
+  left: 72%;
+}
+
+.orbitalStarTwo {
+  top: 62%;
+  left: 14%;
+}
+
+.orbitalStarThree {
+  top: 78%;
+  left: 68%;
+}
+
+/* —— Sections —— */
+.section {
+  margin-bottom: clamp(2.5rem, 5vw, 3.75rem);
+}
+
+.sectionHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8889rem 1.3333rem;
+  margin-bottom: 1.5556rem;
+}
+
+.sectionHeaderMain {
+  display: flex;
+  align-items: center;
+  gap: 0.7778rem;
+  flex: 1;
+  min-width: min(100%, 16rem);
+}
+
+.sectionHeaderIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.4444rem;
+  font-size: 1rem;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.sectionHeaderEngineering .sectionHeaderIcon {
+  background: linear-gradient(145deg, #6d28d9 0%, #4c1d95 100%);
+  box-shadow: 0 0 1.1111rem rgba(109, 40, 217, 0.35);
+}
+
+.sectionHeaderManagement .sectionHeaderIcon {
+  background: linear-gradient(145deg, #b8891c 0%, #856514 100%);
+  box-shadow: 0 0 1.1111rem rgba(212, 175, 55, 0.28);
+}
+
+.sectionHeaderCertification .sectionHeaderIcon {
+  background: linear-gradient(145deg, #6366f1 0%, #4f46e5 100%);
+  box-shadow: 0 0 1.1111rem rgba(99, 102, 241, 0.32);
+}
+
 .sectionHeading:global(.ant-typography) {
   margin: 0 !important;
+  flex-shrink: 0;
+  font-size: clamp(0.95rem, 1.8vw, 1.05rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
   color: #f8fafc !important;
 }
 
-.cardHeading:global(.ant-typography) {
-  margin: 0 0 0.4444rem !important;
-  color: #f8fafc !important;
-  font-size: 1rem !important;
+.sectionHeaderLine {
+  flex: 1;
+  height: 0.0556rem;
+  min-width: 2rem;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.02) 100%);
 }
 
-.cardDesc {
-  color: #94a3b8;
-  margin-bottom: 0.6667rem;
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 1.6;
+.sectionHeaderEngineering .sectionHeaderLine {
+  background: linear-gradient(90deg, rgba(167, 139, 250, 0.45) 0%, rgba(167, 139, 250, 0.04) 100%);
+}
+
+.sectionHeaderManagement .sectionHeaderLine {
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.42) 0%, rgba(212, 175, 55, 0.04) 100%);
+}
+
+.sectionHeaderCertification .sectionHeaderLine {
+  background: linear-gradient(90deg, rgba(129, 140, 248, 0.42) 0%, rgba(129, 140, 248, 0.04) 100%);
+}
+
+.sectionUpdatedTag {
+  margin: 0 !important;
 }
 
 .metaTag:global(.ant-tag) {
-  letter-spacing: 0.02em;
-  font-size: 13px !important;
-  padding-inline: 0.6111rem !important;
+  letter-spacing: 0.06em;
+  font-size: 0.6111rem !important;
+  padding-inline: 0.6667rem !important;
   padding-block: 0.2222rem !important;
   line-height: 1.35 !important;
   color: #64748b !important;
   border-color: var(--portfolio-border, rgba(255, 255, 255, 0.12)) !important;
-  background: transparent !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  text-transform: uppercase;
 }
 
-/* —— Category cards (tech grid) —— */
-.categoryCard:global(.ant-card) {
+/* —— Glass cards —— */
+.glassCard {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  background: var(--portfolio-surface, #111827);
-  border: 0.0556rem solid var(--portfolio-border, rgba(255, 255, 255, 0.06)) !important;
+  padding: clamp(1.3333rem, 2.4vw, 1.7778rem);
+  border-radius: 1.1111rem;
+  background: rgba(17, 24, 39, 0.52);
+  backdrop-filter: blur(0.8889rem);
+  -webkit-backdrop-filter: blur(0.8889rem);
+  border: 0.0556rem solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    inset 0 0.0556rem 0 rgba(255, 255, 255, 0.06),
+    0 1.1111rem 2.4444rem rgba(0, 0, 0, 0.38);
   transition:
     transform 0.28s ease,
+    border-color 0.28s ease,
     box-shadow 0.28s ease,
-    background 0.28s ease,
-    border-color 0.28s ease;
+    background 0.28s ease;
 }
 
-.categoryCard:global(.ant-card):hover {
-  transform: translateY(-0.1111rem);
-  border-color: rgba(212, 175, 55, 0.2) !important;
+.glassCard:hover {
+  transform: translateY(-0.1667rem);
+}
+
+.cardAccentEngineering:hover {
+  border-color: rgba(167, 139, 250, 0.28);
   box-shadow:
-    0 0.8889rem 2rem rgba(0, 0, 0, 0.38),
-    0 0 1.3333rem rgba(212, 175, 55, 0.08);
+    inset 0 0.0556rem 0 rgba(255, 255, 255, 0.07),
+    0 1.3333rem 2.6667rem rgba(0, 0, 0, 0.42),
+    0 0 1.7778rem rgba(109, 40, 217, 0.14);
 }
 
-.categoryCard :global(.ant-card-body) {
-  padding: 1.3333rem !important;
+.cardAccentManagement:hover {
+  border-color: rgba(212, 175, 55, 0.28);
+  box-shadow:
+    inset 0 0.0556rem 0 rgba(255, 255, 255, 0.07),
+    0 1.3333rem 2.6667rem rgba(0, 0, 0, 0.42),
+    0 0 1.7778rem rgba(212, 175, 55, 0.12);
 }
 
-/* —— Tech badges / avatars —— */
-.techBadge:global(.ant-avatar) {
-  margin-bottom: 0.6667rem;
-  font-weight: 700;
-  font-size: 0.7778rem !important;
+.cardAccentCertification:hover {
+  border-color: rgba(129, 140, 248, 0.3);
+  box-shadow:
+    inset 0 0.0556rem 0 rgba(255, 255, 255, 0.07),
+    0 1.3333rem 2.6667rem rgba(0, 0, 0, 0.42),
+    0 0 1.7778rem rgba(99, 102, 241, 0.14);
 }
 
-.techBadgeTs {
-  background-color: #3178c6;
-  color: #fff;
-}
-
-.techBadgeAi {
-  background-color: #10a37f;
-  color: #fff;
-}
-
-.techBadgeNg {
-  background-color: #dd0031;
-  color: #fff;
-}
-
-.techBadgeWebflow {
-  background: linear-gradient(145deg, #4353ff 0%, #146ef5 100%);
-  color: #fff;
-}
-
-.techBadgeVite {
-  background: linear-gradient(145deg, #646cff 0%, #bd34fe 100%);
-  color: #fff;
-}
-
-.perfBadge {
+.cardCornerAction {
+  position: absolute;
+  top: 1.1111rem;
+  right: 1.1111rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.2222rem;
-  height: 2.2222rem;
-  margin-bottom: 0.6667rem;
+  width: 1.7778rem;
+  height: 1.7778rem;
   border-radius: 50%;
-  font-size: 1.1111rem;
-  line-height: 1;
-  color: #eab308;
-  background: rgba(234, 179, 8, 0.12);
-  border: 0.0556rem solid rgba(234, 179, 8, 0.28);
+  font-size: 0.7222rem;
+  color: rgba(248, 250, 252, 0.72);
+  border: 0.0556rem solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
 }
 
-/* —— Skill tags —— */
+.cardIconWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6667rem;
+  height: 2.6667rem;
+  margin-bottom: 1rem;
+  border-radius: 0.6667rem;
+  font-size: 1.2222rem;
+  color: #fff;
+}
+
+.cardAccentEngineering .cardIconWrap {
+  background: linear-gradient(145deg, #6d28d9 0%, #4c1d95 100%);
+  box-shadow: 0 0 1.3333rem rgba(109, 40, 217, 0.35);
+}
+
+.cardIconBackend {
+  background: linear-gradient(145deg, #4f46e5 0%, #312e81 100%) !important;
+  box-shadow: 0 0 1.3333rem rgba(79, 70, 229, 0.32) !important;
+}
+
+.cardAccentManagement .cardIconWrap {
+  background: linear-gradient(145deg, #b8891c 0%, #856514 100%);
+  box-shadow: 0 0 1.3333rem rgba(212, 175, 55, 0.28);
+}
+
+.cardAccentCertification .certTileIcon {
+  /* certification tile icons styled below */
+}
+
+.cardTitle:global(.ant-typography) {
+  margin: 0 0 0.6667rem !important;
+  font-size: clamp(1.05rem, 2vw, 1.2rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  color: #f8fafc !important;
+}
+
+.cardSummary {
+  margin: 0 0 1.1111rem !important;
+  color: #94a3b8 !important;
+  font-size: 0.8889rem !important;
+  line-height: 1.6 !important;
+}
+
+.skillList {
+  list-style: none;
+  margin: 0 0 1.2222rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7778rem;
+}
+
+.skillListItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6667rem;
+}
+
+.skillCheck {
+  flex-shrink: 0;
+  margin-top: 0.1667rem;
+  font-size: 0.7778rem;
+}
+
+.cardAccentEngineering .skillCheck {
+  color: #a78bfa;
+}
+
+.cardAccentManagement .skillCheck {
+  color: #d4af37;
+}
+
+.cardAccentCertification .skillCheck {
+  color: #818cf8;
+}
+
+.skillItemTitle {
+  display: block;
+  margin-bottom: 0.1667rem;
+  font-size: 0.8333rem !important;
+  font-weight: 600 !important;
+  color: #e2e8f0 !important;
+}
+
+.skillItemDesc {
+  display: block;
+  font-size: 0.7778rem !important;
+  line-height: 1.55 !important;
+  color: #94a3b8 !important;
+}
+
 .tagRow {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4444rem;
+  margin-top: auto;
 }
 
 .skillTag:global(.ant-tag) {
@@ -190,54 +485,576 @@
   padding-inline: 0.6667rem !important;
   padding-block: 0.25rem !important;
   border-radius: 999px !important;
-  font-size: 13px !important;
+  font-size: 0.6111rem !important;
   font-weight: 600 !important;
   line-height: 1.35 !important;
-  letter-spacing: 0.02em !important;
+  letter-spacing: 0.04em !important;
   text-transform: uppercase !important;
   border: 0.0556rem solid rgba(255, 255, 255, 0.1) !important;
   background: rgba(255, 255, 255, 0.04) !important;
   color: #94a3b8 !important;
 }
 
-/* —— Management pillar badges —— */
-.strategicBadge {
+/* —— Engineering showcase cards (reference layout) —— */
+.engineeringCardWrap {
+  position: relative;
+  height: 100%;
+}
+
+.engineeringCardGlow {
+  position: absolute;
+  inset: 8% 6% auto 6%;
+  height: 55%;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(2.5rem);
+  opacity: 0.55;
+}
+
+.engineeringCardGlowFrontend {
+  background: radial-gradient(circle, rgba(109, 40, 217, 0.42) 0%, transparent 72%);
+}
+
+.engineeringCardGlowBackend {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.38) 0%, transparent 72%);
+}
+
+.engineeringCard {
+  position: relative;
+  z-index: 1;
+  padding: clamp(1.4444rem, 2.6vw, 1.8889rem);
+  border-radius: 1.2222rem;
+  background: rgba(15, 18, 32, 0.62);
+  backdrop-filter: blur(1rem);
+  -webkit-backdrop-filter: blur(1rem);
+  border: 0.0556rem solid rgba(255, 255, 255, 0.09);
+  box-shadow:
+    inset 0 0.0556rem 0 rgba(255, 255, 255, 0.07),
+    0 1.2222rem 2.6667rem rgba(0, 0, 0, 0.42);
+}
+
+.engineeringCard:hover {
+  transform: translateY(-0.2222rem);
+}
+
+.engineeringCardFrontend:hover {
+  border-color: rgba(167, 139, 250, 0.28);
+  box-shadow:
+    inset 0 0.0556rem 0 rgba(255, 255, 255, 0.08),
+    0 1.4444rem 2.8889rem rgba(0, 0, 0, 0.45),
+    0 0 2rem rgba(109, 40, 217, 0.16);
+}
+
+.engineeringCardBackend:hover {
+  border-color: rgba(96, 165, 250, 0.28);
+  box-shadow:
+    inset 0 0.0556rem 0 rgba(255, 255, 255, 0.08),
+    0 1.4444rem 2.8889rem rgba(0, 0, 0, 0.45),
+    0 0 2rem rgba(59, 130, 246, 0.14);
+}
+
+.engineeringCardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.1111rem;
+}
+
+.engineeringCardIcon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.2222rem;
-  height: 2.2222rem;
-  margin-bottom: 0.6667rem;
-  border-radius: 50%;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.7222rem;
+  font-size: 1.2222rem;
   color: #fff;
   flex-shrink: 0;
 }
 
-.strategicBadgeDelivery {
-  background: linear-gradient(145deg, #4c6fb5 0%, #374c8c 100%);
-}
-
-.strategicBadgeAgile {
-  background: linear-gradient(145deg, #0d9488 0%, #0f766e 100%);
-}
-
-.strategicBadgeVision {
+.engineeringCardFrontend .engineeringCardIcon {
   background: linear-gradient(145deg, #7c3aed 0%, #5b21b6 100%);
+  box-shadow: 0 0 1.4444rem rgba(124, 58, 237, 0.45);
 }
 
-.strategicBadgeRisk {
-  background: linear-gradient(145deg, #ea580c 0%, #c2410c 100%);
+.engineeringCardBackend .engineeringCardIcon {
+  background: linear-gradient(145deg, #3b82f6 0%, #1d4ed8 100%);
+  box-shadow: 0 0 1.4444rem rgba(59, 130, 246, 0.4);
 }
 
-.strategicBadgeStakeholder {
-  background: linear-gradient(145deg, #0891b2 0%, #0e7490 100%);
+.codeIconGlyph {
+  font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', Consolas, monospace;
+  font-size: 0.8333rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
 }
 
-.strategicBadgeCert {
-  background: linear-gradient(145deg, #b8891c 0%, #856514 100%);
+.engineeringCardAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.8889rem;
+  height: 1.8889rem;
+  border-radius: 50%;
+  font-size: 0.7778rem;
+  color: rgba(248, 250, 252, 0.78);
+  border: 0.0556rem solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  flex-shrink: 0;
 }
 
-/* Certification card */
+.engineeringCardTitle:global(.ant-typography) {
+  margin: 0 0 0.6667rem !important;
+  font-size: clamp(1.15rem, 2.2vw, 1.35rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em !important;
+  color: #f8fafc !important;
+}
+
+.engineeringCardDesc {
+  margin: 0 0 1rem !important;
+  color: #94a3b8 !important;
+  font-size: 0.8889rem !important;
+  line-height: 1.65 !important;
+}
+
+.engineeringCardDivider {
+  display: block;
+  width: 2.6667rem;
+  height: 0.1111rem;
+  margin-bottom: 1.1111rem;
+  border-radius: 999px;
+}
+
+.engineeringCardFrontend .engineeringCardDivider {
+  background: linear-gradient(90deg, #a78bfa 0%, rgba(167, 139, 250, 0.15) 100%);
+}
+
+.engineeringCardBackend .engineeringCardDivider {
+  background: linear-gradient(90deg, #60a5fa 0%, rgba(96, 165, 250, 0.15) 100%);
+}
+
+.engineeringSkillList {
+  list-style: none;
+  margin: 0 0 1.3333rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7778rem;
+}
+
+.engineeringSkillItem {
+  display: flex;
+  align-items: center;
+  gap: 0.6667rem;
+}
+
+.engineeringSkillCheck {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.2222rem;
+  height: 1.2222rem;
+  border-radius: 50%;
+  font-size: 0.6111rem;
+  flex-shrink: 0;
+}
+
+.engineeringCardFrontend .engineeringSkillCheck {
+  color: #c4b5fd;
+  background: rgba(124, 58, 237, 0.18);
+  border: 0.0556rem solid rgba(167, 139, 250, 0.28);
+}
+
+.engineeringCardBackend .engineeringSkillCheck {
+  color: #93c5fd;
+  background: rgba(59, 130, 246, 0.16);
+  border: 0.0556rem solid rgba(96, 165, 250, 0.28);
+}
+
+.engineeringSkillText {
+  font-size: 0.8333rem !important;
+  color: #cbd5e1 !important;
+  line-height: 1.4 !important;
+}
+
+.engineeringTagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4444rem;
+  margin-top: auto;
+}
+
+.engineeringTag:global(.ant-tag) {
+  margin: 0 !important;
+  padding-inline: 0.7222rem !important;
+  padding-block: 0.2778rem !important;
+  border-radius: 999px !important;
+  font-size: 0.6667rem !important;
+  font-weight: 600 !important;
+  line-height: 1.35 !important;
+  letter-spacing: 0.02em !important;
+  text-transform: none !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  color: #cbd5e1 !important;
+}
+
+.engineeringCardFrontend .engineeringTag:global(.ant-tag) {
+  border: 0.0556rem solid rgba(167, 139, 250, 0.32) !important;
+}
+
+.engineeringCardBackend .engineeringTag:global(.ant-tag) {
+  border: 0.0556rem solid rgba(96, 165, 250, 0.32) !important;
+}
+
+/* —— Certifications featured card —— */
+.glassCardWide {
+  padding: clamp(1.4444rem, 2.8vw, 2rem);
+}
+
+.certFeaturedLayout {
+  display: grid;
+  grid-template-columns: minmax(6rem, 8.5rem) minmax(0, 1fr);
+  gap: clamp(1.25rem, 3vw, 2rem);
+  align-items: center;
+}
+
+.certFeaturedVisual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.certFeaturedOrb {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(5.5rem, 14vw, 7.5rem);
+  height: clamp(5.5rem, 14vw, 7.5rem);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(129, 140, 248, 0.35) 0%, transparent 55%),
+    linear-gradient(145deg, rgba(79, 70, 229, 0.35) 0%, rgba(17, 24, 39, 0.85) 100%);
+  border: 0.0556rem solid rgba(129, 140, 248, 0.35);
+  box-shadow:
+    0 0 2rem rgba(99, 102, 241, 0.22),
+    inset 0 0.0556rem 0 rgba(255, 255, 255, 0.08);
+}
+
+.certFeaturedOrbIcon {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  color: #c7d2fe;
+}
+
+.certFeaturedContent {
+  min-width: 0;
+}
+
+.certGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8889rem;
+  margin-bottom: 1.1111rem;
+}
+
+.certTile,
+.certTileLink {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3333rem;
+  padding: 0.8889rem;
+  border-radius: 0.7778rem;
+  border: 0.0556rem solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.03);
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.certTileLink {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.certTileLink:hover,
+.certTileLink:focus-visible {
+  border-color: rgba(212, 175, 55, 0.35);
+  background: rgba(212, 175, 55, 0.06);
+  transform: translateY(-0.0556rem);
+}
+
+.certTileLink:focus-visible {
+  outline: 0.1111rem solid rgba(212, 175, 55, 0.45);
+  outline-offset: 0.1111rem;
+}
+
+.certTileIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7778rem;
+  height: 1.7778rem;
+  border-radius: 0.4444rem;
+  font-size: 0.8889rem;
+  color: #c7d2fe;
+  background: linear-gradient(145deg, rgba(99, 102, 241, 0.35) 0%, rgba(79, 70, 229, 0.2) 100%);
+  border: 0.0556rem solid rgba(129, 140, 248, 0.25);
+}
+
+.certTileTitle {
+  display: block;
+  font-size: 0.7778rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em;
+  color: #f1f5f9 !important;
+}
+
+.certTileDesc {
+  display: block;
+  font-size: 0.6667rem !important;
+  line-height: 1.55 !important;
+  color: #94a3b8 !important;
+}
+
+/* —— Responsive —— */
+@media (max-width: 991px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .heroOrbital {
+    justify-self: center;
+    max-width: 14rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .certFeaturedLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .certFeaturedVisual {
+    justify-content: flex-start;
+  }
+
+  .certGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .sectionHeaderMain {
+    flex-wrap: wrap;
+  }
+
+  .sectionHeaderLine {
+    flex-basis: 100%;
+    order: 3;
+  }
+}
+
+/* —— Light: Alabaster Executive —— */
+:global(html[data-theme='light']) .pageTitle:global(.ant-typography) {
+  background: var(--portfolio-hero-title-gradient) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+}
+
+:global(html[data-theme='light']) .pageLead,
+:global(html[data-theme='light']) .heroLead,
+:global(html[data-theme='light']) .cardSummary,
+:global(html[data-theme='light']) .skillItemDesc,
+:global(html[data-theme='light']) .certTileDesc {
+  color: var(--portfolio-text-secondary) !important;
+}
+
+:global(html[data-theme='light']) .metaTag:global(.ant-tag) {
+  color: var(--portfolio-text-muted) !important;
+  border-color: var(--portfolio-border) !important;
+  background: var(--portfolio-surface-sunken) !important;
+}
+
+:global(html[data-theme='light']) .sectionHeading:global(.ant-typography),
+:global(html[data-theme='light']) .cardTitle:global(.ant-typography),
+:global(html[data-theme='light']) .skillItemTitle,
+:global(html[data-theme='light']) .certTileTitle {
+  color: var(--portfolio-text-body) !important;
+}
+
+:global(html[data-theme='light']) .heroTitlePrimary {
+  color: var(--portfolio-text-body);
+}
+
+:global(html[data-theme='light']) .heroTitleAccent {
+  background: linear-gradient(92deg, #6d28d9 0%, #4f46e5 50%, #2563eb 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+:global(html[data-theme='light']) .heroEyebrow {
+  color: var(--portfolio-purple) !important;
+}
+
+:global(html[data-theme='light']) .pageGlow {
+  background:
+    radial-gradient(ellipse 80% 55% at 8% -5%, rgba(109, 40, 217, 0.08) 0%, transparent 58%),
+    radial-gradient(ellipse 70% 50% at 100% 8%, rgba(37, 99, 235, 0.06) 0%, transparent 54%);
+}
+
+:global(html[data-theme='light']) .glassCard {
+  background: var(--portfolio-surface);
+  border: 0.0556rem solid var(--portfolio-border);
+  box-shadow: var(--portfolio-shadow-sm);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+:global(html[data-theme='light']) .glassCard:hover {
+  background: var(--portfolio-surface-raised);
+  box-shadow: var(--portfolio-shadow-md);
+}
+
+:global(html[data-theme='light']) .cardAccentEngineering:hover {
+  border-color: rgba(109, 40, 217, 0.22);
+}
+
+:global(html[data-theme='light']) .cardAccentManagement:hover {
+  border-color: var(--portfolio-gold-muted-border);
+}
+
+:global(html[data-theme='light']) .cardAccentCertification:hover {
+  border-color: rgba(79, 70, 229, 0.22);
+}
+
+:global(html[data-theme='light']) .sectionHeaderLine {
+  background: linear-gradient(90deg, var(--portfolio-border) 0%, transparent 100%);
+}
+
+:global(html[data-theme='light']) .sectionHeaderEngineering .sectionHeaderLine {
+  background: linear-gradient(90deg, rgba(109, 40, 217, 0.2) 0%, transparent 100%);
+}
+
+:global(html[data-theme='light']) .sectionHeaderManagement .sectionHeaderLine {
+  background: linear-gradient(90deg, rgba(184, 146, 42, 0.22) 0%, transparent 100%);
+}
+
+:global(html[data-theme='light']) .skillTag:global(.ant-tag) {
+  border: 0.0556rem solid var(--portfolio-border) !important;
+  background: var(--portfolio-surface-sunken) !important;
+  color: var(--portfolio-text-secondary) !important;
+}
+
+:global(html[data-theme='light']) .certTile,
+:global(html[data-theme='light']) .certTileLink {
+  background: var(--portfolio-surface-sunken);
+  border-color: var(--portfolio-border);
+}
+
+:global(html[data-theme='light']) .certTileLink:hover,
+:global(html[data-theme='light']) .certTileLink:focus-visible {
+  background: var(--portfolio-surface-raised);
+  border-color: var(--portfolio-gold-muted-border);
+}
+
+:global(html[data-theme='light']) .certFeaturedOrb {
+  background:
+    radial-gradient(circle at 30% 25%, rgba(109, 40, 217, 0.12) 0%, transparent 55%),
+    var(--portfolio-surface-sunken);
+  border-color: rgba(109, 40, 217, 0.18);
+  box-shadow: var(--portfolio-shadow-sm);
+}
+
+:global(html[data-theme='light']) .certFeaturedOrbIcon {
+  color: var(--portfolio-purple);
+}
+
+:global(html[data-theme='light']) .certTileIcon {
+  color: var(--portfolio-purple);
+  background: var(--portfolio-purple-muted);
+  border-color: rgba(109, 40, 217, 0.16);
+}
+
+:global(html[data-theme='light']) .cardCornerAction {
+  color: var(--portfolio-text-muted);
+  border-color: var(--portfolio-border);
+  background: var(--portfolio-surface-sunken);
+}
+
+:global(html[data-theme='light']) .orbitalRing {
+  border-color: rgba(109, 40, 217, 0.16);
+  box-shadow: none;
+}
+
+:global(html[data-theme='light']) .orbitalRingMid {
+  border-color: rgba(79, 70, 229, 0.14);
+}
+
+:global(html[data-theme='light']) .orbitalRingInner {
+  border-color: rgba(37, 99, 235, 0.12);
+}
+
+:global(html[data-theme='light']) .orbitalStar {
+  background: var(--portfolio-purple);
+  box-shadow: none;
+}
+
+:global(html[data-theme='light']) .engineeringCard {
+  background: var(--portfolio-surface);
+  border-color: var(--portfolio-border);
+  box-shadow: var(--portfolio-shadow-sm);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+:global(html[data-theme='light']) .engineeringCard:hover {
+  background: var(--portfolio-surface-raised);
+  box-shadow: var(--portfolio-shadow-md);
+}
+
+:global(html[data-theme='light']) .engineeringCardFrontend:hover {
+  border-color: rgba(109, 40, 217, 0.22);
+}
+
+:global(html[data-theme='light']) .engineeringCardBackend:hover {
+  border-color: rgba(37, 99, 235, 0.22);
+}
+
+:global(html[data-theme='light']) .engineeringCardDesc,
+:global(html[data-theme='light']) .engineeringSkillText {
+  color: var(--portfolio-text-secondary) !important;
+}
+
+:global(html[data-theme='light']) .engineeringCardTitle:global(.ant-typography) {
+  color: var(--portfolio-text-body) !important;
+}
+
+:global(html[data-theme='light']) .engineeringCardAction {
+  color: var(--portfolio-text-muted);
+  border-color: var(--portfolio-border);
+  background: var(--portfolio-surface-sunken);
+}
+
+:global(html[data-theme='light']) .engineeringTag:global(.ant-tag) {
+  background: var(--portfolio-surface-sunken) !important;
+  color: var(--portfolio-text-secondary) !important;
+}
+
+:global(html[data-theme='light']) .engineeringCardGlow {
+  opacity: 0.35;
+}
+
+:global(html[data-theme='light']) .engineeringCardGlowFrontend {
+  background: radial-gradient(circle, rgba(109, 40, 217, 0.14) 0%, transparent 72%);
+}
+
+:global(html[data-theme='light']) .engineeringCardGlowBackend {
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, transparent 72%);
+}
+
+/* Legacy shared imports (PM Strategy cert card) */
 .certCardAnchor {
   display: block;
   height: 100%;
@@ -271,260 +1088,36 @@
     inset 0 0.0556rem 0 rgba(212, 175, 55, 0.12),
     0 1.1111rem 2.2222rem rgba(0, 0, 0, 0.35),
     0 0 1.5556rem rgba(212, 175, 55, 0.22) !important;
-  transition:
-    transform 0.28s ease,
-    border-color 0.28s ease,
-    box-shadow 0.28s ease,
-    background 0.28s ease;
 }
 
-.certCardAnchor:hover .certCard:global(.ant-card),
-.certCardAnchor:focus-visible .certCard:global(.ant-card) {
-  border-color: #e8c84c !important;
-  box-shadow:
-    inset 0 0.0556rem 0 rgba(212, 175, 55, 0.18),
-    0 1.3333rem 2.6667rem rgba(0, 0, 0, 0.45),
-    0 0 2.2222rem rgba(212, 175, 55, 0.35) !important;
-}
-
-/* Legacy repo glass (unused on page — kept for shared imports) */
-.repoGlassCard {
-  display: flex;
-  flex-direction: column;
+.categoryCard:global(.ant-card) {
   height: 100%;
-  padding: 1.2222rem 1.2222rem 1.1111rem;
-  border-radius: 1rem;
-  background: rgba(17, 24, 39, 0.48);
-  backdrop-filter: blur(0.8889rem);
-  -webkit-backdrop-filter: blur(0.8889rem);
-  border: 0.0556rem solid rgba(255, 255, 255, 0.09);
-  box-shadow:
-    inset 0 0.0556rem 0 rgba(255, 255, 255, 0.06),
-    0 0.8889rem 2.3333rem rgba(0, 0, 0, 0.38);
-  transition:
-    border-color 0.25s ease,
-    box-shadow 0.25s ease,
-    transform 0.25s ease;
+  background: var(--portfolio-surface, #111827);
+  border: 0.0556rem solid var(--portfolio-border, rgba(255, 255, 255, 0.06)) !important;
 }
 
-.repoGlassCard:hover {
-  border-color: rgba(212, 175, 55, 0.26);
-  box-shadow:
-    inset 0 0.0556rem 0 rgba(255, 255, 255, 0.08),
-    0 1.2222rem 2.8889rem rgba(0, 0, 0, 0.45),
-    0 0 1.7778rem rgba(212, 175, 55, 0.09);
-  transform: translateY(-0.1667rem);
-}
-
-.repoName:global(.ant-typography) {
-  margin: 0 0 0.5556rem !important;
-  font-family: 'Inter', system-ui, sans-serif !important;
-  font-weight: 700 !important;
-  font-size: 0.8333rem !important;
-  letter-spacing: 0.08em !important;
-  text-transform: uppercase !important;
+.cardHeading:global(.ant-typography) {
+  margin: 0 0 0.4444rem !important;
   color: #f8fafc !important;
+  font-size: 1rem !important;
 }
 
-.repoDesc {
-  flex: 1;
-  margin: 0 0 0.7778rem !important;
-  color: #94a3b8 !important;
-  font-size: 0.7778rem !important;
-  line-height: 1.6 !important;
+.cardDesc {
+  color: #94a3b8;
+  margin-bottom: 0.6667rem;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
 }
 
-.repoLangTag:global(.ant-tag) {
-  align-self: flex-start;
-  margin: 0 0 0.8889rem !important;
-  padding-inline: 0.5556rem !important;
-  border-radius: 999px !important;
-  border: 0.0556rem solid rgba(212, 175, 55, 0.35) !important;
-  background: rgba(212, 175, 55, 0.08) !important;
-  color: #e8d595 !important;
-  font-weight: 600 !important;
-  font-size: 0.6111rem !important;
-  letter-spacing: 0.06em !important;
-  text-transform: uppercase !important;
-}
-
-.repoViewLink:global(.ant-typography) {
-  display: inline-flex !important;
-  align-items: center;
-  gap: 0.4444rem;
-  margin: 0 !important;
-  font-family: 'Inter', system-ui, sans-serif !important;
-  font-size: 0.6111rem !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.1em !important;
-  text-transform: uppercase !important;
-  color: #d4af37 !important;
-}
-
-.repoViewLink:global(.ant-typography):hover {
-  color: #e8c84c !important;
-}
-
-.repoLinkIcon {
-  font-size: 0.7222rem;
-}
-
-/* —— Light: Alabaster Executive (Tech Stack) —— */
-:global(html[data-theme='light']) .pageTitle:global(.ant-typography) {
-  background: var(--portfolio-hero-title-gradient) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-}
-
-:global(html[data-theme='light']) .pageLead,
-:global(html[data-theme='light']) .cardDesc {
-  color: var(--portfolio-text-secondary) !important;
-}
-
-:global(html[data-theme='light']) .metaTag:global(.ant-tag) {
-  color: var(--portfolio-text-muted) !important;
-  border-color: var(--portfolio-border) !important;
-}
-
-:global(html[data-theme='light']) .sectionHeading:global(.ant-typography),
 :global(html[data-theme='light']) .cardHeading:global(.ant-typography),
-:global(html[data-theme='light']) .managementPillarTitle:global(.ant-typography) {
+:global(html[data-theme='light']) .cardDesc {
   color: var(--portfolio-text-body) !important;
-  -webkit-text-fill-color: var(--portfolio-text-body) !important;
-  background: none !important;
 }
 
-:global(html[data-theme='light']) .leadershipSection {
-  border-top-color: var(--portfolio-border);
-}
-
-:global(html[data-theme='light']) .categoryCard:global(.ant-card) {
-  background: var(--portfolio-surface) !important;
-  border: 0.0556rem solid var(--portfolio-border) !important;
-  box-shadow: none;
-}
-
-:global(html[data-theme='light']) .categoryCard:global(.ant-card):hover {
-  background: var(--portfolio-surface-raised) !important;
-  border-color: var(--portfolio-border) !important;
-  box-shadow: var(--portfolio-shadow-sm);
-  transform: translateY(-0.1111rem);
-}
-
-:global(html[data-theme='light']) .skillTag:global(.ant-tag) {
-  border: 0.0556rem solid var(--portfolio-border) !important;
-  background: var(--portfolio-surface-sunken) !important;
-  color: var(--portfolio-text-secondary) !important;
-}
-
-/* Core engineering — purple wash */
-:global(html[data-theme='light']) .techBadgeTs:global(.ant-avatar),
-:global(html[data-theme='light']) .techBadgeNg:global(.ant-avatar),
-:global(html[data-theme='light']) .techBadgeAi:global(.ant-avatar),
-:global(html[data-theme='light']) .techBadgeWebflow:global(.ant-avatar),
-:global(html[data-theme='light']) .techBadgeVite:global(.ant-avatar) {
-  background: var(--portfolio-purple-muted) !important;
-  color: var(--portfolio-purple) !important;
-  border: 0.0556rem solid rgba(109, 40, 217, 0.18);
-  box-shadow: none;
-}
-
-:global(html[data-theme='light']) .techBadgeNg:global(.ant-avatar) {
-  color: #9f1239 !important;
-  background: rgba(225, 29, 72, 0.1) !important;
-  border-color: rgba(159, 18, 57, 0.16) !important;
-}
-
-:global(html[data-theme='light']) .techBadgeTs:global(.ant-avatar) {
-  color: #1d4ed8 !important;
-  background: rgba(37, 99, 235, 0.1) !important;
-  border-color: rgba(29, 78, 216, 0.16) !important;
-}
-
-:global(html[data-theme='light']) .techBadgeAi:global(.ant-avatar) {
-  color: #047857 !important;
-  background: rgba(5, 150, 105, 0.1) !important;
-  border-color: rgba(4, 120, 87, 0.16) !important;
-}
-
-:global(html[data-theme='light']) .techBadgeWebflow:global(.ant-avatar) {
-  color: #3730a3 !important;
-  background: rgba(67, 83, 255, 0.1) !important;
-  border-color: rgba(55, 48, 163, 0.16) !important;
-}
-
-:global(html[data-theme='light']) .techBadgeVite:global(.ant-avatar) {
-  color: #6d28d9 !important;
-  background: var(--portfolio-purple-muted) !important;
-  border-color: rgba(109, 40, 217, 0.18) !important;
-}
-
-/* Performance — gold wash */
-:global(html[data-theme='light']) .perfBadge {
-  color: var(--portfolio-gold) !important;
-  background: rgba(184, 146, 42, 0.12) !important;
-  border-color: var(--portfolio-gold-muted-border) !important;
-}
-
-/* Management pillar badges — tinted grounds */
-:global(html[data-theme='light']) .strategicBadgeDelivery {
-  background: rgba(59, 99, 181, 0.12) !important;
-  color: #2c4a8c !important;
-  border: 0.0556rem solid rgba(44, 74, 140, 0.16);
-}
-
-:global(html[data-theme='light']) .strategicBadgeAgile {
-  background: rgba(13, 148, 136, 0.12) !important;
-  color: #0f766e !important;
-  border: 0.0556rem solid rgba(15, 118, 110, 0.16);
-}
-
-:global(html[data-theme='light']) .strategicBadgeVision {
-  background: var(--portfolio-purple-muted) !important;
-  color: var(--portfolio-purple) !important;
-  border: 0.0556rem solid rgba(109, 40, 217, 0.16);
-}
-
-:global(html[data-theme='light']) .strategicBadgeRisk {
-  background: rgba(234, 88, 12, 0.1) !important;
-  color: #c2410c !important;
-  border: 0.0556rem solid rgba(194, 65, 12, 0.16);
-}
-
-:global(html[data-theme='light']) .strategicBadgeStakeholder {
-  background: rgba(8, 145, 178, 0.1) !important;
-  color: #0e7490 !important;
-  border: 0.0556rem solid rgba(14, 116, 144, 0.16);
-}
-
-:global(html[data-theme='light']) .strategicBadgeCert {
-  background: rgba(184, 146, 42, 0.12) !important;
-  color: var(--portfolio-gold) !important;
-  border: 0.0556rem solid var(--portfolio-gold-muted-border);
-}
-
+:global(html[data-theme='light']) .categoryCard:global(.ant-card),
 :global(html[data-theme='light']) .certCard:global(.ant-card) {
   background: var(--portfolio-surface) !important;
-  border: 0.0556rem solid var(--portfolio-gold) !important;
+  border-color: var(--portfolio-border) !important;
   box-shadow: var(--portfolio-shadow-sm) !important;
-}
-
-:global(html[data-theme='light']) .certCardAnchor:hover .certCard:global(.ant-card),
-:global(html[data-theme='light']) .certCardAnchor:focus-visible .certCard:global(.ant-card) {
-  background: var(--portfolio-surface-raised) !important;
-  box-shadow: var(--portfolio-shadow-md) !important;
-}
-
-:global(html[data-theme='light']) .repoGlassCard {
-  background: var(--portfolio-surface);
-  border: 0.0556rem solid var(--portfolio-border);
-  box-shadow: var(--portfolio-shadow-sm);
-}
-
-:global(html[data-theme='light']) .repoName:global(.ant-typography) {
-  color: var(--portfolio-text-body) !important;
-}
-
-:global(html[data-theme='light']) .repoDesc {
-  color: var(--portfolio-text-secondary) !important;
 }

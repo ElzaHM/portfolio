@@ -1,85 +1,76 @@
 # Elza Hovhannisyan
-https://www.linkedin.com/in/elza-hovhannisyan-25a6b0233/ |https://github.com/ElzaHM | Yerevan Armenia
+https://www.linkedin.com/in/elza-hovhannisyan-25a6b0233/ | https://github.com/ElzaHM | Yerevan, Armenia
 
 ---
 
 ## Summary
 
-Highly accomplished Frontend Developer with 5 years of experience, expertly transitioning into a Technical Project Manager role. Proven leader and innovator, demonstrated by founding and scaling **Techahartak.com**, where I spearheaded product vision, strategy, and execution. Combines deep technical expertise in modern web technologies (React, Next.js, TypeScript) with robust strategic planning, team leadership, and cross-functional project delivery skills. A results-oriented professional passionate about driving successful product development cycles from concept to launch, fostering collaboration, and achieving business objectives.
+Frontend Engineer and Technical Project Manager with **5+ years** of experience building **scalable web applications** and leading cross-functional delivery. Strong hands-on background in **Angular**, **TypeScript**, and **React**, with a focus on **UI architecture**, reusable component systems, and performance-minded interfaces. Combines deep frontend engineering with **Agile delivery**, **SDLC management**, and stakeholder communication to ship reliable products from planning through release. Proven track record mentoring engineers, coordinating sprints, and aligning technical execution with business goals in SaaS, ERP/CRM, and platform environments.
 
 ---
 
 ## Skills
 
-**Frontend Technologies:** React, Next.js, TypeScript, JavaScript (ES6+), HTML5, CSS3 (Sass/Less, styled-components), Redux, Webpack, Babel, RESTful APIs, GraphQL, Storybook
-**UI/UX & Testing:** Responsive Design, Accessibility (WCAG), Figma (collaboration), Jest, React Testing Library, Cypress (E2E)
-**Project Management & Methodologies:** Agile (Scrum, Kanban), Jira, Asana, Confluence, Requirement Gathering, Scope Management, Risk Assessment, Stakeholder Management, Product Roadmapping, Budgeting (basic)
-**Leadership & Soft Skills:** Technical Leadership, Team Mentorship, Cross-functional Collaboration, Strategic Planning, Problem-Solving, Communication, Client Relations, Business Acumen, Entrepreneurship, Conflict Resolution
-**Development Tools:** Git, GitHub/GitLab, VS Code, npm/Yarn, CI/CD (basics), Docker (basics)
+**Frontend Engineering:** Angular, React, TypeScript, JavaScript (ES6+), HTML5, CSS3, UI Architecture, Component Design Systems, Responsive Design, Accessibility (WCAG), RxJS, React Query, Ant Design, State Management, RESTful APIs
+**Project & Delivery:** Technical Project Management, SDLC, Agile (Scrum, Kanban), Sprint Planning, Release Coordination, Requirement Gathering, Stakeholder Communication, Risk & Quality Management, Roadmapping
+**Leadership:** Frontend Team Lead, Code Review, Mentorship, Cross-functional Collaboration, Technical Leadership, Client & Stakeholder Relations
+**Tools & Platforms:** Git, GitHub, VS Code, npm/Yarn, Vite, Supabase, Jira, Confluence, CI/CD (basics), Figma (collaboration)
 
 ---
 
 ## Work Experience
 
-**Frontend Developer** 
+**Frontend Engineer & Technical Project Manager** | Mobius Charitable Foundation | Dec 2024 – Mar 2026
 
-*   Led the development and successful deployment of key features for a high-traffic enterprise-level SaaS platform, improving user engagement by **15%**.
-*   Architected and implemented scalable, performant, and accessible user interfaces using React, Next.js, and TypeScript, adhering to WCAG standards.
-*   Mentored a team of 3 junior and mid-level developers, conducting code reviews and fostering best practices, resulting in a **20% improvement** in code quality and team efficiency.
-*   Collaborated cross-functionally with product managers, UX designers, and backend engineers to translate business requirements into technical specifications and deliver integrated solutions.
-*   Optimized application performance, reducing page load times by an average of **200ms** through lazy loading, code splitting, and intelligent data fetching strategies.
-*   Actively contributed to technical roadmap planning, sprint retrospective discussions, and daily stand-ups, ensuring alignment with project goals and timely delivery.
+*   Developed **mobius.am** from initial planning through production release, owning frontend delivery and project coordination across the SDLC.
+*   Built the platform frontend with **Angular** and **TypeScript**, implementing responsive UI, scalable component structure, and maintainable application architecture.
+*   Managed SDLC activities including scope alignment, milestone tracking, and release readiness from development through deployment.
+*   Collaborated in **Agile/Scrum** ceremonies—sprint planning, stand-ups, and retrospectives—to maintain predictable delivery cadence.
+*   Served as a key point of contact for **stakeholder communication**, translating requirements into actionable development plans and progress updates.
 
-**Founder** | Techahartak.com (Self-Funded Startup) | Remote
+**Frontend Team Lead & Technical Project Coordinator** | Ovak Technologies LLC | Apr 2021 – Jan 2026
 
-*   Founded and scaled Techahartak.com, a platform dedicated to providing resources and community for aspiring tech professionals, reaching **10,000+ monthly active users**.
-*   Spearheaded the entire product lifecycle, from initial concept and market research to strategic planning, development, launch, and post-launch maintenance.
-*   Managed all technical aspects, including full-stack web development (React/Next.js for frontend, Node.js/Firebase for backend), database design, UI/UX implementation, and SEO optimization.
-*   Developed and executed content strategy, marketing campaigns, and community engagement initiatives, achieving significant organic traffic growth.
-*   Oversaw budgeting, resource allocation, and vendor management, ensuring efficient operation within financial constraints.
-*   Demonstrated strong entrepreneurial skills, adaptability, and resilience in overcoming challenges inherent in a startup environment.
+*   Led **Angular/TypeScript** frontend delivery for enterprise **ERP/CRM** and **SaaS** solutions in a fast-paced product environment.
+*   Mentored **3–5 frontend engineers**, conducting code reviews and establishing reusable patterns that improved team consistency and delivery speed.
+*   Designed and implemented **reusable UI components** and shared frontend standards to support scalable product development.
+*   Partnered with product, design, and backend teams to refine requirements, estimate work, and ship production-ready features.
+*   Coordinated **sprint planning**, task prioritization, and **release coordination** to align engineering output with business timelines.
 
-** Technical Project Management & Leadership **
+**Founder & Lead Developer** | Techahartak.com | Remote
 
-## Technical Product Lead & Founder | Techahartak.com | 2024 – Present
-
-- **SDLC Orchestration:** Managed the full Software Development Life Cycle (SDLC) for a grassroots aggregator platform, from initial requirement gathering to final deployment in a multilingual environment (ARM, EN, RU).
-
-- **Strategic Delivery Architecture:** Translated complex product visions into scalable technical roadmaps, ensuring alignment between social impact goals and engineering execution.
-
-- **Agile & Scrum Mastery:** Led iterative development cycles using Agile methodologies, managing sprint planning, feature prioritization, and risk mitigation to ensure consistent delivery.
-
-- **Stakeholder & Resource Management:** Acted as the primary bridge between business objectives and technical requirements, overseeing resource allocation, budgeting, and cross-functional collaboration.
-
-- **Product Vision & Inclusion:** Spearheaded a human-centric product strategy focused on accessibility (A11Y) and digital inclusion, scaling the platform to reach thousands of monthly active users.
-
-- **Risk & Quality Assurance:** Implemented proactive risk assessment strategies and established quality gates, balancing rapid feature release with enterprise-grade system stability.
+*   Founded and scaled an accessibility-minded social impact platform, reaching **10,000+ monthly active users** at peak.
+*   Owned product vision, multilingual UX (ARM, EN, RU), and full-cycle delivery from concept through launch and iteration.
+*   Bridged community stakeholders, advisors, and users while prioritizing inclusive design and sustainable delivery.
 
 ---
 
 ## Projects
 
-**Techahartak** | https://www.techahartak.com
-*   Designed and developed a responsive using React, Redux, and Styled Components.
-*   Implemented user authentication, product catalog management, and secure payment gateway integration.
-*   Utilized Jest and React Testing Library for comprehensive unit and integration testing, achieving **85% code coverage**.
+**Armenia Events** | https://armenia-events.vercel.app/
+*   Full-stack **event discovery platform** with search, filtering, and modern responsive UI.
+*   Built with **React**, **TypeScript**, **Supabase**, and **React Query** for scalable data handling and real-time user experiences.
 
-**Portfolio** | https://github.com/ElzaHM/portfolio | https://portfolio-gamma-bice-qla87hdzu7.vercel.app/
-*   Led a small team (2 developers) in building an internal analytics dashboard for a fictional startup using Next.js and Chart.js.
-*   Defined project scope, managed task distribution, and ensured timely delivery of key milestones.
-*   Integrated with various data sources via GraphQL, providing real-time insights into user behavior.
+**Mobius** | https://mobius.am/
+*   **Angular-based web platform** supporting organizational workflows and public-facing digital presence.
+*   Delivered frontend development and **project coordination** from planning through release.
+
+**Portfolio** | https://portfolio-gamma-bice-qla87hdzu7.vercel.app/
+*   Personal developer portfolio showcasing frontend engineering, project leadership, and selected product work.
+*   Built with **React**, **TypeScript**, and a modern component-driven UI architecture.
+
+**Techahartak** | https://www.techahartak.com
+*   Social impact platform focused on accessibility and community reach for people with disabilities.
+*   Led product strategy, frontend implementation, and multilingual content delivery.
 
 ---
 
 ## Education
 
-**Master's degree Finance and Financial Management Services**
+**Master's degree · Finance and Financial Management Services**
 Armenian State University of Economics
 
-**Certificate PPM**
+**Certificate · PPM**
 ACA
 
-**Certificate AI in Frontend**
+**Certificate · AI in Frontend**
 AGBU
-
-

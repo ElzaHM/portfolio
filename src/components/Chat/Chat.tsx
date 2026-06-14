@@ -10,7 +10,7 @@ const { TextArea } = Input
 const { Title } = Typography
 
 const WELCOME_TEXT =
-  "Hello! I am the AI Assistant of Elza Hovhannisyan. I'm here to tell you about her expertise in Frontend Development, Project Management, and her social impact projects like techahartak.com."
+  "Hello! I am the AI Assistant of Elza Hovhannisyan. Elza is a Frontend Engineer and Technical Project Manager with strong experience in Angular, TypeScript, and React. Ask me about her experience, projects such as Mobius, Armenia Events, Techahartak, and her portfolio, as well as the technologies, frontend development work, and project management background behind her profile."
 
 type ChatMessage =
   | { id: string; role: 'assistant'; content: string; isStatic?: boolean }

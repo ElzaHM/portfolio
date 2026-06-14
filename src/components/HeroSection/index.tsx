@@ -30,25 +30,25 @@ type GlassCardConfig = {
 
 const glassCards: GlassCardConfig[] = [
   {
-    key: 'engineering',
-    title: 'Frontend Engineering',
+    key: 'armenia-events',
+    title: 'Armenia Events',
     description:
-      'Harnessing 5+ years of elite frontend mastery in Angular & React, integrated with next-gen Cursor AI workflows for accelerated, high-fidelity delivery.',
-    icon: <span className={styles.codeIconGlyph}>{'</>'}</span>,
+      'A full-stack event discovery platform built with React, TypeScript, Supabase and modern web technologies. Full stack / Team Lead — React, TypeScript, Ant Design, Supabase, React Query.',
+    icon: <span className={styles.codeIconGlyph} aria-hidden>{'</>'}</span>,
     iconClass: styles.cardIconEngineering,
     nav: {
-      kind: 'internal',
-      to: '/tech-mastery',
-      ariaLabel: 'Explore Technical Mastery — engineering depth and stack',
+      kind: 'external',
+      href: 'https://armenia-events.vercel.app/',
+      ariaLabel: 'Armenia Events — live project (opens in new tab)',
     },
     cta: {
-      label: 'EXPLORE TECHNICAL MASTERY →',
+      label: 'VIEW LIVE SITE →',
       linkClass: styles.cardLinkEngineering,
+      showOutboundGlyph: true,
     },
   },
   {
     key: 'venture',
-    badge: 'FOUNDING VENTURE',
     title: 'Founder of Techahartak',
     description:
       'Visionary behind Techahartak.com—a social impact engine dedicated to empowering people with disabilities through accessible tech solutions.',
@@ -66,29 +66,30 @@ const glassCards: GlassCardConfig[] = [
     nav: {
       kind: 'external',
       href: 'https://techahartak.com',
-      ariaLabel: 'Techahartak — mission and impact (opens in new tab)',
+      ariaLabel: 'Techahartak — live project (opens in new tab)',
     },
     cta: {
-      label: 'MISSION & IMPACT',
+      label: 'VIEW LIVE SITE →',
       linkClass: styles.cardLinkVenture,
       showOutboundGlyph: true,
     },
   },
   {
-    key: 'management',
-    title: 'Certified Project Manager',
+    key: 'mobius',
+    title: 'Mobius',
     description:
-      'Merging enterprise PM certifications with deep Agile/Scrum expertise to drive complex digital transformations with absolute accountability.',
+      'A modern web platform built with Angular, focusing on frontend engineering, responsive UI development and project management workflows using Kanban methodology. Frontend Developer + Project Manager — Angular, TypeScript, Kanban, Agile, UI Architecture.',
     icon: <CheckCircleOutlined aria-hidden />,
     iconClass: styles.cardIconLead,
     nav: {
-      kind: 'internal',
-      to: '/pm-strategy',
-      ariaLabel: 'Project Strategy and Leadership',
+      kind: 'external',
+      href: 'https://mobius.am/',
+      ariaLabel: 'Mobius — live project (opens in new tab)',
     },
     cta: {
-      label: 'STRATEGY & PM →',
-      linkClass: styles.cardLinkLead,
+      label: 'VIEW LIVE SITE →',
+      linkClass: styles.cardLinkEngineering,
+      showOutboundGlyph: true,
     },
   },
 ]
